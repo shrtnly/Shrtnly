@@ -180,44 +180,68 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" id="link-form">
-        {/* Original URL */}
-        <div>
-          <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-            Original URL *
-          </label>
-          <div className="relative">
-            <input
-              type="url"
-              id="original_url"
-              name="original_url"
-              value={formData.original_url}
-              onChange={handleChange}
-              placeholder="https://example.com/very-long-url"
-              className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
-                urlValid === null 
-                  ? 'border-gray-300 focus:border-blue-500' 
-                  : urlValid 
-                    ? 'border-green-300 focus:border-green-500 bg-green-50' 
-                    : 'border-red-300 focus:border-red-500 bg-red-50'
-              }`}
-              required
-              aria-describedby={error ? "url-error" : undefined}
-            />
-            {urlValid !== null && (
-              <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                {urlValid ? (
-                  <Check className="w-5 h-5 text-green-600" />
-                ) : (
-                  <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
-                    <span className="text-white text-xs">!</span>
-                  </div>
-                )}
-              </div>
+        {/* URL and Short Code Row */}
+        <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
+          {/* Original URL */}
+          <div className="md:col-span-7">
+            <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+              Original URL *
+            </label>
+            <div className="relative">
+              <input
+                type="url"
+                id="original_url"
+                name="original_url"
+                value={formData.original_url}
+                onChange={handleChange}
+                placeholder="https://example.com/very-long-url"
+                className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
+                  urlValid === null 
+                    ? 'border-gray-300 focus:border-blue-500' 
+                    : urlValid 
+                      ? 'border-green-300 focus:border-green-500 bg-green-50' 
+                      : 'border-red-300 focus:border-red-500 bg-red-50'
+                }`}
+                required
+                aria-describedby={error ? "url-error" : undefined}
+              />
+              {urlValid !== null && (
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  {urlValid ? (
+                    <Check className="w-5 h-5 text-green-600" />
+                  ) : (
+                    <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
+                      <span className="text-white text-xs">!</span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            {urlValid === false && formData.original_url.trim() !== '' && (
+              <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
             )}
           </div>
-          {urlValid === false && formData.original_url.trim() !== '' && (
-            <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
-          )}
+
+          {/* Custom Short Code */}
+          <div className="md:col-span-3">
+            <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+              Custom Short Code
+            </label>
+            <input
+              type="text"
+              id="short_code"
+              name="short_code"
+              value={formData.short_code}
+              onChange={handleChange}
+              placeholder="my-link"
+              className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              pattern="[a-zA-Z0-9_-]+"
+              title="Only letters, numbers, hyphens, and underscores allowed"
+            />
+            <p className="mt-1 text-xs sm:text-sm text-gray-500">
+              Leave blank for auto-generated
+            </p>
+          </div>
         </div>
 
         {/* Advanced Options Toggle */}
@@ -249,27 +273,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           }`}
         >
           <div className="space-y-4 pt-2">
-            {/* Custom Short Code */}
-            <div>
-              <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-                Custom Short Code (optional)
-              </label>
-              <input
-                type="text"
-                id="short_code"
-                name="short_code"
-                value={formData.short_code}
-                onChange={handleChange}
-                placeholder="my-link"
-                className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                pattern="[a-zA-Z0-9_-]+"
-                title="Only letters, numbers, hyphens, and underscores allowed"
-              />
-              <p className="mt-1 text-xs sm:text-sm text-gray-500">
-                Leave blank for auto-generated code
-              </p>
-            </div>
-
             {/* Title */}
             <div>
               <label htmlFor="title" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
