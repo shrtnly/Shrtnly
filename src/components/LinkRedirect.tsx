@@ -1,0 +1,123 @@
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { supabase } from '../lib/supabase';
+
+const LinkRedirect: React.FC = () => {
+  const { shortCode } = useParams<{ shortCode: string }>();
+
+  useEffect(() => {
+    if (!shortCode) {
+      // Invalid short code - redirect to home
+      window.location.href = '/';
+      return;
+    }
+
+    // Immediately start the redirect process
+    redirectToOriginalUrl();
+  }, [shortCode]);
+
+  const redirectToOriginalUrl = async () => {
+    try {
+      const { data, error: fetchError } = await supabase
+        .from('links')
+        .select('*')
+        .eq('short_code', shortCode)
+        .eq('is_active', true)
+        .single();
+
+      if (fetchError || !data) {
+        // Link not found - redirect to home
+        window.location.href = '/';
+        return;
+      }
+
+      // Update click count in background (don't wait for it)
+      supabase
+        .from('links')
+        .update({ click_count: data.click_count + 1 })
+        .eq('id', data.id)
+        .then(() => {})
+        .catch(() => {}); // Silently handle errors for click tracking
+
+      // Track click event in analytics
+      if (data.user_id) {
+        // Get client information for analytics
+        const clientIP = await import('../lib/ipUtils').then(m => m.getClientIP());
+        const userAgent = navigator.userAgent;
+        
+        // Parse user agent for device info
+        const parseUserAgent = (ua: string) => {
+          const lowerUA = ua.toLowerCase();
+          let deviceType = 'Desktop';
+          let browser = 'Other';
+          let os = 'Other';
+          
+          // Device detection
+          if (lowerUA.includes('mobile') || lowerUA.includes('android') || lowerUA.includes('iphone')) {
+            deviceType = 'Mobile';
+          } else if (lowerUA.includes('tablet') || lowerUA.includes('ipad')) {
+            deviceType = 'Tablet';
+          }
+          
+          // Browser detection
+          if (lowerUA.includes('chrome') && !lowerUA.includes('edg')) {
+            browser = 'Chrome';
+          } else if (lowerUA.includes('safari') && !lowerUA.includes('chrome')) {
+            browser = 'Safari';
+          } else if (lowerUA.includes('firefox')) {
+            browser = 'Firefox';
+          } else if (lowerUA.includes('edg')) {
+            browser = 'Edge';
+          }
+          
+          // OS detection
+          if (lowerUA.includes('windows')) {
+            os = 'Windows';
+          } else if (lowerUA.includes('mac') || lowerUA.includes('darwin')) {
+            os = 'macOS';
+          } else if (lowerUA.includes('linux')) {
+            os = 'Linux';
+          } else if (lowerUA.includes('android')) {
+            os = 'Android';
+          } else if (lowerUA.includes('ios') || lowerUA.includes('iphone') || lowerUA.includes('ipad')) {
+            os = 'iOS';
+          }
+          
+          return { deviceType, browser, os };
+        };
+        
+        const { deviceType, browser, os } = parseUserAgent(userAgent);
+        const ip = await clientIP;
+        
+        supabase
+          .from('link_analytics')
+          .insert({
+            link_id: data.id,
+            user_id: data.user_id,
+            event_type: 'click',
+            ip_address: ip,
+            user_agent: userAgent,
+            referrer: document.referrer,
+            device_type: deviceType,
+            browser: browser,
+            os: os,
+            country: 'Unknown', // Would need IP geolocation service for real country
+          })
+          .then(() => {})
+          .catch(() => {}); // Silently handle errors
+      }
+
+      // Redirect immediately to the original URL
+      window.location.href = data.original_url;
+
+    } catch (err) {
+      // Error occurred - redirect to home
+      window.location.href = '/';
+    }
+  };
+
+  // Return completely empty component - no UI elements at all
+  return null;
+};
+
+export default LinkRedirect;
