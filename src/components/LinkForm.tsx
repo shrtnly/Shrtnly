@@ -69,7 +69,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
   };
 
   const generateShortCode = (): string => {
-    return nanoid(8);
+    return nanoid(5);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
