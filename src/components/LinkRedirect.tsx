@@ -42,8 +42,10 @@ const LinkRedirect: React.FC = () => {
       // Track click event in analytics
       if (data.user_id) {
         // Get client information for analytics
-        const clientIP = await import('../lib/ipUtils').then(m => m.getClientIP());
+        const ipUtils = await import('../lib/ipUtils');
+        const clientIP = await ipUtils.getClientIP();
         const userAgent = navigator.userAgent;
+        const referrer = document.referrer;
         
         // Parse user agent for device info
         const parseUserAgent = (ua: string) => {
@@ -68,6 +70,8 @@ const LinkRedirect: React.FC = () => {
             browser = 'Firefox';
           } else if (lowerUA.includes('edg')) {
             browser = 'Edge';
+          } else if (lowerUA.includes('opera')) {
+            browser = 'Opera';
           }
           
           // OS detection
@@ -87,7 +91,6 @@ const LinkRedirect: React.FC = () => {
         };
         
         const { deviceType, browser, os } = parseUserAgent(userAgent);
-        const ip = await clientIP;
         
         supabase
           .from('link_analytics')
@@ -95,9 +98,9 @@ const LinkRedirect: React.FC = () => {
             link_id: data.id,
             user_id: data.user_id,
             event_type: 'click',
-            ip_address: ip,
+            ip_address: clientIP,
             user_agent: userAgent,
-            referrer: document.referrer,
+            referrer: referrer,
             device_type: deviceType,
             browser: browser,
             os: os,

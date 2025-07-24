@@ -135,6 +135,53 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
       // Track link creation event
       if (user && data) {
         const userAgent = navigator.userAgent;
+        const referrer = document.referrer;
+        
+        // Enhanced device and browser detection
+        const parseUserAgent = (ua: string) => {
+          const lowerUA = ua.toLowerCase();
+          let deviceType = 'Desktop';
+          let browser = 'Other';
+          let os = 'Other';
+          
+          // Device detection
+          if (lowerUA.includes('mobile') || lowerUA.includes('android') || lowerUA.includes('iphone')) {
+            deviceType = 'Mobile';
+          } else if (lowerUA.includes('tablet') || lowerUA.includes('ipad')) {
+            deviceType = 'Tablet';
+          }
+          
+          // Browser detection
+          if (lowerUA.includes('chrome') && !lowerUA.includes('edg')) {
+            browser = 'Chrome';
+          } else if (lowerUA.includes('safari') && !lowerUA.includes('chrome')) {
+            browser = 'Safari';
+          } else if (lowerUA.includes('firefox')) {
+            browser = 'Firefox';
+          } else if (lowerUA.includes('edg')) {
+            browser = 'Edge';
+          } else if (lowerUA.includes('opera')) {
+            browser = 'Opera';
+          }
+          
+          // OS detection
+          if (lowerUA.includes('windows')) {
+            os = 'Windows';
+          } else if (lowerUA.includes('mac') || lowerUA.includes('darwin')) {
+            os = 'macOS';
+          } else if (lowerUA.includes('linux')) {
+            os = 'Linux';
+          } else if (lowerUA.includes('android')) {
+            os = 'Android';
+          } else if (lowerUA.includes('ios') || lowerUA.includes('iphone') || lowerUA.includes('ipad')) {
+            os = 'iOS';
+          }
+          
+          return { deviceType, browser, os };
+        };
+        
+        const { deviceType, browser, os } = parseUserAgent(userAgent);
+        
         supabase
           .from('link_analytics')
           .insert({
@@ -142,11 +189,15 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
             user_id: user.id,
             event_type: 'view',
             ip_address: clientIP,
-            user_agent: navigator.userAgent,
-            device_type: getDeviceType(userAgent),
-            browser: getBrowser(userAgent),
-            os: getOS(userAgent),
+            user_agent: userAgent,
+            referrer: referrer,
+            device_type: deviceType,
+            browser: browser,
+            os: os,
             country: 'Unknown', // Would be determined by IP geolocation
+            utm_source: new URLSearchParams(window.location.search).get('utm_source'),
+            utm_medium: new URLSearchParams(window.location.search).get('utm_medium'),
+            utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),
           })
           .then(() => {})
           .catch(() => {}); // Silently handle errors
@@ -159,33 +210,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     }
   };
 
-  // Helper functions for enhanced analytics
-  const getDeviceType = (userAgent: string): string => {
-    const ua = userAgent.toLowerCase();
-    if (ua.includes('mobile') || ua.includes('android') || ua.includes('iphone')) {
-      return ua.includes('tablet') || ua.includes('ipad') ? 'Tablet' : 'Mobile';
-    }
-    return 'Desktop';
-  };
-
-  const getBrowser = (userAgent: string): string => {
-    const ua = userAgent.toLowerCase();
-    if (ua.includes('chrome') && !ua.includes('edg')) return 'Chrome';
-    if (ua.includes('safari') && !ua.includes('chrome')) return 'Safari';
-    if (ua.includes('firefox')) return 'Firefox';
-    if (ua.includes('edg')) return 'Edge';
-    return 'Other';
-  };
-
-  const getOS = (userAgent: string): string => {
-    const ua = userAgent.toLowerCase();
-    if (ua.includes('windows')) return 'Windows';
-    if (ua.includes('mac') || ua.includes('darwin')) return 'macOS';
-    if (ua.includes('linux')) return 'Linux';
-    if (ua.includes('android')) return 'Android';
-    if (ua.includes('ios') || ua.includes('iphone') || ua.includes('ipad')) return 'iOS';
-    return 'Other';
-  };
 
   const copyToClipboard = async () => {
     if (!createdLink) return;

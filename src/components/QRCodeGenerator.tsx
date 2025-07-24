@@ -61,12 +61,14 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({
       import('../lib/ipUtils').then(async ({ getClientIP }) => {
         const clientIP = await getClientIP();
         const userAgent = navigator.userAgent;
+        const referrer = document.referrer;
         
         // Parse user agent for device info
         const parseUserAgent = (ua: string) => {
           const lowerUA = ua.toLowerCase();
           let deviceType = 'Desktop';
           let browser = 'Other';
+          let os = 'Other';
           
           if (lowerUA.includes('mobile') || lowerUA.includes('android') || lowerUA.includes('iphone')) {
             deviceType = 'Mobile';
@@ -82,12 +84,27 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({
             browser = 'Firefox';
           } else if (lowerUA.includes('edg')) {
             browser = 'Edge';
+          } else if (lowerUA.includes('opera')) {
+            browser = 'Opera';
           }
           
-          return { deviceType, browser };
+          // OS detection
+          if (lowerUA.includes('windows')) {
+            os = 'Windows';
+          } else if (lowerUA.includes('mac') || lowerUA.includes('darwin')) {
+            os = 'macOS';
+          } else if (lowerUA.includes('linux')) {
+            os = 'Linux';
+          } else if (lowerUA.includes('android')) {
+            os = 'Android';
+          } else if (lowerUA.includes('ios') || lowerUA.includes('iphone') || lowerUA.includes('ipad')) {
+            os = 'iOS';
+          }
+          
+          return { deviceType, browser, os };
         };
         
-        const { deviceType, browser } = parseUserAgent(userAgent);
+        const { deviceType, browser, os } = parseUserAgent(userAgent);
         
         supabase
           .from('link_analytics')
@@ -97,9 +114,14 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({
             event_type: 'qr_scan',
             ip_address: clientIP,
             user_agent: userAgent,
+            referrer: referrer,
             device_type: deviceType,
             browser: browser,
+            os: os,
             country: 'Unknown',
+            utm_source: new URLSearchParams(window.location.search).get('utm_source'),
+            utm_medium: new URLSearchParams(window.location.search).get('utm_medium'),
+            utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),
           })
           .then(() => {})
           .catch(() => {}); // Silently handle errors

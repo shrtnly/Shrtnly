@@ -524,52 +524,189 @@ export const useRealAnalyticsData = () => {
       });
 
       // Enhanced referral sources with real data
+      // Calculate real referral sources from analytics data
       const referrerCounts = analytics?.reduce((acc, event) => {
-        const referrer = event.referrer || 'Direct Traffic';
-        const domain = referrer === 'Direct Traffic' ? referrer : 
-          new URL(referrer).hostname.replace('www.', '');
-        acc[domain] = (acc[domain] || 0) + 1;
+        let source = 'Direct Traffic';
+        
+        if (event.referrer && event.referrer.trim() !== '') {
+          try {
+            const url = new URL(event.referrer);
+            const hostname = url.hostname.toLowerCase().replace('www.', '');
+            
+            // Map common domains to readable names
+            if (hostname.includes('facebook.com') || hostname.includes('fb.com')) {
+              source = 'Facebook';
+            } else if (hostname.includes('instagram.com')) {
+              source = 'Instagram';
+            } else if (hostname.includes('twitter.com') || hostname.includes('t.co')) {
+              source = 'Twitter';
+            } else if (hostname.includes('linkedin.com')) {
+              source = 'LinkedIn';
+            } else if (hostname.includes('youtube.com')) {
+              source = 'YouTube';
+            } else if (hostname.includes('google.com')) {
+              source = 'Google Search';
+            } else if (hostname.includes('bing.com')) {
+              source = 'Bing Search';
+            } else if (hostname.includes('yahoo.com')) {
+              source = 'Yahoo Search';
+            } else if (hostname.includes('reddit.com')) {
+              source = 'Reddit';
+            } else if (hostname.includes('pinterest.com')) {
+              source = 'Pinterest';
+            } else if (hostname.includes('tiktok.com')) {
+              source = 'TikTok';
+            } else if (hostname.includes('whatsapp.com')) {
+              source = 'WhatsApp';
+            } else if (hostname.includes('telegram.org') || hostname.includes('t.me')) {
+              source = 'Telegram';
+            } else {
+              // Use the domain name for other sources
+              source = hostname.charAt(0).toUpperCase() + hostname.slice(1);
+            }
+          } catch {
+            source = 'Direct Traffic';
+          }
+        }
+        
+        acc[source] = (acc[source] || 0) + 1;
         return acc;
       }, {} as Record<string, number>) || {};
 
-      // Use actual referral sources data based on total clicks = 4
-      const actualTotalClicks = 4; // Based on your specification
-      const referralSources = [
-        { source: 'Direct Traffic', visits: 2, color: '#3B82F6', percentage: formatPercentage((2 / actualTotalClicks) * 100) },
-        { source: 'Facebook', visits: 1, color: '#1877F2', percentage: formatPercentage((1 / actualTotalClicks) * 100) },
-        { source: 'Instagram', visits: 1, color: '#E4405F', percentage: formatPercentage((1 / actualTotalClicks) * 100) },
-      ];
+      // Convert to array and calculate percentages
+      const totalReferralClicks = Object.values(referrerCounts).reduce((sum, count) => sum + count, 0);
+      const referralSources = Object.entries(referrerCounts)
+        .map(([source, visits]) => {
+          // Assign colors based on source
+          let color = '#6B7280'; // Default gray
+          switch (source.toLowerCase()) {
+            case 'direct traffic': color = '#3B82F6'; break;
+            case 'facebook': color = '#1877F2'; break;
+            case 'instagram': color = '#E4405F'; break;
+            case 'twitter': color = '#1DA1F2'; break;
+            case 'linkedin': color = '#0A66C2'; break;
+            case 'youtube': color = '#FF0000'; break;
+            case 'google search': color = '#4285F4'; break;
+            case 'bing search': color = '#00809D'; break;
+            case 'yahoo search': color = '#720E9E'; break;
+            case 'reddit': color = '#FF4500'; break;
+            case 'pinterest': color = '#BD081C'; break;
+            case 'tiktok': color = '#000000'; break;
+            case 'whatsapp': color = '#25D366'; break;
+            case 'telegram': color = '#0088CC'; break;
+          }
+          
+          return {
+            source,
+            visits,
+            color,
+            percentage: formatPercentage(totalReferralClicks > 0 ? (visits / totalReferralClicks) * 100 : 0)
+          };
+        })
+        .sort((a, b) => b.visits - a.visits); // Sort by visits descending
 
       // Enhanced geographic data with real IP analysis
-      const ipCounts = analytics?.reduce((acc, event) => {
-        const ip = event.ip_address || 'Unknown';
-        acc[ip] = (acc[ip] || 0) + 1;
+      // Calculate real geographic data from analytics
+      const countryCounts = analytics?.reduce((acc, event) => {
+        const country = event.country || 'Unknown';
+        acc[country] = (acc[country] || 0) + 1;
         return acc;
       }, {} as Record<string, number>) || {};
 
-      const geographicData = [
-        { country: 'United States', visits: 2, percentage: formatPercentage((2 / actualTotalClicks) * 100) },
-        { country: 'United Kingdom', visits: 1, percentage: formatPercentage((1 / actualTotalClicks) * 100) },
-        { country: 'Canada', visits: 1, percentage: formatPercentage((1 / actualTotalClicks) * 100) },
-      ];
+      // Convert to array and calculate percentages
+      const totalGeoClicks = Object.values(countryCounts).reduce((sum, count) => sum + count, 0);
+      const geographicData = Object.entries(countryCounts)
+        .map(([country, visits]) => ({
+          country,
+          visits,
+          percentage: formatPercentage(totalGeoClicks > 0 ? (visits / totalGeoClicks) * 100 : 0)
+        }))
+        .sort((a, b) => b.visits - a.visits);
 
       // Enhanced device and browser analysis from user agents
-      const userAgents = analytics?.map(event => event.user_agent).filter(Boolean) || [];
-      
-      const deviceAnalysis = analyzeUserAgents(userAgents);
-      const browserAnalysis = analyzeBrowsers(userAgents);
+      // Calculate real device types from analytics data
+      const deviceCounts = analytics?.reduce((acc, event) => {
+        let deviceType = 'Desktop';
+        
+        if (event.device_type) {
+          deviceType = event.device_type;
+        } else if (event.user_agent) {
+          const ua = event.user_agent.toLowerCase();
+          if (ua.includes('mobile') || ua.includes('android') || ua.includes('iphone')) {
+            deviceType = ua.includes('tablet') || ua.includes('ipad') ? 'Tablet' : 'Mobile';
+          }
+        }
+        
+        acc[deviceType] = (acc[deviceType] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>) || {};
 
-      // Use actual device type data: Mobile - 2, Desktop - 2
-      const deviceTypes = [
-        { device: 'Mobile', visits: 2, color: '#F59E0B', percentage: formatPercentage((2 / actualTotalClicks) * 100) },
-        { device: 'Desktop', visits: 2, color: '#10B981', percentage: formatPercentage((2 / actualTotalClicks) * 100) },
-      ];
+      // Convert to array and calculate percentages
+      const totalDeviceClicks = Object.values(deviceCounts).reduce((sum, count) => sum + count, 0);
+      const deviceTypes = Object.entries(deviceCounts)
+        .map(([device, visits]) => {
+          let color = '#6B7280'; // Default gray
+          switch (device.toLowerCase()) {
+            case 'mobile': color = '#F59E0B'; break;
+            case 'desktop': color = '#10B981'; break;
+            case 'tablet': color = '#8B5CF6'; break;
+          }
+          
+          return {
+            device,
+            visits,
+            color,
+            percentage: formatPercentage(totalDeviceClicks > 0 ? (visits / totalDeviceClicks) * 100 : 0)
+          };
+        })
+        .sort((a, b) => b.visits - a.visits);
 
-      const browserStats = [
-        { browser: 'Chrome', visits: 2, color: '#4285F4', percentage: formatPercentage((2 / actualTotalClicks) * 100) },
-        { browser: 'Safari', visits: 1, color: '#000000', percentage: formatPercentage((1 / actualTotalClicks) * 100) },
-        { browser: 'Firefox', visits: 1, color: '#FF7139', percentage: formatPercentage((1 / actualTotalClicks) * 100) },
-      ];
+      // Calculate real browser statistics from analytics data
+      const browserCounts = analytics?.reduce((acc, event) => {
+        let browser = 'Other';
+        
+        if (event.browser) {
+          browser = event.browser;
+        } else if (event.user_agent) {
+          const ua = event.user_agent.toLowerCase();
+          if (ua.includes('chrome') && !ua.includes('edg')) {
+            browser = 'Chrome';
+          } else if (ua.includes('safari') && !ua.includes('chrome')) {
+            browser = 'Safari';
+          } else if (ua.includes('firefox')) {
+            browser = 'Firefox';
+          } else if (ua.includes('edg')) {
+            browser = 'Edge';
+          } else if (ua.includes('opera')) {
+            browser = 'Opera';
+          }
+        }
+        
+        acc[browser] = (acc[browser] || 0) + 1;
+        return acc;
+      }, {} as Record<string, number>) || {};
+
+      // Convert to array and calculate percentages
+      const totalBrowserClicks = Object.values(browserCounts).reduce((sum, count) => sum + count, 0);
+      const browserStats = Object.entries(browserCounts)
+        .map(([browser, visits]) => {
+          let color = '#6B7280'; // Default gray
+          switch (browser.toLowerCase()) {
+            case 'chrome': color = '#4285F4'; break;
+            case 'safari': color = '#000000'; break;
+            case 'firefox': color = '#FF7139'; break;
+            case 'edge': color = '#0078D4'; break;
+            case 'opera': color = '#FF1B2D'; break;
+          }
+          
+          return {
+            browser,
+            visits,
+            color,
+            percentage: formatPercentage(totalBrowserClicks > 0 ? (visits / totalBrowserClicks) * 100 : 0)
+          };
+        })
+        .sort((a, b) => b.visits - a.visits);
 
       // Generate activity trends for last 30 days
       const daysToShow = filters.dateRange.start && filters.dateRange.end 
