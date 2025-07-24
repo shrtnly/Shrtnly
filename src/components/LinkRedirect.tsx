@@ -101,7 +101,10 @@ const LinkRedirect: React.FC = () => {
             device_type: deviceType,
             browser: browser,
             os: os,
-            country: 'Unknown', // Would need IP geolocation service for real country
+            country: 'Unknown', // Would be determined by IP geolocation service
+            utm_source: getUTMParameter('utm_source'),
+            utm_medium: getUTMParameter('utm_medium'),
+            utm_campaign: getUTMParameter('utm_campaign'),
           })
           .then(() => {})
           .catch(() => {}); // Silently handle errors
@@ -114,6 +117,12 @@ const LinkRedirect: React.FC = () => {
       // Error occurred - redirect to home
       window.location.href = '/';
     }
+  };
+
+  // Helper function to extract UTM parameters
+  const getUTMParameter = (param: string): string | null => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
   };
 
   // Return completely empty component - no UI elements at all

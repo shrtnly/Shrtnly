@@ -1,5 +1,5 @@
 import React from 'react';
-import { TrendingUp, Target, Award, BarChart3 } from 'lucide-react';
+import { TrendingUp, Target, Award, BarChart3, Zap, Clock, Users, MousePointer } from 'lucide-react';
 
 interface PerformanceIndicatorsProps {
   data: {
@@ -26,6 +26,12 @@ interface PerformanceIndicatorsProps {
       userAverage: number;
       platformAverage: number;
       percentile: number;
+    };
+    linkPerformanceMetrics: {
+      averageClicksPerLink: number;
+      topPerformingCategory: string;
+      peakTrafficHour: number;
+      linkLifespan: number;
     };
   };
 }
@@ -61,9 +67,52 @@ const PerformanceIndicators: React.FC<PerformanceIndicatorsProps> = ({ data }) =
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
+        {/* Link Performance Metrics */}
+        <div>
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Link Performance Analysis</h3>
+          <div className="space-y-4">
+            <div className="p-4 bg-blue-50 rounded-lg">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <MousePointer className="w-5 h-5 text-blue-600" />
+                  <span className="text-sm font-medium text-blue-700">Avg Clicks/Link</span>
+                </div>
+                <span className="text-lg font-bold text-blue-900">{data.linkPerformanceMetrics.averageClicksPerLink}</span>
+              </div>
+            </div>
+            <div className="p-4 bg-green-50 rounded-lg">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Target className="w-5 h-5 text-green-600" />
+                  <span className="text-sm font-medium text-green-700">Top Category</span>
+                </div>
+                <span className="text-lg font-bold text-green-900">{data.linkPerformanceMetrics.topPerformingCategory}</span>
+              </div>
+            </div>
+            <div className="p-4 bg-purple-50 rounded-lg">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-purple-600" />
+                  <span className="text-sm font-medium text-purple-700">Peak Hour</span>
+                </div>
+                <span className="text-lg font-bold text-purple-900">{data.linkPerformanceMetrics.peakTrafficHour}:00</span>
+              </div>
+            </div>
+            <div className="p-4 bg-orange-50 rounded-lg">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Zap className="w-5 h-5 text-orange-600" />
+                  <span className="text-sm font-medium text-orange-700">Avg Lifespan</span>
+                </div>
+                <span className="text-lg font-bold text-orange-900">{data.linkPerformanceMetrics.linkLifespan} days</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Success Metrics */}
         <div>
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Success Metrics</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Conversion Metrics</h3>
           <div className="space-y-4">
             <div className="p-4 bg-green-50 rounded-lg">
               <div className="flex items-center justify-between">
@@ -85,27 +134,27 @@ const PerformanceIndicators: React.FC<PerformanceIndicatorsProps> = ({ data }) =
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Progress Tracking */}
-        <div>
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Goal Progress</h3>
-          <div className="space-y-4">
-            <ProgressBar 
-              current={data.progressTracking.currentDaily} 
-              goal={data.progressTracking.dailyGoal} 
-              label="Daily Links" 
-            />
-            <ProgressBar 
-              current={data.progressTracking.currentWeekly} 
-              goal={data.progressTracking.weeklyGoal} 
-              label="Weekly Links" 
-            />
-            <ProgressBar 
-              current={data.progressTracking.currentMonthly} 
-              goal={data.progressTracking.monthlyGoal} 
-              label="Monthly Links" 
-            />
-          </div>
+      {/* Progress Tracking */}
+      <div className="mt-6">
+        <h3 className="text-lg font-medium text-gray-900 mb-4">Goal Progress Tracking</h3>
+        <div className="grid gap-4 md:grid-cols-3">
+          <ProgressBar 
+            current={data.progressTracking.currentDaily} 
+            goal={data.progressTracking.dailyGoal} 
+            label="Daily Links" 
+          />
+          <ProgressBar 
+            current={data.progressTracking.currentWeekly} 
+            goal={data.progressTracking.weeklyGoal} 
+            label="Weekly Links" 
+          />
+          <ProgressBar 
+            current={data.progressTracking.currentMonthly} 
+            goal={data.progressTracking.monthlyGoal} 
+            label="Monthly Links" 
+          />
         </div>
       </div>
 
@@ -142,7 +191,7 @@ const PerformanceIndicators: React.FC<PerformanceIndicatorsProps> = ({ data }) =
       {/* Platform Comparison */}
       <div className="mt-6 p-4 bg-blue-50 rounded-lg">
         <div className="flex items-center gap-3 mb-3">
-          <BarChart3 className="w-5 h-5 text-blue-600" />
+          <Users className="w-5 h-5 text-blue-600" />
           <h3 className="text-lg font-medium text-blue-900">Platform Comparison</h3>
         </div>
         <div className="grid gap-4 md:grid-cols-3">
@@ -157,6 +206,29 @@ const PerformanceIndicators: React.FC<PerformanceIndicatorsProps> = ({ data }) =
           <div className="text-center">
             <p className="text-2xl font-bold text-blue-900">{data.platformComparison.percentile}th</p>
             <p className="text-sm text-blue-700">Percentile</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Performance Insights */}
+      <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border border-purple-200">
+        <h4 className="text-lg font-medium text-purple-900 mb-3 flex items-center gap-2">
+          <TrendingUp className="w-5 h-5" />
+          Performance Insights
+        </h4>
+        <div className="grid gap-3 md:grid-cols-2">
+          <div className="bg-white p-3 rounded-lg border">
+            <div className="text-sm font-medium text-gray-900">Best Performing Time</div>
+            <div className="text-xs text-gray-600">
+              {data.linkPerformanceMetrics.peakTrafficHour}:00 - {data.linkPerformanceMetrics.peakTrafficHour + 1}:00 
+              generates the most clicks
+            </div>
+          </div>
+          <div className="bg-white p-3 rounded-lg border">
+            <div className="text-sm font-medium text-gray-900">Optimization Tip</div>
+            <div className="text-xs text-gray-600">
+              Focus on {data.linkPerformanceMetrics.topPerformingCategory} content for better engagement
+            </div>
           </div>
         </div>
       </div>

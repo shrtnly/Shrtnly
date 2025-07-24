@@ -142,6 +142,10 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
             event_type: 'view',
             ip_address: clientIP,
             user_agent: navigator.userAgent,
+            device_type: getDeviceType(userAgent),
+            browser: getBrowser(userAgent),
+            os: getOS(userAgent),
+            country: 'Unknown', // Would be determined by IP geolocation
           })
           .then(() => {})
           .catch(() => {}); // Silently handle errors
@@ -152,6 +156,34 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // Helper functions for enhanced analytics
+  const getDeviceType = (userAgent: string): string => {
+    const ua = userAgent.toLowerCase();
+    if (ua.includes('mobile') || ua.includes('android') || ua.includes('iphone')) {
+      return ua.includes('tablet') || ua.includes('ipad') ? 'Tablet' : 'Mobile';
+    }
+    return 'Desktop';
+  };
+
+  const getBrowser = (userAgent: string): string => {
+    const ua = userAgent.toLowerCase();
+    if (ua.includes('chrome') && !ua.includes('edg')) return 'Chrome';
+    if (ua.includes('safari') && !ua.includes('chrome')) return 'Safari';
+    if (ua.includes('firefox')) return 'Firefox';
+    if (ua.includes('edg')) return 'Edge';
+    return 'Other';
+  };
+
+  const getOS = (userAgent: string): string => {
+    const ua = userAgent.toLowerCase();
+    if (ua.includes('windows')) return 'Windows';
+    if (ua.includes('mac') || ua.includes('darwin')) return 'macOS';
+    if (ua.includes('linux')) return 'Linux';
+    if (ua.includes('android')) return 'Android';
+    if (ua.includes('ios') || ua.includes('iphone') || ua.includes('ipad')) return 'iOS';
+    return 'Other';
   };
 
   const copyToClipboard = async () => {
@@ -236,10 +268,11 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
               placeholder="Enter alias (optional)"
               className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               pattern="[a-zA-Z0-9_-]+"
+              maxLength={5}
               title="Only letters, numbers, hyphens, and underscores allowed"
             />
             <p className="mt-1 text-xs sm:text-sm text-gray-500">
-              
+              Max 5 characters - letters, numbers, hyphens, underscores only
             </p>
           </div>
         </div>
