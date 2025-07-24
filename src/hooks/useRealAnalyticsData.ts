@@ -525,7 +525,8 @@ export const useRealAnalyticsData = () => {
 
       // Enhanced referral sources with real data
       // Calculate real referral sources from analytics data
-      const referrerCounts = analytics?.reduce((acc, event) => {
+      const clickEvents = analytics?.filter(event => event.event_type === 'click') || [];
+      const referrerCounts = clickEvents.reduce((acc, event) => {
         let source = 'Direct Traffic';
         
         if (event.referrer && event.referrer.trim() !== '') {
@@ -571,7 +572,7 @@ export const useRealAnalyticsData = () => {
         
         acc[source] = (acc[source] || 0) + 1;
         return acc;
-      }, {} as Record<string, number>) || {};
+      }, {} as Record<string, number>);
 
       // Convert to array and calculate percentages
       const totalReferralClicks = Object.values(referrerCounts).reduce((sum, count) => sum + count, 0);
@@ -607,11 +608,12 @@ export const useRealAnalyticsData = () => {
 
       // Enhanced geographic data with real IP analysis
       // Calculate real geographic data from analytics
-      const countryCounts = analytics?.reduce((acc, event) => {
+      const geoClickEvents = analytics?.filter(event => event.event_type === 'click') || [];
+      const countryCounts = geoClickEvents.reduce((acc, event) => {
         const country = event.country || 'Unknown';
         acc[country] = (acc[country] || 0) + 1;
         return acc;
-      }, {} as Record<string, number>) || {};
+      }, {} as Record<string, number>);
 
       // Convert to array and calculate percentages
       const totalGeoClicks = Object.values(countryCounts).reduce((sum, count) => sum + count, 0);
@@ -625,7 +627,8 @@ export const useRealAnalyticsData = () => {
 
       // Enhanced device and browser analysis from user agents
       // Calculate real device types from analytics data
-      const deviceCounts = analytics?.reduce((acc, event) => {
+      const deviceClickEvents = analytics?.filter(event => event.event_type === 'click') || [];
+      const deviceCounts = deviceClickEvents.reduce((acc, event) => {
         let deviceType = 'Desktop';
         
         if (event.device_type) {
@@ -639,7 +642,7 @@ export const useRealAnalyticsData = () => {
         
         acc[deviceType] = (acc[deviceType] || 0) + 1;
         return acc;
-      }, {} as Record<string, number>) || {};
+      }, {} as Record<string, number>);
 
       // Convert to array and calculate percentages
       const totalDeviceClicks = Object.values(deviceCounts).reduce((sum, count) => sum + count, 0);
@@ -662,7 +665,8 @@ export const useRealAnalyticsData = () => {
         .sort((a, b) => b.visits - a.visits);
 
       // Calculate real browser statistics from analytics data
-      const browserCounts = analytics?.reduce((acc, event) => {
+      const browserClickEvents = analytics?.filter(event => event.event_type === 'click') || [];
+      const browserCounts = browserClickEvents.reduce((acc, event) => {
         let browser = 'Other';
         
         if (event.browser) {
@@ -684,7 +688,7 @@ export const useRealAnalyticsData = () => {
         
         acc[browser] = (acc[browser] || 0) + 1;
         return acc;
-      }, {} as Record<string, number>) || {};
+      }, {} as Record<string, number>);
 
       // Convert to array and calculate percentages
       const totalBrowserClicks = Object.values(browserCounts).reduce((sum, count) => sum + count, 0);
