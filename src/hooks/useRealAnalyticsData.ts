@@ -576,11 +576,11 @@ export const useRealAnalyticsData = () => {
       // Convert to array and calculate percentages
       const totalReferralClicks = Object.values(referrerCounts).reduce((sum, count) => sum + count, 0);
       const referralSources = Object.entries(referrerCounts)
-        .filter(([source]) => source !== 'Direct Traffic') // Remove Direct Traffic
         .map(([source, visits]) => {
           // Assign colors based on source
           let color = '#6B7280'; // Default gray
           switch (source.toLowerCase()) {
+            case 'direct traffic': color = '#3B82F6'; break;
             case 'facebook': color = '#1877F2'; break;
             case 'instagram': color = '#E4405F'; break;
             case 'twitter': color = '#1DA1F2'; break;
