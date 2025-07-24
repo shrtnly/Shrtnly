@@ -18,9 +18,6 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          {/* Short link redirect route - no layout */}
-          <Route path="/s/:shortCode" element={<LinkRedirect />} />
-          
           {/* All other routes with layout */}
           <Route path="/*" element={
             <div className="min-h-screen flex flex-col">
@@ -36,6 +33,8 @@ function App() {
                   <Route path="/reset-password" element={<ResetPasswordPage />} />
                   <Route path="/forgot-password" element={<ForgotPasswordPage />} />
                   <Route path="/auth/callback" element={<AuthCallbackPage />} />
+                  {/* Short link redirect route - must be last to avoid conflicts */}
+                  <Route path="/:shortCode" element={<LinkRedirect />} />
                 </Routes>
               </main>
               

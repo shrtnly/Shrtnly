@@ -1,9 +1,6 @@
 # Handle SPA routing - redirect all requests to index.html
 /*    /index.html   200
 
-# Handle short links specifically
-/s/*  /index.html   200
-
 # API routes (if any in the future)
 /api/*  /api/:splat  200
 

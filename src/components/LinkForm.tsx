@@ -157,7 +157,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
   const copyToClipboard = async () => {
     if (!createdLink) return;
 
-    const shortUrl = `${window.location.origin}/s/${createdLink.short_code}`;
+    const shortUrl = `${window.location.origin}/${createdLink.short_code}`;
     
     try {
       await navigator.clipboard.writeText(shortUrl);
@@ -347,7 +347,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-3 sm:p-4 bg-white rounded-lg border-2 border-green-300 shadow-sm">
               <input
                 type="text"
-                value={`${window.location.origin}/s/${createdLink.short_code}`}
+                value={`${window.location.origin}/${createdLink.short_code}`}
                 readOnly
                 className="flex-1 text-sm sm:text-lg font-mono text-blue-600 bg-transparent focus:outline-none select-all break-all"
                 aria-label="Generated short URL"
@@ -380,7 +380,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 {/* Direct Link Buttons */}
 <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:gap-4">
   <a
-    href={`${window.location.origin}/s/${createdLink.short_code}`}
+    href={`${window.location.origin}/${createdLink.short_code}`}
     target="_blank"
     rel="noopener noreferrer"
     className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium text-sm sm:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors min-h-[44px]"
@@ -417,7 +417,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           <div className="border-t border-green-200 pt-6">
             <div className="flex justify-center overflow-x-auto">
               <QRCodeGenerator 
-                url={`${window.location.origin}/s/${createdLink.short_code}`}
+                url={`${window.location.origin}/${createdLink.short_code}`}
                 title={createdLink.title || 'Short Link'}
                 size={window.innerWidth < 640 ? 150 : 200}
               />

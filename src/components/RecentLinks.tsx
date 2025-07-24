@@ -106,7 +106,7 @@ const RecentLinks: React.FC<RecentLinksProps> = ({ newLink }) => {
   };
 
   const sharelink = async (shortCode: string) => {
-    const shareUrl = `${window.location.origin}/s/${shortCode}`;
+    const shareUrl = `${window.location.origin}/${shortCode}`;
 
     if (navigator.share) {
       try {
@@ -203,7 +203,7 @@ const RecentLinks: React.FC<RecentLinksProps> = ({ newLink }) => {
                   </h3>
 
                   <p className="text-sm text-blue-600 font-mono truncate">
-                    {window.location.origin}/s/{link.short_code}
+                    {window.location.origin}/{link.short_code}
                   </p>
 
                   <p className="text-sm text-gray-500 truncate mt-1">
