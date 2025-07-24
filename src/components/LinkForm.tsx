@@ -134,6 +134,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 
       // Track link creation event
       if (user && data) {
+        const userAgent = navigator.userAgent;
         supabase
           .from('link_analytics')
           .insert({
