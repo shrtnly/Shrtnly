@@ -282,7 +282,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           {/* Custom Short Code */}
           <div className="md:col-span-3">
             <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white-700 mb-2">
-             --
+             B
             </label>
             <input
               type="text"
