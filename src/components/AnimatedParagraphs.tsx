@@ -5,7 +5,7 @@ import SlideUpFadeIn from './SlideUpFadeIn';
 const AnimatedParagraphs: React.FC = () => {
   const paragraphs = [
     "Free permanent links with unlimited lifetime access",
-    "Create shareable links instantly – no signup needed",
+    "Create shareable links instantly – No signup needed",
     "Shorten URLs with powerful analytics tracking",
     "Monitor link clicks and user engagement easily",
     "Boost traffic with smart branded link management",
