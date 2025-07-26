@@ -339,40 +339,53 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
 
       */}
 
-      {/* Key Metrics */}
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mt-6">
-        <div className="p-4 bg-blue-50 rounded-lg">
-          <div className="flex items-center gap-2 mb-2">
-            <Clock className="w-4 h-4 text-blue-600" />
-            <span className="text-sm font-medium text-blue-600">Avg Session</span>
-          </div>
-          <p className="text-xl font-bold text-blue-900">{formatDuration(data.averageSessionDuration)}</p>
-        </div>
+{/* Key Metrics */}
+<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mt-6">
+  {/* Avg Session */}
+  <div className="p-4 bg-blue-50 rounded-lg">
+    <div className="flex items-center gap-2 mb-2">
+      <Clock className="w-4 h-4 text-blue-600" />
+      <span className="text-sm font-medium text-blue-600">Avg Session</span>
+    </div>
+    <p className="text-xl font-bold text-blue-900">
+      {formatDuration(data.averageSessionDuration)}
+    </p>
+  </div>
 
-        <div className="p-4 bg-green-50 rounded-lg">
-          <div className="flex items-center gap-2 mb-2">
-            <MousePointer className="w-4 h-4 text-green-600" />
-            <span className="text-sm font-medium text-green-600">Interactions/Day</span>
-          </div>
-          <p className="text-xl font-bold text-green-900">{data.interactionFrequency}</p>
-        </div>
+  {/* Interactions/Day */}
+  <div className="p-4 bg-green-50 rounded-lg">
+    <div className="flex items-center gap-2 mb-2">
+      <MousePointer className="w-4 h-4 text-green-600" />
+      <span className="text-sm font-medium text-green-600">Interactions/Day</span>
+    </div>
+    <p className="text-xl font-bold text-green-900">
+      {data.interactionFrequency}
+    </p>
+  </div>
 
-        <div className="p-4 bg-purple-50 rounded-lg">
-          <div className="flex items-center gap-2 mb-2">
-            <Target className="w-4 h-4 text-purple-600" />
-            <span className="text-sm font-medium text-purple-600">Link Creation</span>
-          </div>
-          <p className="text-xl font-bold text-purple-900">{data.completionRates.linkCreation}%</p>
-        </div>
+  {/* Link Creation */}
+  <div className="p-4 bg-purple-50 rounded-lg">
+    <div className="flex items-center gap-2 mb-2">
+      <Target className="w-4 h-4 text-purple-600" />
+      <span className="text-sm font-medium text-purple-600">Link Creation</span>
+    </div>
+    <p className="text-xl font-bold text-purple-900">
+      {data.completionRates.linkCreation}%
+    </p>
+  </div>
 
-        <div className="p-4 bg-orange-50 rounded-lg">
-          <div className="flex items-center gap-2 mb-2">
-            <Target className="w-4 h-4 text-orange-600" />
-            <span className="text-sm font-medium text-orange-600">QR Generation</span>
-          </div>
-          <p className="text-xl font-bold text-orange-900">{data.completionRates.qrGeneration}%</p>
-        </div>
-      </div>
+  {/* QR Generation */}
+  <div className="p-4 bg-orange-50 rounded-lg">
+    <div className="flex items-center gap-2 mb-2">
+      <Target className="w-4 h-4 text-orange-600" />
+      <span className="text-sm font-medium text-orange-600">QR Generation</span>
+    </div>
+    <p className="text-xl font-bold text-orange-900">
+      {data.completionRates.qrGeneration}%
+    </p>
+  </div>
+</div>
+
 
       <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
