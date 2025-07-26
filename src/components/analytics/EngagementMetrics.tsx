@@ -225,8 +225,8 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
           </div>
         </div>
       </div>
-
       <div className="grid gap-6 lg:grid-cols-2 mb-8">
+        
 {/* Daily Sessions Chart */}
 <div>
   <h3 className="text-lg font-medium text-gray-900 mb-4">
