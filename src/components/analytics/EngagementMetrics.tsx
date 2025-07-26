@@ -230,7 +230,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
                   <XAxis dataKey="date" />
                   <YAxis />
                   <Tooltip />
-                  <Bar dataKey="sessions" fill="#3B82F6" />
+                  <Bar dataKey="ss" fill="#3B82F6" />
                 </BarChart>
               </ResponsiveContainer>
             )}
