@@ -82,7 +82,10 @@ const PerformanceIndicators: React.FC<PerformanceIndicatorsProps> = ({ data }) =
             </div>
             <div className="p-4 bg-green-50 rounded-lg">
               <div className="flex items-center justify-between">
-
+                <div className="flex items-center gap-2">
+                  <Target className="w-5 h-5 text-green-600" />
+                  <span className="text-sm font-medium text-green-700">Top Category </span>
+                </div>
                 <span className="text-lg font-bold text-green-900">{data.linkPerformanceMetrics.topPerformingCategory}</span>
               </div>
             </div>
