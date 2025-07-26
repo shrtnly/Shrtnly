@@ -281,6 +281,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
             </ResponsiveContainer>
           </div>
 
+          
           <div className="mt-4 space-y-2">
             <h4 className="text-sm font-medium text-gray-700">Top Sources:</h4>
             {totalClicks === 0 ? (
@@ -305,7 +306,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
         </div>
       </div>
 
-      {/* Conversion Funnel */}
+      {/* Conversion Funnel   --------
       <div className="mb-8">
         <h3 className="text-lg font-medium text-gray-900 mb-4">Conversion Funnel</h3>
         <div className="bg-white border border-gray-200 rounded-lg p-6">
@@ -335,6 +336,8 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
           </div>
         </div>
       </div>
+
+      */}
 
       {/* Key Metrics */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mt-6">
