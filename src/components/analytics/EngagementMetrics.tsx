@@ -57,12 +57,10 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
       : num >= 1_000 ? (num / 1_000).toFixed(1) + 'K'
         : num.toLocaleString();
 
-  // Use actual total clicks = 4
+  // Calculate total clicks for referral sources
+  const totalClicks = data.referralSources.reduce((sum, src) => sum + src.visits, 0);
   const COLORS = ['#4285F4', '#FBBC05', '#34A853', '#EA4335', '#9B59B6', '#F39C12'];
 
-  // Calculate total clicks from actual data
-  const totalClicks = data.referralSources.reduce((sum, src) => sum + src.visits, 0);
-  
   const getTrendIcon = (trend: string) => {
     switch (trend) {
       case 'up': return <TrendingUp className="w-4 h-4 text-green-600" />;
@@ -78,6 +76,18 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
       default: return 'text-gray-600';
     }
   };
+
+  // Map referral sources with calculated percentage and color
+  const referralSources = data.referralSources.map((src, i) => ({
+    ...src,
+    percentage: totalClicks > 0 ? ((src.visits / totalClicks) * 100).toFixed(0) : '0',
+    color: COLORS[i % COLORS.length],
+  }));
+
+  // For PieChart zero data handling
+  const referralSourcesData = totalClicks > 0
+    ? referralSources
+    : [{ source: 'No Data', visits: 0, percentage: '0', color: '#E5E7EB' }];
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6">
@@ -217,25 +227,30 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2 mb-8">
-        {/* Daily Sessions Chart */}
-        <div>
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Shorten URL (Last 7 Days)</h3>
-          <div className="h-64">
-            {data.dailySessions.length === 0 ? (
-              <p className="text-gray-500 text-center mt-20">No session data available.</p>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data.dailySessions}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
-                  <YAxis />
-                  <Tooltip />
-                  <Bar dataKey="ss" fill="#3B82F6" />
-                </BarChart>
-              </ResponsiveContainer>
-            )}
-          </div>
-        </div>
+{/* Daily Sessions Chart */}
+<div>
+  <h3 className="text-lg font-medium text-gray-900 mb-4">
+    Daily Sessions (Last 7 Days)
+  </h3>
+  <div className="h-64">
+    {data.dailySessions.length === 0 ? (
+      <p className="text-gray-500 text-center mt-20">
+        No session data available.
+      </p>
+    ) : (
+      <ResponsiveContainer width="100%" height="100%">
+        <BarChart data={data.dailySessions}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="sessions" fill="#3B82F6" />
+        </BarChart>
+      </ResponsiveContainer>
+    )}
+  </div>
+</div>
+
 
         {/* Referral Sources Pie Chart */}
         <div>
@@ -244,7 +259,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie
-                  data={data.referralSources}
+                  data={referralSourcesData}
                   cx="50%"
                   cy="50%"
                   outerRadius={80}
@@ -253,7 +268,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
                     totalClicks > 0 ? `${source}: ${percentage}%` : 'No Data'
                   }
                 >
-                  {data.referralSources.map((entry, index) => (
+                  {referralSourcesData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill={entry.color} />
                   ))}
                 </Pie>
@@ -267,80 +282,24 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
 
           <div className="mt-4 space-y-2">
             <h4 className="text-sm font-medium text-gray-700">Top Sources:</h4>
-            <div className="grid gap-2">
-              {data.referralSources.map((src, i) => (
-                <div key={i} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
-                  <div className="flex items-center gap-2">
-                    <div className="w-3 h-3 rounded-full" style={{ backgroundColor: src.color }} />
-                    <span className="text-sm font-medium text-gray-700">{src.source}</span>
+            {totalClicks === 0 ? (
+              <p className="text-gray-500 text-sm">No referral data available.</p>
+            ) : (
+              <div className="grid gap-2">
+                {referralSources.slice(0, 3).map((src, i) => (
+                  <div key={i} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: src.color }} />
+                      <span className="text-sm font-medium text-gray-700">{src.source}</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-sm font-semibold text-gray-900">{src.visits}</span>
+                      <span className="text-xs text-gray-500 ml-1">({src.percentage}%)</span>
+                    </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-sm font-semibold text-gray-900">{src.visits}</span>
-                    <span className="text-xs text-gray-500 ml-1">({src.percentage}%)</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Device Types and Browser Stats */}
-      <div className="grid gap-6 lg:grid-cols-2 mb-8">
-        {/* Device Types */}
-        <div>
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Device Types</h3>
-          <div className="space-y-3">
-            {data.deviceTypes.map((device, i) => (
-              <div key={i} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 rounded-full" style={{ backgroundColor: device.color }} />
-                  <span className="text-sm font-medium text-gray-700">{device.device}</span>
-                </div>
-                <div className="text-right">
-                  <span className="text-lg font-semibold text-gray-900">{device.visits}</span>
-                  <span className="text-xs text-gray-500 ml-1">({device.percentage}%)</span>
-                </div>
+                ))}
               </div>
-            ))}
-          </div>
-          <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-            <div className="text-sm font-medium text-blue-900 mb-1">Device Insights</div>
-            <div className="text-xs text-blue-700">
-              {data.deviceTypes.length > 0 ? (
-                data.deviceTypes[0].visits === data.deviceTypes[1]?.visits 
-                  ? "Equal split between mobile and desktop users indicates good cross-platform appeal"
-                  : `${data.deviceTypes[0].device} users dominate with ${data.deviceTypes[0].percentage}% of traffic`
-              ) : "No device data available"}
-            </div>
-          </div>
-        </div>
-
-        {/* Browser Stats */}
-        <div>
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Browser Statistics</h3>
-          <div className="space-y-3">
-            {data.browserStats.map((browser, i) => (
-              <div key={i} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div className="flex items-center gap-3">
-                  <div className="w-4 h-4 rounded-full" style={{ backgroundColor: browser.color }} />
-                  <span className="text-sm font-medium text-gray-700">{browser.browser}</span>
-                </div>
-                <div className="text-right">
-                  <span className="text-lg font-semibold text-gray-900">{browser.visits}</span>
-                  <span className="text-xs text-gray-500 ml-1">({browser.percentage}%)</span>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-4 p-3 bg-green-50 rounded-lg">
-            <div className="text-sm font-medium text-green-900 mb-1">Browser Insights</div>
-            <div className="text-xs text-green-700">
-              {data.browserStats.length > 0 ? (
-                `${data.browserStats[0].browser} leads with ${data.browserStats[0].percentage}% market share` +
-                (data.browserStats.length > 1 ? `, followed by ${data.browserStats.slice(1, 3).map(b => b.browser).join(' and ')}` : '')
-              ) : "No browser data available"}
-            </div>
+            )}
           </div>
         </div>
       </div>
