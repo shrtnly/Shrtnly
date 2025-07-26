@@ -124,14 +124,15 @@ const DateRangeFilter: React.FC<DateRangeFilterProps> = ({
 
           <div className="flex items-center gap-3">
             {/* Refresh Button */}
-            <button
-              onClick={onRefresh}
-              disabled={isLoading}
-              className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm"
-            >
-              <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
-              {isLoading ? 'Refreshing...' : 'Refresh'}
-            </button>
+<button
+  type="button"  // 🔧 This line prevents unwanted page reload
+  onClick={onRefresh}
+  disabled={isLoading}
+  className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors text-sm"
+>
+  <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+  {isLoading ? 'Refreshing...' : 'Refresh'}
+</button>
 
             {/* Export Controls */}
             <button
