@@ -230,7 +230,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
 {/* Daily Sessions Chart */}
 <div>
   <h3 className="text-lg font-medium text-gray-900 mb-4">
-    Daily Sessions (Last 7 Days)
+    Shorten URL (Last 7 Days)
   </h3>
   <div className="h-64">
     {data.dailySessions.length === 0 ? (
