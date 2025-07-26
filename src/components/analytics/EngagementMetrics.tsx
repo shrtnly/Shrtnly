@@ -219,7 +219,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
       <div className="grid gap-6 lg:grid-cols-2 mb-8">
         {/* Daily Sessions Chart */}
         <div>
-          <h3 className="text-lg font-medium text-gray-900 mb-4">Daily Sessions (Last 7 Days)</h3>
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Shorten URL (Last 7 Days)</h3>
           <div className="h-64">
             {data.dailySessions.length === 0 ? (
               <p className="text-gray-500 text-center mt-20">No session data available.</p>
