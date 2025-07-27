@@ -283,37 +283,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     )}
   </div>
 
-  {/* Custom Domain - 2 cols (~16%) */}
-  <div className="col-span-12 md:col-span-2">
-    <label htmlFor="custom_domain" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-      Choose Domain
-    </label>
-    <select
-      id="custom_domain"
-      name="custom_domain"
-      value={formData.custom_domain}
-      onChange={(e) => {
-        const value = e.target.value;
-        setFormData((prev) => ({ ...prev, custom_domain: value }));
-
-        if (value === "add_domain") {
-          window.open("https://t.ly/register?via=dawod", "_blank");
-        }
-      }}
-      className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none bg-white"
-      style={{ backgroundImage: `url("data:image/svg+xml,%3csvg fill='none' stroke='%23333' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e")`,
-               backgroundRepeat: 'no-repeat',
-               backgroundPosition: 'right 1rem center',
-               backgroundSize: '1.25em 1.25em',
-      }}
-    >
-      <option value="shrtnly.pro">shrtnly.pro</option>
-      <option value="tinyurl.com">tinyurl.com</option>
-      <option value="add_domain">➕ Add Domain</option>
-    </select>
-  </div>
-
-
 
 
         
