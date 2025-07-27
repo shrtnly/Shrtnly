@@ -309,26 +309,50 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     htmlFor="custom_domain"
     className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
   >
-    Customize your link 
+    Customize your link
   </label>
-  <select
-    id="custom_domain"
-    name="custom_domain"
-    value={formData.custom_domain}
-    onChange={(e) => {
-      const value = e.target.value;
-      setFormData((prev) => ({ ...prev, custom_domain: value }));
 
-      if (value === "add_domain") {
-        window.open("https://t.ly/register?via=dawod", "_blank");
-      }
-    }}
-    className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base text-gray-700 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none"
-  >
-    <option value="shrtnly.pro">🔗 https://shrtnly.pro/</option>
-    <option value="add_domain">➕ Add Domain</option>
-  </select>
+  <div className="relative">
+    <select
+      id="custom_domain"
+      name="custom_domain"
+      value={formData.custom_domain}
+      onChange={(e) => {
+        const value = e.target.value;
+        setFormData((prev) => ({ ...prev, custom_domain: value }));
+
+        if (value === "add_domain") {
+          window.open("https://t.ly/register?via=dawod", "_blank");
+        }
+      }}
+      className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base text-gray-700 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors pr-10"
+    >
+      <option value="shrtnly.pro">🔗 https://shrtnly.pro</option>
+      <option value="add_domain" className="text-gray-400">🔒 ➕ Add Custom Domain</option>
+    </select>
+
+    {/* Down arrow icon */}
+    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
+      <svg
+        className="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+
+  {/* Message below the dropdown */}
+  {formData.custom_domain === "add_domain" && (
+    <p className="mt-1 text-sm text-red-600">
+      You're about to add a custom domain via external service.
+    </p>
+  )}
 </div>
+
 
 
         
