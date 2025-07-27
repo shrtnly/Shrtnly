@@ -188,7 +188,7 @@ const PerformanceIndicators: React.FC<PerformanceIndicatorsProps> = ({ data }) =
         </div>
       </div>
 
-      {/* Platform Comparison */}
+      {/* Platform Comparison 
       <div className="mt-6 p-4 bg-blue-50 rounded-lg">
         <div className="flex items-center gap-3 mb-3">
           <Users className="w-5 h-5 text-blue-600" />
@@ -209,6 +209,8 @@ const PerformanceIndicators: React.FC<PerformanceIndicatorsProps> = ({ data }) =
           </div>
         </div>
       </div>
+
+      */}
 
       {/* Performance Insights */}
       <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg border border-purple-200">
