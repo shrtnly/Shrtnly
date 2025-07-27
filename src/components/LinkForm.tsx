@@ -307,9 +307,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 <div className="md:col-span-3">
   <label
     htmlFor="custom_domain"
-    className={`block text-sm sm:text-base font-medium mb-2 transition-colors
-      ${formData.custom_domain === "add_domain" ? "text-gray-400" : "text-gray-700"}
-    `}
+    className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
   >
     Customize your link
   </label>
@@ -327,14 +325,14 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           window.open("https://t.ly/register?via=dawod", "_blank");
         }
       }}
-      className={`w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base rounded-lg pr-10 transition-colors
+      className={w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg pr-10 transition-colors
         ${formData.custom_domain === "add_domain"
-          ? "bg-gray-100 text-gray-400 border border-gray-300 cursor-not-allowed"
-          : "bg-white text-gray-700 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"}
-      `}
+          ? "bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed"
+          : "text-gray-700 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"}
+      }
     >
-      <option value="add_domain">🔒 ➕ Add Custom Domain</option>
       <option value="shrtnly.pro">🔗 https://shrtnly.pro</option>
+      <option value="add_domain">🔒 ➕ Add Custom Domain</option>
     </select>
 
     {/* Custom Down Arrow Icon */}
@@ -351,14 +349,13 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     </div>
   </div>
 
-  {/* Info message when add_domain is selected */}
+  {/* Conditional message when add_domain selected */}
   {formData.custom_domain === "add_domain" && (
     <p className="mt-1 text-sm text-red-600">
       This option opens an external domain registration page.
     </p>
   )}
 </div>
-
         
         {/* Advanced Options Toggle */}
         <div className="border-t border-gray-200 pt-4">
