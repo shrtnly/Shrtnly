@@ -326,7 +326,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     }}
     className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base text-gray-700 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none"
   >
-    <option value="shrtnly.pro">🔗 shrtnly.pro</option>
+    <option value="shrtnly.pro">🔗 shrtnly.pro ▼</option>
     <option value="tinyurl.com">🔗 tinyurl.com</option>
     <option value="add_domain">➕ Add Domain</option>
   </select>
