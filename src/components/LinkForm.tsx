@@ -325,13 +325,17 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           window.open("https://t.ly/register?via=dawod", "_blank");
         }
       }}
-      className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base text-gray-700 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors pr-10"
+      className={`w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg pr-10 transition-colors
+        ${formData.custom_domain === "add_domain"
+          ? "bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed"
+          : "text-gray-700 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"}
+      `}
     >
       <option value="shrtnly.pro">🔗 https://shrtnly.pro</option>
-      <option value="add_domain" className="text-gray-400">🔒 ➕ Add Custom Domain</option>
+      <option value="add_domain">🔒 ➕ Add Custom Domain</option>
     </select>
 
-    {/* Down arrow icon */}
+    {/* Custom Down Arrow Icon */}
     <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
       <svg
         className="w-4 h-4"
@@ -345,14 +349,13 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     </div>
   </div>
 
-  {/* Message below the dropdown */}
+  {/* Conditional message when add_domain selected */}
   {formData.custom_domain === "add_domain" && (
     <p className="mt-1 text-sm text-red-600">
-      You're about to add a custom domain via external service.
+      This option opens an external domain registration page.
     </p>
   )}
 </div>
-
 
 
         
