@@ -307,7 +307,9 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 <div className="md:col-span-3">
   <label
     htmlFor="custom_domain"
-    className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
+    className={`block text-sm sm:text-base font-medium mb-2 transition-colors
+      ${formData.custom_domain === "add_domain" ? "text-gray-400" : "text-gray-700"}
+    `}
   >
     Customize your link
   </label>
@@ -325,36 +327,34 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           window.open("https://t.ly/register?via=dawod", "_blank");
         }
       }}
-      className={`w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg transition-colors pr-10
+      className={`w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base rounded-lg pr-10 transition-colors
         ${formData.custom_domain === "add_domain"
-          ? "bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed"
-          : "text-gray-700 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"}
+          ? "bg-gray-100 text-gray-400 border border-gray-300 cursor-not-allowed"
+          : "bg-white text-gray-700 border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"}
       `}
     >
       <option value="add_domain">🔒 ➕ Add Custom Domain</option>
       <option value="shrtnly.pro">🔗 https://shrtnly.pro</option>
     </select>
 
-    {/* Show arrow ONLY if a domain is selected (not add_domain) */}
-    {formData.custom_domain !== "add_domain" && (
-      <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
-      </div>
-    )}
+    {/* Custom Down Arrow Icon */}
+    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
+      <svg
+        className="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
   </div>
 
-  {/* Message below when Add Domain is selected */}
+  {/* Info message when add_domain is selected */}
   {formData.custom_domain === "add_domain" && (
     <p className="mt-1 text-sm text-red-600">
-      Custom domain setup will redirect to an external page.
+      This option opens an external domain registration page.
     </p>
   )}
 </div>
