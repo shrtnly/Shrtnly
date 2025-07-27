@@ -303,26 +303,31 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         </div>
 
                   {/* Custom Short Code2 */}
-          <div className="md:col-span-3">
-            <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white mb-2">
-             B
-            </label>
-            <input
-              type="text"
-              id="short_code"
-              name="short_code"
-              value={formData.short_code}
-              onChange={handleChange}
-              placeholder="Alias (optional)"
-              className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              pattern="[a-zA-Z0-9_-]+"
-              maxLength={5}
-              title="Only letters, numbers, hyphens, and underscores allowed"
-            />
-            <p className="mt-1 text-xs sm:text-sm text-gray-500">
-            </p>
-          </div>
-        </div>
+
+<div className="md:col-span-3">
+  <label htmlFor="custom_domain" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+    Choose Domain
+  </label>
+  <select
+    id="custom_domain"
+    name="custom_domain"
+    value={formData.custom_domain}
+    onChange={(e) => {
+      const value = e.target.value;
+      setFormData((prev) => ({ ...prev, custom_domain: value }));
+
+      if (value === "add_domain") {
+        window.open("https://t.ly/register?via=dawod", "_blank");
+      }
+    }}
+    className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none"
+  >
+    <option value="shrtnly.pro">shrtnly.pro</option>
+    <option value="tinyurl.com">tinyurl.com</option>
+    <option value="add_domain">➕ Add Domain</option>
+  </select>
+</div>
+
 
         {/* Advanced Options Toggle */}
         <div className="border-t border-gray-200 pt-4">
