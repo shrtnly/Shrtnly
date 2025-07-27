@@ -18,22 +18,97 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          {/* All other routes with layout */}
-          <Route path="/*" element={
+          {/* Specific application routes with layout */}
+          <Route path="/" element={
             <div className="min-h-screen flex flex-col">
               <Navigation />
               
               <main className="flex-1">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/analytics" element={<AnalyticsPage />} />
-                  <Route path="/privacy" element={<PrivacyPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/verify-email" element={<VerifyEmailPage />} />
-                  <Route path="/reset-password" element={<ResetPasswordPage />} />
-                  <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-                  <Route path="/auth/callback" element={<AuthCallbackPage />} />
-                </Routes>
+                <HomePage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/analytics" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <AnalyticsPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/privacy" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <PrivacyPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/contact" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <ContactPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/verify-email" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <VerifyEmailPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/reset-password" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <ResetPasswordPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/forgot-password" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <ForgotPasswordPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/auth/callback" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <AuthCallbackPage />
               </main>
               
               <Footer />
