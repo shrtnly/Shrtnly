@@ -240,84 +240,69 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         {/* URL and Short Code Row */}
         <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
 
-          {/* Original URL */}
-<div className="w-full space-y-4">
+          {/* Original URL */} 
+          <div className="md:col-span-7">
+            <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+              Original URL *
+            </label>
+            <div className="relative">
+              <input
+                type="url"
+                id="original_url"
+                name="original_url"
+                value={formData.original_url}
+                onChange={handleChange}
+                placeholder="https://example.com/very-long-url"
+                className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
+                  urlValid === null 
+                    ? 'border-gray-300 focus:border-blue-500' 
+                    : urlValid 
+                      ? 'border-green-300 focus:border-green-500 bg-green-50' 
+                      : 'border-red-300 focus:border-red-500 bg-red-50'
+                }`}
+                required
+                aria-describedby={error ? "url-error" : undefined}
+              />
+              {urlValid !== null && (
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  {urlValid ? (
+                    <Check className="w-5 h-5 text-green-600" />
+                  ) : (
+                    <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
+                      <span className="text-white text-xs">!</span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            {urlValid === false && formData.original_url.trim() !== '' && (
+              <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
+            )}
+          </div>
 
-  {/* Row 1: Original URL (Full Width) */}
-  <div>
-    <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-      Original URL *
-    </label>
-    <div className="relative">
-      <input
-        type="url"
-        id="original_url"
-        name="original_url"
-        // value={formData.original_url}
-        // onChange={handleChange}
-        placeholder="https://example.com/your-very-long-url-to-shorten"
-        className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
-          !true // Replace with your urlValid state logic
-            ? 'border-red-300 focus:border-red-500 bg-red-50'
-            : 'border-gray-300 focus:border-blue-500'
-        }`}
-        required
-      />
-      {/* Add your validation check icon here if needed */}
-    </div>
-    {/* Add your validation error message here if needed */}
-  </div>
-
-  {/* Row 2: Domain (70%) and Alias (30%) */}
-  <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
-
-    {/* Custom Domain (70% width) */}
-    <div className="md:col-span-7">
-      <label htmlFor="custom_domain" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-        Choose Domain
-      </label>
-      <div className="relative">
-        <select
-          id="custom_domain"
-          name="custom_domain"
-          // value={formData.custom_domain}
-          // onChange={handleChange}
-          className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-        >
-          <option value="shrtnly.pro">shrtnly.pro</option>
-          <option value="tinyurl.com">tinyurl.com</option>
-          <option value="add_domain">➕ Add Custom Domain</option>
-        </select>
-        {/* Custom Dropdown Arrow */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-700">
-          <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-          </svg>
+          {/* Custom Short Code */}
+          <div className="md:col-span-3">
+            <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white mb-2">
+             B
+            </label>
+            <input
+              type="text"
+              id="short_code"
+              name="short_code"
+              value={formData.short_code}
+              onChange={handleChange}
+              placeholder="Alias (optional)"
+              className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              pattern="[a-zA-Z0-9_-]+"
+              maxLength={5}
+              title="Only letters, numbers, hyphens, and underscores allowed"
+            />
+            <p className="mt-1 text-xs sm:text-sm text-gray-500">
+            </p>
+          </div>
         </div>
-      </div>
-    </div>
 
-    {/* Custom Alias (30% width) */}
-    <div className="md:col-span-3">
-      <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-        Alias <span className="text-gray-500">(Optional)</span>
-      </label>
-      <input
-        type="text"
-        id="short_code"
-        name="short_code"
-        // value={formData.short_code}
-        // onChange={handleChange}
-        placeholder="e.g., my-link"
-        className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-        pattern="[a-zA-Z0-9_-]+"
-        maxLength={5}
-        title="Only letters, numbers, hyphens, and underscores allowed. Max 5 characters."
-      />
-    </div>
 
-  </div>
-</div>
 
 
         
