@@ -236,11 +236,8 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Shorten Your URL</h2>
       </div>
 
-      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" id="link-form">
-        {/* URL and Short Code Row */}
-        <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
-
-          {/* Original URL */} 
+      <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Form Grid */}
       <div className="grid grid-cols-12 gap-4 items-start">
         {/* Original URL - 8 cols */}
         <div className="col-span-12 md:col-span-8">
@@ -333,26 +330,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           />
         </div>
       </div>
-
-  {/* Alias (optional) - 2 cols (~16%) */}
-  <div className="col-span-12 md:col-span-2">
-    <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-      Alias (optional)
-    </label>
-    <input
-      type="text"
-      id="short_code"
-      name="short_code"
-      value={formData.short_code}
-      onChange={handleChange}
-      placeholder="Alias (optional)"
-      className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-      pattern="[a-zA-Z0-9_-]+"
-      maxLength={5}
-      title="Only letters, numbers, hyphens, and underscores allowed"
-    />
-  </div>
-</div>
 
 
 
