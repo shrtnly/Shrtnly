@@ -304,14 +304,14 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         </div>
 
 {/* Custom Domain */}
-<div className="md:col-span-3 relative">
+
+<div className="md:col-span-3">
   <label
     htmlFor="custom_domain"
     className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
   >
     Customize your link
   </label>
-
   <select
     id="custom_domain"
     name="custom_domain"
@@ -324,18 +324,12 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         window.open("https://t.ly/register?via=dawod", "_blank");
       }
     }}
-    className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base text-gray-700 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 appearance-none pr-10"
+    className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base text-gray-700 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none"
   >
     <option value="shrtnly.pro">🔗 shrtnly.pro</option>
     <option value="tinyurl.com">🔗 tinyurl.com</option>
-    <option disabled>──────────────</option>
-    <option value="add_domain">➕ Add Custom Domain</option>
+    <option value="add_domain">➕ Add Domain</option>
   </select>
-
-  {/* Arrow Icon */}
-  <div className="pointer-events-none absolute top-10 right-4 text-gray-400">
-    ▼
-  </div>
 </div>
 
 
