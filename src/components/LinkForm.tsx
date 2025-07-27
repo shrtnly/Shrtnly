@@ -313,25 +313,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     </select>
   </div>
 
-  {/* Alias (optional) - 2 cols (~16%) */}
-  <div className="col-span-12 md:col-span-2">
-    <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-      Alias (optional)
-    </label>
-    <input
-      type="text"
-      id="short_code"
-      name="short_code"
-      value={formData.short_code}
-      onChange={handleChange}
-      placeholder="Alias (optional)"
-      className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-      pattern="[a-zA-Z0-9_-]+"
-      maxLength={5}
-      title="Only letters, numbers, hyphens, and underscores allowed"
-    />
-  </div>
-</div>
 
 
 
