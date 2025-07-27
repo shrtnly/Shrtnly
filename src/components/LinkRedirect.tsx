@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { ExternalLink, Clock, ArrowRight } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 const LinkRedirect: React.FC = () => {
   const { shortCode } = useParams<{ shortCode: string }>();
-  const [countdown, setCountdown] = useState(2);
-  const [redirecting, setRedirecting] = useState(true);
   const [linkData, setLinkData] = useState<any>(null);
   const [error, setError] = useState(false);
 
@@ -21,30 +19,12 @@ const LinkRedirect: React.FC = () => {
     fetchLinkData();
   }, [shortCode]);
 
-  // Countdown timer effect
+  // Redirect immediately when link data is available
   useEffect(() => {
-    if (!redirecting || !linkData) return;
-
-    const timer = setInterval(() => {
-      setCountdown(prev => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          setRedirecting(false);
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [redirecting, linkData]);
-
-  // Redirect when countdown finishes
-  useEffect(() => {
-    if (!redirecting && linkData) {
+    if (linkData) {
       redirectToOriginalUrl();
     }
-  }, [redirecting, linkData]);
+  }, [linkData]);
 
   const fetchLinkData = async () => {
     try {
@@ -202,9 +182,9 @@ const LinkRedirect: React.FC = () => {
             <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Loading...</h1>
+            <h1 className="text-2xl font-bold text-gray-900 mb-2">Redirecting...</h1>
             <p className="text-gray-600">
-              Preparing your link...
+              Taking you to your destination...
             </p>
           </div>
         </div>
@@ -212,77 +192,9 @@ const LinkRedirect: React.FC = () => {
     );
   }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8 text-center">
-        <div className="mb-6">
-          <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-            {redirecting ? (
-              <Clock className="w-8 h-8 text-green-600" />
-            ) : (
-              <ArrowRight className="w-8 h-8 text-green-600" />
-            )}
-          </div>
-          
-          {redirecting ? (
-            <>
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                Redirecting in {countdown}...
-              </h1>
-              <p className="text-gray-600 mb-4">
-                Taking you to your destination
-              </p>
-            </>
-          ) : (
-            <>
-              <h1 className="text-2xl font-bold text-gray-900 mb-2">
-                Redirecting Now...
-              </h1>
-              <p className="text-gray-600 mb-4">
-                If you're not redirected automatically, click below
-              </p>
-            </>
-          )}
-        </div>
-
-        {/* Link Preview */}
-        <div className="bg-gray-50 rounded-lg p-4 mb-6">
-          <div className="text-sm text-gray-600 mb-1">You're being redirected to:</div>
-          <div className="font-medium text-gray-900 break-all">
-            {linkData.title || 'Untitled Link'}
-          </div>
-          <div className="text-xs text-gray-500 mt-1 break-all">
-            {linkData.original_url}
-          </div>
-        </div>
-
-        {/* Manual redirect button (shown after countdown) */}
-        {!redirecting && (
-          <a
-            href={linkData.original_url}
-            className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-          >
-            <ExternalLink className="w-4 h-4" />
-            Continue to Destination
-          </a>
-        )}
-
-        {/* Progress bar */}
-        {redirecting && (
-          <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
-            <div 
-              className="bg-blue-600 h-2 rounded-full transition-all duration-1000 ease-linear"
-              style={{ width: `${((2 - countdown) / 2) * 100}%` }}
-            />
-          </div>
-        )}
-
-        <p className="text-xs text-gray-500">
-          Powered by Shrtnly • Safe link redirection
-        </p>
-      </div>
-    </div>
-  );
+  // This should not render since we redirect immediately
+  // But keeping it as fallback
+  return null;
 };
 
 export default LinkRedirect;
