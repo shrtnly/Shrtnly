@@ -241,91 +241,98 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
 
           {/* Original URL */} 
-          <div className="md:col-span-7">
-            <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-              Original URL *
-            </label>
-            <div className="relative">
-              <input
-                type="url"
-                id="original_url"
-                name="original_url"
-                value={formData.original_url}
-                onChange={handleChange}
-                placeholder="https://example.com/very-long-url"
-                className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
-                  urlValid === null 
-                    ? 'border-gray-300 focus:border-blue-500' 
-                    : urlValid 
-                      ? 'border-green-300 focus:border-green-500 bg-green-50' 
-                      : 'border-red-300 focus:border-red-500 bg-red-50'
-                }`}
-                required
-                aria-describedby={error ? "url-error" : undefined}
-              />
-              {urlValid !== null && (
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                  {urlValid ? (
-                    <Check className="w-5 h-5 text-green-600" />
-                  ) : (
-                    <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
-                      <span className="text-white text-xs">!</span>
-                    </div>
-                  )}
-                </div>
-              )}
+  <div className="grid grid-cols-12 gap-4 items-start">
+  {/* Original URL - 8 cols (approx 66%) */}
+  <div className="col-span-12 md:col-span-8">
+    {/* Your full Original URL input block */}
+    <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+      Original URL *
+    </label>
+    <div className="relative">
+      <input
+        type="url"
+        id="original_url"
+        name="original_url"
+        value={formData.original_url}
+        onChange={handleChange}
+        placeholder="https://example.com/very-long-url"
+        className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
+          urlValid === null 
+            ? 'border-gray-300 focus:border-blue-500' 
+            : urlValid 
+              ? 'border-green-300 focus:border-green-500 bg-green-50' 
+              : 'border-red-300 focus:border-red-500 bg-red-50'
+        }`}
+        required
+        aria-describedby={error ? "url-error" : undefined}
+      />
+      {urlValid !== null && (
+        <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+          {urlValid ? (
+            <Check className="w-5 h-5 text-green-600" />
+          ) : (
+            <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
+              <span className="text-white text-xs">!</span>
             </div>
-            {urlValid === false && formData.original_url.trim() !== '' && (
-              <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
-            )}
-          </div>
-
-          {/* Custom Short Code */}
-          <div className="md:col-span-3">
-            <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white mb-2">
-             B
-            </label>
-            <input
-              type="text"
-              id="short_code"
-              name="short_code"
-              value={formData.short_code}
-              onChange={handleChange}
-              placeholder="Alias (optional)"
-              className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              pattern="[a-zA-Z0-9_-]+"
-              maxLength={5}
-              title="Only letters, numbers, hyphens, and underscores allowed"
-            />
-            <p className="mt-1 text-xs sm:text-sm text-gray-500">
-            </p>
-          </div>
+          )}
         </div>
+      )}
+    </div>
+    {urlValid === false && formData.original_url.trim() !== '' && (
+      <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
+    )}
+  </div>
 
-{/* Custom Domain */}
-<div className="md:col-span-3">
-  <label htmlFor="custom_domain" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-    Choose Domain
-  </label>
-  <select
-    id="custom_domain"
-    name="custom_domain"
-    value={formData.custom_domain}
-    onChange={(e) => {
-      const value = e.target.value;
-      setFormData((prev) => ({ ...prev, custom_domain: value }));
+  {/* Custom Domain - 2 cols (~16%) */}
+  <div className="col-span-12 md:col-span-2">
+    <label htmlFor="custom_domain" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+      Choose Domain
+    </label>
+    <select
+      id="custom_domain"
+      name="custom_domain"
+      value={formData.custom_domain}
+      onChange={(e) => {
+        const value = e.target.value;
+        setFormData((prev) => ({ ...prev, custom_domain: value }));
 
-      if (value === "add_domain") {
-        window.open("https://t.ly/register?via=dawod", "_blank");
-      }
-    }}
-    className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none"
-  >
-    <option value="shrtnly.pro">shrtnly.pro</option>
-    <option value="tinyurl.com">tinyurl.com</option>
-    <option value="add_domain">➕ Add Domain</option>
-  </select>
+        if (value === "add_domain") {
+          window.open("https://t.ly/register?via=dawod", "_blank");
+        }
+      }}
+      className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none bg-white"
+      style={{ backgroundImage: `url("data:image/svg+xml,%3csvg fill='none' stroke='%23333' stroke-width='2' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e")`,
+               backgroundRepeat: 'no-repeat',
+               backgroundPosition: 'right 1rem center',
+               backgroundSize: '1.25em 1.25em',
+      }}
+    >
+      <option value="shrtnly.pro">shrtnly.pro</option>
+      <option value="tinyurl.com">tinyurl.com</option>
+      <option value="add_domain">➕ Add Domain</option>
+    </select>
+  </div>
+
+  {/* Alias (optional) - 2 cols (~16%) */}
+  <div className="col-span-12 md:col-span-2">
+    <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+      Alias (optional)
+    </label>
+    <input
+      type="text"
+      id="short_code"
+      name="short_code"
+      value={formData.short_code}
+      onChange={handleChange}
+      placeholder="Alias (optional)"
+      className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+      pattern="[a-zA-Z0-9_-]+"
+      maxLength={5}
+      title="Only letters, numbers, hyphens, and underscores allowed"
+    />
+  </div>
 </div>
+
 
 
         
