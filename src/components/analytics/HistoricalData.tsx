@@ -200,7 +200,7 @@ const HistoricalData: React.FC<HistoricalDataProps> = ({ data }) => {
                 <p className="text-sm text-gray-600">This Year</p>
               </div>
               <div className="text-center">
-                <p className="text-2xl font-bold text-gray-600">{data.yearOverYear.previousYear}</p>
+                <p className="text-2xl font-bold text-gray-600">0</p>
                 <p className="text-sm text-gray-600">Last Year</p>
               </div>
             </div>
