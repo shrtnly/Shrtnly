@@ -240,45 +240,67 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         {/* URL and Short Code Row */}
         <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
 
+          {/* Original URL */}
+          <div className="md:col-span-7">
+            <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+              Original URL *
+            </label>
+            <div className="relative">
+              <input
+                type="url"
+                id="original_url"
+                name="original_url"
+                value={formData.original_url}
+                onChange={handleChange}
+                placeholder="https://example.com/very-long-url"
+                className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
+                  urlValid === null 
+                    ? 'border-gray-300 focus:border-blue-500' 
+                    : urlValid 
+                      ? 'border-green-300 focus:border-green-500 bg-green-50' 
+                      : 'border-red-300 focus:border-red-500 bg-red-50'
+                }`}
+                required
+                aria-describedby={error ? "url-error" : undefined}
+              />
+              {urlValid !== null && (
+                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                  {urlValid ? (
+                    <Check className="w-5 h-5 text-green-600" />
+                  ) : (
+                    <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
+                      <span className="text-white text-xs">!</span>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            {urlValid === false && formData.original_url.trim() !== '' && (
+              <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
+            )}
+          </div>
 
-          {/* Domain Selector + Alias */}
-<div className="md:col-span-3">
-  <label htmlFor="custom_domain" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-    Customize your link
-  </label>
-  <div className="flex items-center gap-2">
-    <div className="relative w-1/2">
-      <select
-        id="custom_domain"
-        name="custom_domain"
-        value={formData.custom_domain || 'shrtnly.pro'}
-        onChange={handleChange}
-        className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none"
-      >
-        <option value="shrtnly.pro">shrtnly.pro</option>
-        <option value="tinyurl.com">tinyurl.com</option>
-        <option value="add_domain">➕ Add Domain</option>
-      </select>
-      {/* Redirect on Add Domain */}
-      {formData.custom_domain === 'add_domain' &&
-        window.open("https://t.ly/register?via=dawod", "_blank")
-      }
-    </div>
-    <input
-      type="text"
-      id="short_code"
-      name="short_code"
-      value={formData.short_code}
-      onChange={handleChange}
-      placeholder="Enter alias"
-      className="w-1/2 px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-      pattern="[a-zA-Z0-9_-]+"
-      maxLength={20}
-      title="Only letters, numbers, hyphens, and underscores allowed"
-    />
-  </div>
-</div>
-
+          {/* Custom Short Code */}
+          <div className="md:col-span-3">
+            <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white mb-2">
+             B
+            </label>
+            <input
+              type="text"
+              id="short_code"
+              name="short_code"
+              value={formData.short_code}
+              onChange={handleChange}
+              placeholder="Alias (optional)"
+              className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+              pattern="[a-zA-Z0-9_-]+"
+              maxLength={5}
+              title="Only letters, numbers, hyphens, and underscores allowed"
+            />
+            <p className="mt-1 text-xs sm:text-sm text-gray-500">
+            </p>
+          </div>
+        </div>
 
         {/* Advanced Options Toggle */}
         <div className="border-t border-gray-200 pt-4">
