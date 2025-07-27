@@ -324,18 +324,15 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           window.open("https://t.ly/register?via=dawod", "_blank");
         }
       }}
-      className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border text-gray-700 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-lg pr-10 transition-colors"
+      className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg pr-10 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
     >
       <option value="shrtnly.pro">🔗 https://shrtnly.pro</option>
-      <option
-        value="add_domain"
-        className="text-gray-400"
-      >
+      <option value="add_domain" className="text-gray-500">
         🔒 ➕ Add Custom Domain
       </option>
     </select>
 
-    {/* Custom Down Arrow Icon */}
+    {/* Dropdown arrow */}
     <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
       <svg
         className="w-4 h-4"
@@ -349,7 +346,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     </div>
   </div>
 
-  {/* Conditional message when add_domain selected */}
+  {/* Show message only when "Add Custom Domain" is selected */}
   {formData.custom_domain === "add_domain" && (
     <p className="mt-1 text-sm text-red-600">
       This option opens an external domain registration page.
