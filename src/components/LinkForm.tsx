@@ -240,46 +240,56 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         {/* URL and Short Code Row */}
         <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
 
-          {/* Original URL */} 
                     {/* Original URL */} 
-          <div className="md:col-span-7">
-            <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-              Original URL *
-            </label>
-            <div className="relative">
-              <input
-                type="url"
-                id="original_url"
-                name="original_url"
-                value={formData.original_url}
-                onChange={handleChange}
-                placeholder="https://example.com/very-long-url"
-                className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
-                  urlValid === null 
-                    ? 'border-gray-300 focus:border-blue-500' 
-                    : urlValid 
-                      ? 'border-green-300 focus:border-green-500 bg-green-50' 
-                      : 'border-red-300 focus:border-red-500 bg-red-50'
-                }`}
-                required
-                aria-describedby={error ? "url-error" : undefined}
-              />
-              {urlValid !== null && (
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                  {urlValid ? (
-                    <Check className="w-5 h-5 text-green-600" />
-                  ) : (
-                    <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
-                      <span className="text-white text-xs">!</span>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-            {urlValid === false && formData.original_url.trim() !== '' && (
-              <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
-            )}
-          </div>
+<div className="md:col-span-3">
+  <label
+    htmlFor="custom_domain"
+    className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
+  >
+    Customize your link
+  </label>
+
+  <div className="relative">
+    <select
+      id="custom_domain"
+      name="custom_domain"
+      value={formData.custom_domain}
+      onChange={(e) => {
+        const value = e.target.value;
+        setFormData((prev) => ({ ...prev, custom_domain: value }));
+
+        if (value === "add_domain") {
+          window.open("https://t.ly/register?via=dawod", "_blank");
+        }
+      }}
+      className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base text-gray-700 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors pr-10"
+    >
+      <option value="shrtnly.pro">🔗 https://shrtnly.pro</option>
+      <option value="add_domain" className="text-gray-400">🔒 ➕ Add Custom Domain</option>
+    </select>
+
+    {/* Down arrow icon */}
+    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
+      <svg
+        className="w-4 h-4"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        viewBox="0 0 24 24"
+      >
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </div>
+
+  {/* Message below the dropdown */}
+  {formData.custom_domain === "add_domain" && (
+    <p className="mt-1 text-sm text-red-600">
+      You're about to add a custom domain via external service.
+    </p>
+  )}
+</div>
+
 
           {/* Custom Short Code */}
           <div className="md:col-span-3">
@@ -326,7 +336,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     }}
     className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base text-gray-700 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors appearance-none"
   >
-    <option value="shrtnly.pro">🔗 shrtnly.pro ▼</option>
+    <option value="shrtnly.pro">🔗 https://shrtnly.pro</option>
     <option value="add_domain">➕ Add Domain</option>
   </select>
 </div>
