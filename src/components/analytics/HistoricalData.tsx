@@ -213,7 +213,7 @@ const HistoricalData: React.FC<HistoricalDataProps> = ({ data }) => {
         </div>
       </div>
 
-      {/* Seasonal Variations */}
+      {/* Seasonal Variations
       <div className="mt-8">
         <h3 className="text-lg font-medium text-gray-900 mb-4">Seasonal Activity Patterns</h3>
         <div className="h-64">
@@ -231,6 +231,8 @@ const HistoricalData: React.FC<HistoricalDataProps> = ({ data }) => {
           </ResponsiveContainer>
         </div>
       </div>
+
+       */}
       
       {/* Interactive Data Points */}
       <div className="mt-6 p-4 bg-gray-50 rounded-lg">
