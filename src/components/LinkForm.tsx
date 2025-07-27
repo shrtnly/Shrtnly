@@ -306,7 +306,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 {/* Custom Domain */}
 <div className="md:col-span-3">
   <label htmlFor="custom_domain" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-    Choose Domain
+    Customize your link
   </label>
   <select
     id="custom_domain"
