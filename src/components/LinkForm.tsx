@@ -252,7 +252,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
                 name="original_url"
                 value={formData.original_url}
                 onChange={handleChange}
-                placeholder="https://example.com/very-long-url"
+                placeholder="https://example.com/long-url"
                 className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
                   urlValid === null 
                     ? 'border-gray-300 focus:border-blue-500' 
