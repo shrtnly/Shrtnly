@@ -303,7 +303,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         </div>
 
 {/* Custom Domain */}
-
 <div className="md:col-span-3">
   <label
     htmlFor="custom_domain"
@@ -325,11 +324,11 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           window.open("https://t.ly/register?via=dawod", "_blank");
         }
       }}
-      className={w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg pr-10 transition-colors
+      className={`w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg pr-10 transition-colors
         ${formData.custom_domain === "add_domain"
           ? "bg-gray-100 text-gray-400 border-gray-300 cursor-not-allowed"
           : "text-gray-700 border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"}
-      }
+      `}
     >
       <option value="shrtnly.pro">🔗 https://shrtnly.pro</option>
       <option value="add_domain">🔒 ➕ Add Custom Domain</option>
@@ -356,6 +355,8 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     </p>
   )}
 </div>
+
+
         
         {/* Advanced Options Toggle */}
         <div className="border-t border-gray-200 pt-4">
