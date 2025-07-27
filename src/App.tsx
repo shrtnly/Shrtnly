@@ -18,9 +18,6 @@ function App() {
     <AuthProvider>
       <Router>
         <Routes>
-          {/* Short link redirect route - standalone without layout */}
-          <Route path="/:shortCode" element={<LinkRedirect />} />
-          
           {/* All other routes with layout */}
           <Route path="/*" element={
             <div className="min-h-screen flex flex-col">
@@ -42,6 +39,9 @@ function App() {
               <Footer />
             </div>
           } />
+          
+          {/* Short link redirect route - standalone without layout */}
+          <Route path="/:shortCode" element={<LinkRedirect />} />
         </Routes>
       </Router>
     </AuthProvider>
