@@ -52,9 +52,9 @@ const HomePage: React.FC = () => {
 {/* Hero Section */}
           
 <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
-  <h2 className="text-2xl sm:text-3xl font-bold mb-4">
+  <h1 className="text-2xl sm:text-3xl font-bold mb-4">
     Free URL Shortener – Create Short Links Instantly
-  </h2>
+  </h1>
 
   <p className="text-lg sm:text-xl mb-6 text-purple-100">
     Shorten URLs instantly with automatic QR codes and real-time analytics.
