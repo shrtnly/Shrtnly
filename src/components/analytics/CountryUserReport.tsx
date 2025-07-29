@@ -101,7 +101,7 @@ const CountryUserReport: React.FC<CountryUserReportProps> = ({ data }) => {
         <h3 className="text-xl font-semibold text-gray-900">Geographic Visit Distribution</h3>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 lg:grid-cols-2">
         {/* Country Distribution Pie Chart 
         <div>
           <div className="h-0">
