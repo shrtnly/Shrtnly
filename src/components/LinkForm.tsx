@@ -79,6 +79,13 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     setError(null);
     setIsLoading(true);
 
+      // Validate custom alias length if provided
+  if (custom_code && custom_code.length > MAX_ALIAS_LENGTH) {
+    setError(`Custom alias must be less than ${MAX_ALIAS_LENGTH + 1} characters.`);
+    setIsLoading(false);
+    return;
+  }
+
     // Validation
     if (!formData.original_url.trim()) {
       setError('Please enter a URL to shorten');
