@@ -104,8 +104,7 @@ const CountryUserReport: React.FC<CountryUserReportProps> = ({ data }) => {
       <div className="grid gap-6 lg:grid-cols-2">
         {/* Country Distribution Pie Chart */}
         <div>
-          <h4 className="text-lg font-medium text-gray-900 mb-4">Top Countries Distribution</h4>
-          <div className="h-64">
+          <div className="h-0">
             {topCountries.length === 0 ? (
               <div className="flex items-center justify-center h-full text-gray-500">
                 No geographic data available
