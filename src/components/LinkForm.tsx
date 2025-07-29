@@ -318,7 +318,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
               title="Only letters, numbers, hyphens, and underscores allowed"
             />
             <p className="mt-1 text-xs sm:text-sm text-gray-500">
-              Max 10 characters
+             
             </p>
           </div>
         </div>
