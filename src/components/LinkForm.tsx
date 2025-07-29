@@ -302,7 +302,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
               placeholder="Alias (optional)"
               className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               pattern="[a-zA-Z0-9_-]+"
-              maxLength={10}
+              maxLength={5}
               title="Only letters, numbers, hyphens, and underscores allowed"
             />
             <p className="mt-1 text-xs sm:text-sm text-gray-500">
