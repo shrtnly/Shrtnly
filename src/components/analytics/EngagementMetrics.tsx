@@ -59,6 +59,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
 
   // Calculate total clicks for referral sources
   const totalClicks = data.referralSources.reduce((sum, src) => sum + src.visits, 0);
+  const totalBrowserVisits = data.browserStats.reduce((sum, browser) => sum + browser.visits, 0);
   const COLORS = ['#4285F4', '#FBBC05', '#34A853', '#EA4335', '#9B59B6', '#F39C12'];
 
   const getTrendIcon = (trend: string) => {
@@ -84,10 +85,21 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
     color: COLORS[i % COLORS.length],
   }));
 
+  // Map browser stats with calculated percentage and color
+  const browserData = data.browserStats.map((browser, i) => ({
+    ...browser,
+    percentage: totalBrowserVisits > 0 ? ((browser.visits / totalBrowserVisits) * 100).toFixed(0) : '0',
+    color: COLORS[i % COLORS.length],
+  }));
+
   // For PieChart zero data handling
   const referralSourcesData = totalClicks > 0
     ? referralSources
     : [{ source: 'No Data', visits: 0, percentage: '0', color: '#E5E7EB' }];
+
+  const browserStatsData = totalBrowserVisits > 0
+    ? browserData
+    : [{ browser: 'No Data', visits: 0, percentage: '0', color: '#E5E7EB' }];
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6">
@@ -337,58 +349,58 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
             )}
           </div>
         </div>
-      </div>
 
-  <div>
-  <h3 className="text-lg font-medium text-gray-900 mb-4">Browser Type Usage</h3>
-  <div className="h-64">
-    <ResponsiveContainer width="100%" height="100%">
-      <PieChart>
-        <Pie
-          data={browserData}
-          cx="50%"
-          cy="50%"
-          outerRadius={80}
-          dataKey="visits"
-          label={({ browser, percentage }) =>
-            totalClicks > 0 ? `${browser}: ${percentage}%` : 'No Data'
-          }
-        >
-          {browserData.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.color} />
-          ))}
-        </Pie>
-        <Tooltip
-          formatter={(value: number) => `${value} visits`}
-          labelFormatter={(label) => `Browser: ${label}`}
-        />
-      </PieChart>
-    </ResponsiveContainer>
-  </div>
-
-  <div className="mt-4 space-y-2">
-    <h4 className="text-sm font-medium text-gray-700">Top Browsers:</h4>
-    {totalClicks === 0 ? (
-      <p className="text-gray-500 text-sm">No browser data available.</p>
-    ) : (
-      <div className="grid gap-2">
-        {browserData.slice(0, 3).map((browser, i) => (
-          <div key={i} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full" style={{ backgroundColor: browser.color }} />
-              <span className="text-sm font-medium text-gray-700">{browser.browser}</span>
-            </div>
-            <div className="text-right">
-              <span className="text-sm font-semibold text-gray-900">{browser.visits}</span>
-              <span className="text-xs text-gray-500 ml-1">({browser.percentage}%)</span>
-            </div>
+        {/* Browser Type Usage */}
+        <div>
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Browser Type Usage</h3>
+          <div className="h-64">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie
+                  data={browserStatsData}
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={80}
+                  dataKey="visits"
+                  label={({ browser, percentage }) =>
+                    totalBrowserVisits > 0 ? `${browser}: ${percentage}%` : 'No Data'
+                  }
+                >
+                  {browserStatsData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={entry.color} />
+                  ))}
+                </Pie>
+                <Tooltip
+                  formatter={(value: number) => `${value} visits`}
+                  labelFormatter={(label) => `Browser: ${label}`}
+                />
+              </PieChart>
+            </ResponsiveContainer>
           </div>
-        ))}
-      </div>
-    )}
-  </div>
-</div>
 
+          <div className="mt-4 space-y-2">
+            <h4 className="text-sm font-medium text-gray-700">Top Browsers:</h4>
+            {totalBrowserVisits === 0 ? (
+              <p className="text-gray-500 text-sm">No browser data available.</p>
+            ) : (
+              <div className="grid gap-2">
+                {browserData.slice(0, 3).map((browser, i) => (
+                  <div key={i} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: browser.color }} />
+                      <span className="text-sm font-medium text-gray-700">{browser.browser}</span>
+                    </div>
+                    <div className="text-right">
+                      <span className="text-sm font-semibold text-gray-900">{browser.visits}</span>
+                      <span className="text-xs text-gray-500 ml-1">({browser.percentage}%)</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
 
       {/* Conversion Funnel   --------
       <div className="mb-8">
