@@ -102,73 +102,7 @@ const CountryUserReport: React.FC<CountryUserReportProps> = ({ data }) => {
       </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
-        {/* Country Distribution Pie Chart 
-        <div>
-          <div className="h-0">
-            {topCountries.length === 0 ? (
-              <div className="flex items-center justify-center h-full text-gray-500">
-                No geographic data available
-              </div>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={topCountries}
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    innerRadius={40}
-                    dataKey="users"
-                    nameKey="country"
-                    label={({ country, percentage }) => 
-                      percentage > 5 ? `${country}: ${percentage}%` : ''
-                    }
-                  >
-                    {topCountries.map((entry, index) => (
-                      <Cell key={`country-cell-${index}`} fill={dataWithColors[index]?.color || '#8884d8'} />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    formatter={(value: number) => [`${formatNumber(value)} users`, 'Users']}
-                    labelFormatter={(label) => `Country: ${label}`}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
-            )}
-          </div>
-        </div>
-
-        {/* Country Usage Bar Chart 
-        <div>
-          <h4 className="text-lg font-medium text-gray-900 mb-4">User Count by Country</h4>
-          <div className="h-64">
-            {topCountries.length === 0 ? (
-              <div className="flex items-center justify-center h-full text-gray-500">
-                No geographic data available
-              </div>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={topCountries}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis 
-                    dataKey="country" 
-                    angle={-45}
-                    textAnchor="end"
-                    height={80}
-                    interval={0}
-                  />
-                  <YAxis />
-                  <Tooltip
-                    formatter={(value: number) => [`${formatNumber(value)} users`, 'Users']}
-                    labelFormatter={(label) => `Country: ${label}`}
-                  />
-                  <Bar dataKey="users" fill="#10B981" />
-                </BarChart>
-              </ResponsiveContainer>
-            )}
-          </div>
-        </div>
-        */}
+      
       </div>
       
 
