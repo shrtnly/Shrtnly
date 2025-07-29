@@ -339,7 +339,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
         </div>
       </div>
 
-      <div>
+  <div>
   <h3 className="text-lg font-medium text-gray-900 mb-4">Browser Type Usage</h3>
   <div className="h-64">
     <ResponsiveContainer width="100%" height="100%">
