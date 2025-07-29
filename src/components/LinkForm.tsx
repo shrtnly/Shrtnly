@@ -42,6 +42,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     }));
     
     // Validate URL in real-time
+    const MAX_ALIAS_LENGTH = 10;
     if (name === 'original_url') {
       const url = value.trim();
       if (url === '') {
@@ -76,6 +77,13 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     e.preventDefault();
     setError(null);
     setIsLoading(true);
+
+    // Validate custom alias length if provided
+    if (formData.short_code && formData.short_code.length > MAX_ALIAS_LENGTH) {
+      setError(`Custom alias must be less than ${MAX_ALIAS_LENGTH + 1} characters.`);
+      setIsLoading(false);
+      return;
+    }
 
     // Validation
     if (!formData.original_url.trim()) {
