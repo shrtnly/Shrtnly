@@ -186,12 +186,12 @@ const CountryUserReport: React.FC<CountryUserReportProps> = ({ data }) => {
                   <div className="text-2xl">{getCountryFlag(countryData.country)}</div>
                   <div>
                     <div className="font-medium text-gray-900">{countryData.country}</div>
-                    <div className="text-sm text-gray-600">{countryData.percentage}% of total users</div>
+                    <div className="text-sm text-gray-600">{countryData.percentage}% of Total Clicks</div>
                   </div>
                 </div>
                 <div className="text-right">
                   <div className="text-lg font-semibold text-gray-900">{formatNumber(countryData.users)}</div>
-                  <div className="text-sm text-gray-500">users</div>
+                  <div className="text-sm text-gray-500">Clicks</div>
                 </div>
               </div>
             ))
