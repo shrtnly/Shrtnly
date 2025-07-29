@@ -282,7 +282,6 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
   </div>
 </div>
 </div>
-</div>
 
         
 
