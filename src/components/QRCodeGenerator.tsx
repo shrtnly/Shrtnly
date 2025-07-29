@@ -59,7 +59,28 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({
     if (user && linkId) {
       // Get client information for analytics
       import('../lib/ipUtils').then(async ({ getClientIP }) => {
+        const geoUtils = await import('../lib/geoUtils');
         const clientIP = await getClientIP();
+        
+        // Get enhanced location data
+        let country = 'Unknown';
+        let city = 'Unknown';
+        try {
+          const userCountry = await geoUtils.detectUserCountry();
+          country = userCountry;
+          
+          // Try to get more detailed location if possible
+          if (clientIP) {
+            const location = await geoUtils.getLocationFromIP(clientIP);
+            if (location) {
+              country = location.country;
+              city = location.city;
+            }
+          }
+        } catch (error) {
+          console.warn('Location detection failed:', error);
+        }
+        
         const userAgent = navigator.userAgent;
         const referrer = document.referrer;
         
@@ -118,7 +139,8 @@ const QRCodeGenerator: React.FC<QRCodeGeneratorProps> = ({
             device_type: deviceType,
             browser: browser,
             os: os,
-            country: 'Unknown',
+            country: country,
+            city: city,
             utm_source: new URLSearchParams(window.location.search).get('utm_source'),
             utm_medium: new URLSearchParams(window.location.search).get('utm_medium'),
             utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),

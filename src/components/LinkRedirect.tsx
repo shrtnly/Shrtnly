@@ -68,7 +68,28 @@ const LinkRedirect: React.FC = () => {
       if (linkData.user_id) {
         // Get client information for analytics
         const ipUtils = await import('../lib/ipUtils');
+        const geoUtils = await import('../lib/geoUtils');
         const clientIP = await ipUtils.getClientIP();
+        
+        // Get enhanced location data
+        let country = 'Unknown';
+        let city = 'Unknown';
+        try {
+          const userCountry = await geoUtils.detectUserCountry();
+          country = userCountry;
+          
+          // Try to get more detailed location if possible
+          if (clientIP) {
+            const location = await geoUtils.getLocationFromIP(clientIP);
+            if (location) {
+              country = location.country;
+              city = location.city;
+            }
+          }
+        } catch (error) {
+          console.warn('Location detection failed:', error);
+        }
+        
         const userAgent = navigator.userAgent;
         const referrer = document.referrer;
         
@@ -129,7 +150,8 @@ const LinkRedirect: React.FC = () => {
             device_type: deviceType,
             browser: browser,
             os: os,
-            country: 'Unknown', // Would be determined by IP geolocation service
+            country: country,
+            city: city,
             utm_source: getUTMParameter('utm_source'),
             utm_medium: getUTMParameter('utm_medium'),
             utm_campaign: getUTMParameter('utm_campaign'),
