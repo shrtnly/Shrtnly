@@ -5,7 +5,7 @@ import SlideUpFadeIn from './SlideUpFadeIn';
 const AnimatedParagraphs: React.FC = () => {
   const paragraphs = [
     "Free permanent links with unlimited lifetime access",
-    "Create shareable links instantly – no signup needed",
+    "Create shareable links instantly – No signup needed",
     "Shorten URLs with powerful analytics tracking",
     "Monitor link clicks and user engagement easily",
     "Boost traffic with smart branded link management",
@@ -25,7 +25,7 @@ const AnimatedParagraphs: React.FC = () => {
   }, [paragraphs.length]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4">
+    <div className="w-full max-w-4xl mx-2 px-4">
       <AnimatePresence mode="wait">
         <SlideUpFadeIn key={currentIndex}>
           <div className="flex justify-center">

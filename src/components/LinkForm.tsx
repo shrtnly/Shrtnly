@@ -7,7 +7,6 @@ import { CreateLinkData, Link } from '../types';
 import { useAnnouncement } from '../hooks/useFocusManagement';
 import { useIPTracking } from '../hooks/useIPTracking';
 import { useAuth } from '../contexts/AuthContext';
-import { detectUserCountry, getLocationFromIP } from '../lib/geoUtils';
 import QRCodeGenerator from './QRCodeGenerator';
 import { BarChart3 } from 'lucide-react';
 
@@ -157,25 +156,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         const userAgent = navigator.userAgent;
         const referrer = document.referrer;
         
-        // Get enhanced location data
-        let country = 'Unknown';
-        let city = 'Unknown';
-        try {
-          const userCountry = await detectUserCountry();
-          country = userCountry;
-          
-          // Try to get more detailed location if possible
-          if (clientIP) {
-            const location = await getLocationFromIP(clientIP);
-            if (location) {
-              country = location.country;
-              city = location.city;
-            }
-          }
-        } catch (error) {
-          console.warn('Location detection failed:', error);
-        }
-        
         // Enhanced device and browser detection
         const parseUserAgent = (ua: string) => {
           const lowerUA = ua.toLowerCase();
@@ -233,8 +213,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
             device_type: deviceType,
             browser: browser,
             os: os,
-            country: country,
-            city: city,
+            country: 'Unknown', // Would be determined by IP geolocation
             utm_source: new URLSearchParams(window.location.search).get('utm_source'),
             utm_medium: new URLSearchParams(window.location.search).get('utm_medium'),
             utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign'),

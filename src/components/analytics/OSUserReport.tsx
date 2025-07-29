@@ -45,16 +45,16 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
         <div className="p-2 bg-blue-100 rounded-lg">
           <Monitor className="w-6 h-6 text-blue-600" />
         </div>
-        <h3 className="text-xl font-semibold text-gray-900">Detailed OS Statistics</h3>
+        <h3 className="text-xl font-semibold text-gray-900">Operating System Analytics</h3>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
 
-      </div>
       
       {/* OS Statistics List */}
-      <div className="mt-0"> 
-        <div className="space-y-0">
+      <div className="mt-6">
+        <h4 className="text-lg font-medium text-gray-900 mb-4">Detailed OS Statistics</h4>
+        <div className="space-y-3">
           {data.length === 0 ? (
             <p className="text-gray-500 text-center py-4">No operating system data available.</p>
           ) : (
@@ -64,12 +64,12 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
                   {getOSIcon(osData.os)}
                   <div>
                     <div className="font-medium text-gray-900">{osData.os}</div>
-                    <div className="text-sm text-gray-600">{osData.percentage}% of total clicks</div>
+                    <div className="text-sm text-gray-600">{osData.percentage}% of total users</div>
                   </div>
                 </div>
                 <div className="text-right">
                   <div className="text-lg font-semibold text-gray-900">{formatNumber(osData.users)}</div>
-                  <div className="text-sm text-gray-500">Clicks</div>
+                  <div className="text-sm text-gray-500">users</div>
                 </div>
               </div>
             ))
@@ -82,7 +82,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
         <div className="grid gap-4 md:grid-cols-3">
           <div className="text-center">
             <div className="text-2xl font-bold text-blue-900">{formatNumber(totalUsers)}</div>
-            <div className="text-sm text-blue-700">Total Clicks</div>
+            <div className="text-sm text-blue-700">Total Users</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-blue-900">{data.length}</div>
