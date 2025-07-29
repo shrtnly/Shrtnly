@@ -29,7 +29,7 @@ const AnimatedParagraphs: React.FC = () => {
       <AnimatePresence mode="wait">
         <SlideUpFadeIn key={currentIndex}>
           <div className="flex justify-center">
-            <span className="flex-shrink-0 mt-3 h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e] mr-2"></span>
+            <span className="flex-shrink-0 mt-3 h-2 w-2 rounded-full bg-green-500 shadow-[0_0_10px_#22c55e] mr-1"></span>
             <p className="text-[#22c55e] text-lg font-light">
               {paragraphs[currentIndex]}
             </p>
