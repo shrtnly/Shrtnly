@@ -204,7 +204,7 @@ const CountryUserReport: React.FC<CountryUserReportProps> = ({ data }) => {
         <div className="grid gap-4 md:grid-cols-4">
           <div className="text-center">
             <div className="text-2xl font-bold text-green-900">{formatNumber(totalUsers)}</div>
-            <div className="text-sm text-green-700">Total Users</div>
+            <div className="text-sm text-green-700">Total Clicks</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-green-900">{data.length}</div>
