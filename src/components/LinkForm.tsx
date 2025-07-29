@@ -9,6 +9,8 @@ import { useIPTracking } from '../hooks/useIPTracking';
 import { useAuth } from '../contexts/AuthContext';
 import QRCodeGenerator from './QRCodeGenerator';
 import { BarChart3 } from 'lucide-react';
+const MAX_ALIAS_LENGTH = 10;
+const AUTO_CODE_LENGTH = 5;
 
 
 interface LinkFormProps {
