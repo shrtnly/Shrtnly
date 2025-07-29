@@ -25,7 +25,7 @@ const AnimatedParagraphs: React.FC = () => {
   }, [paragraphs.length]);
 
   return (
-    <div className="w-full max-w-4xl mx-auto px-4">
+    <div className="w-full max-w-3xl mx-auto px-4">
       <AnimatePresence mode="wait">
         <SlideUpFadeIn key={currentIndex}>
           <div className="flex justify-center">
