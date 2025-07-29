@@ -11,6 +11,11 @@ import VerifyEmailPage from './pages/VerifyEmailPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import AuthCallbackPage from './pages/AuthCallbackPage';
+import LinkManagementPage from './pages/features/LinkManagementPage';
+import MonitoringAnalysisPage from './pages/features/MonitoringAnalysisPage';
+import HowItWorksPage from './pages/features/HowItWorksPage';
+import AboutPage from './pages/features/AboutPage';
+import BlogPage from './pages/BlogPage';
 import LinkRedirect from './components/LinkRedirect';
 
 function App() {
@@ -109,6 +114,67 @@ function App() {
               
               <main className="flex-1">
                 <AuthCallbackPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          {/* Features Pages */}
+          <Route path="/features/link-management" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <LinkManagementPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/features/monitoring-analysis" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <MonitoringAnalysisPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/features/how-it-works" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <HowItWorksPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/features/about" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <AboutPage />
+              </main>
+              
+              <Footer />
+            </div>
+          } />
+          
+          <Route path="/blog" element={
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
+              
+              <main className="flex-1">
+                <BlogPage />
               </main>
               
               <Footer />
