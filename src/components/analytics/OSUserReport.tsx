@@ -96,7 +96,6 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
