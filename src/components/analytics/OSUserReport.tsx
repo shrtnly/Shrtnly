@@ -49,7 +49,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* OS Distribution Chart */}
+        {/* OS Distribution Chart 
         <div>
           <h4 className="text-lg font-medium text-gray-900 mb-4">OS Distribution</h4>
           <div className="h-64">
