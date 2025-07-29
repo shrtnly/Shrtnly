@@ -249,7 +249,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
       </ResponsiveContainer>
     )}
   </div>
-  {/* Device Type Chart */}
+  {/* Device Type Usage (Donut Chart) */}
 <div>
   <h3 className="text-lg font-medium text-gray-900 mb-4">Device Type Usage</h3>
   <div className="h-64">
@@ -265,6 +265,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
             cx="50%"
             cy="50%"
             outerRadius={80}
+            innerRadius={40} // This creates the donut effect
             label={({ device, visits }) => `${device}: ${visits}`}
           >
             {data.deviceTypes.map((entry, index) => (
@@ -279,6 +280,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
       </ResponsiveContainer>
     )}
   </div>
+</div>
 </div>
 </div>
 
