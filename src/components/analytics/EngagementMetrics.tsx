@@ -251,6 +251,37 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
   </div>
 </div>
 
+{/* Device Type Chart */}
+<div>
+  <h3 className="text-lg font-medium text-gray-900 mb-4">Device Type Usage</h3>
+  <div className="h-64">
+    {data.deviceTypes.length === 0 ? (
+      <p className="text-gray-500 text-center mt-20">No device data available.</p>
+    ) : (
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={data.deviceTypes}
+            dataKey="visits"
+            nameKey="device"
+            cx="50%"
+            cy="50%"
+            outerRadius={80}
+            label={({ device, visits }) => `${device}: ${visits}`}
+          >
+            {data.deviceTypes.map((entry, index) => (
+              <Cell key={`device-cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip
+            formatter={(value: number) => `${value} visits`}
+            labelFormatter={(label) => `Device: ${label}`}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    )}
+  </div>
+</div>
 
 
         {/* Referral Sources Pie Chart */}
