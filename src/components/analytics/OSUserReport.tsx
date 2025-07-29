@@ -53,7 +53,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
       </div>
       
       {/* OS Statistics List */}
-      <div className="mt-6">
+      <div className="mt-6"> 
         <div className="space-y-0">
           {data.length === 0 ? (
             <p className="text-gray-500 text-center py-4">No operating system data available.</p>
