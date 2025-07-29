@@ -9,8 +9,7 @@ import { useIPTracking } from '../hooks/useIPTracking';
 import { useAuth } from '../contexts/AuthContext';
 import QRCodeGenerator from './QRCodeGenerator';
 import { BarChart3 } from 'lucide-react';
-const MAX_ALIAS_LENGTH = 10;
-const AUTO_CODE_LENGTH = 5;
+
 
 
 interface LinkFormProps {
@@ -44,81 +43,49 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     }));
     
     // Validate URL in real-time
-    if (name === 'original_url') {
-      const url = value.trim();
-      if (url === '') {
-        setUrlValid(null);
-      } else {
-        setUrlValid(validateUrl(url));
-      }
-    }
-  };
+    const MAX_ALIAS_LENGTH = 10;
+const AUTO_CODE_LENGTH = 5;
 
-  const handleTextareaChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
+const generateShortCode = (): string => {
+  return nanoid(AUTO_CODE_LENGTH); // always 5 chars
+};
 
-  const validateUrl = (url: string): boolean => {
-    try {
-      new URL(url);
-      return true;
-    } catch {
-      return false;
-    }
-  };
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError(null);
+  setIsLoading(true);
 
-  const generateShortCode = (): string => {
-    return nanoid(5);
-  };
+  const { original_url, custom_code } = formData;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setIsLoading(true);
+  // Validate URL
+  if (!validateUrl(original_url)) {
+    setError('Invalid URL');
+    setIsLoading(false);
+    return;
+  }
 
-    // Validation
-    if (!formData.original_url.trim()) {
-      setError('Please enter a URL to shorten');
-      setIsLoading(false);
-      return;
-    }
+  // Validate custom alias length if provided
+  if (custom_code && custom_code.length > MAX_ALIAS_LENGTH) {
+    setError(`Custom alias must be less than ${MAX_ALIAS_LENGTH + 1} characters.`);
+    setIsLoading(false);
+    return;
+  }
 
-    if (!validateUrl(formData.original_url)) {
-      setError('Please enter a valid URL (include https:// or https://)');
-      setIsLoading(false);
-      return;
-    }
+  const shortCode = custom_code && custom_code.trim() !== ''
+    ? custom_code.trim()
+    : generateShortCode();
 
-    const shortCode = formData.short_code || generateShortCode();
+  // Proceed with submission using shortCode
+  try {
+    await submitShortenedUrl(original_url, shortCode);
+    // Reset or update UI
+  } catch (err) {
+    setError('Something went wrong.');
+  } finally {
+    setIsLoading(false);
+  }
+};
 
-    try {
-      const { data, error: supabaseError } = await supabase
-        .from('links')
-        .insert({
-          original_url: formData.original_url,
-          short_code: shortCode,
-          title: formData.title || null,
-          description: formData.description || null,
-          user_id: user?.id || null,
-          created_ip: clientIP,
-        })
-        .select()
-        .single();
-
-      if (supabaseError) {
-        if (supabaseError.code === '23505') {
-          setError('This short code is already taken. Please choose another one.');
-        } else {
-          setError('Failed to create short link. Please try again.');
-        }
-        return;
-      }
-
-      setCreatedLink(data);
-      onLinkCreated(data);
       
       // Reset form
       setFormData({
