@@ -486,7 +486,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
 
       <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-        <span>Data updates every 30 seconds • Last updated: {new Date().toLocaleTimeString()}</span>
+        <span> Last updated: {new Date().toLocaleTimeString()}</span>
       </div>
     </div>
   );
