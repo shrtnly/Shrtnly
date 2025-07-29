@@ -102,7 +102,7 @@ const CountryUserReport: React.FC<CountryUserReportProps> = ({ data }) => {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* Country Distribution Pie Chart */}
+        {/* Country Distribution Pie Chart 
         <div>
           <div className="h-0">
             {topCountries.length === 0 ? (
