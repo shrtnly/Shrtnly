@@ -285,37 +285,6 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
   </div>
 </div>
 </div>
-
-
-{data?.osData?.length === 0 ? (
-  <p className="text-gray-500 text-center mt-20">No OS data available.</p>
-) : (
-  <ResponsiveContainer width="100%" height="100%">
-    <PieChart>
-      <Pie
-        data={data?.osData || []}
-        dataKey="visits"
-        nameKey="os"
-        cx="50%"
-        cy="50%"
-        outerRadius={80}
-        innerRadius={40}
-        label={({ os, visits, percent }) =>
-          `${os}: ${visits} (${(percent * 100).toFixed(0)}%)`
-        }
-      >
-        {(data?.osData || []).map((entry, index) => (
-          <Cell key={`os-cell-${index}`} fill={COLORS[index % COLORS.length]} />
-        ))}
-      </Pie>
-      <Tooltip
-        formatter={(value: number) => `${value} visits`}
-        labelFormatter={(label) => `OS: ${label}`}
-      />
-    </PieChart>
-  </ResponsiveContainer>
-)}
-
         
         {/* Referral Sources Pie Chart */}
         <div>
