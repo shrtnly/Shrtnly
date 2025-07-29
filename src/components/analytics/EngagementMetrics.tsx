@@ -328,7 +328,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
 
           
           <div className="mt-4 space-y-2">
-            <h4 className="text-sm font-medium text-gray-700">Top Sources:</h4>
+            <h3 className="text-sm font-medium text-gray-700">Top Sources:</h3>
             {totalClicks === 0 ? (
               <p className="text-gray-500 text-sm">No referral data available.</p>
             ) : (
@@ -349,7 +349,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
             )}
           </div>
                     <div className="mt-4 space-y-2">
-            <h4 className="text-sm font-medium text-gray-700">Top Browsers:</h4>
+            <h3 className="text-sm font-medium text-gray-700">Top Browsers:</h3>
             {totalBrowserVisits === 0 ? (
               <p className="text-gray-500 text-sm">No browser data available.</p>
             ) : (
