@@ -84,7 +84,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
           </div>
         </div>
 
-        {/* OS Usage Bar Chart */}
+        {/* OS Usage Bar Chart 
         <div>
           <h4 className="text-lg font-medium text-gray-900 mb-4">User Count by OS</h4>
           <div className="h-64">
@@ -109,7 +109,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
           </div>
         </div>
       </div>
-
+*/}
       {/* OS Statistics List */}
       <div className="mt-6">
         <h4 className="text-lg font-medium text-gray-900 mb-4">Detailed OS Statistics</h4>
