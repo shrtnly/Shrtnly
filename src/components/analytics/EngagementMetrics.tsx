@@ -4,8 +4,6 @@ import {
   PieChart, Pie, Cell, LineChart, Line, Area, AreaChart,
 } from 'recharts';
 import { Activity, Clock, MousePointer, Target, RefreshCw, TrendingUp, Zap, Users, Eye } from 'lucide-react';
-import OSUserReport from './OSUserReport';
-import CountryUserReport from './CountryUserReport';
 
 interface EngagementMetricsProps {
   data: {
@@ -46,8 +44,6 @@ interface EngagementMetricsProps {
     browserStats: Array<{ browser: string; visits: number; }>;
     clickHeatmap: Array<{ hour: number; day: string; clicks: number }>;
     conversionFunnel: Array<{ stage: string; count: number; percentage: number }>;
-    osUserData: Array<{ os: string; users: number; percentage: number; color: string }>;
-    countryUserData: Array<{ country: string; users: number; percentage: number; color?: string }>;
   };
   onRefresh?: () => void;
 }
@@ -423,15 +419,6 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
   </div>
 </div>
 
-      {/* OS User Report */}
-      <div className="mb-8">
-        <OSUserReport data={data.osUserData} />
-      </div>
-
-      {/* Country User Report */}
-      <div className="mb-8">
-        <CountryUserReport data={data.countryUserData} />
-      </div>
 
       <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>

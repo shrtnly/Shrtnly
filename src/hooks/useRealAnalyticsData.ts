@@ -188,8 +188,6 @@ interface AnalyticsData {
     browserStats: Array<{ browser: string; visits: number; percentage: number; color: string }>;
     clickHeatmap: Array<{ hour: number; day: string; clicks: number }>;
     conversionFunnel: Array<{ stage: string; count: number; percentage: number }>;
-    osUserData: Array<{ os: string; users: number; percentage: number; color: string }>;
-    countryUserData: Array<{ country: string; users: number; percentage: number; color?: string }>;
   };
   performanceData: {
     successMetrics: {
@@ -627,73 +625,6 @@ export const useRealAnalyticsData = () => {
         }))
         .sort((a, b) => b.visits - a.visits);
 
-      // Enhanced OS user analytics from real data
-      const osClickEvents = analytics?.filter(event => event.event_type === 'click') || [];
-      const osCounts = osClickEvents.reduce((acc, event) => {
-        let os = 'Other';
-        
-        if (event.os) {
-          os = event.os;
-        } else if (event.user_agent) {
-          const ua = event.user_agent.toLowerCase();
-          if (ua.includes('windows')) {
-            os = 'Windows';
-          } else if (ua.includes('mac') || ua.includes('darwin')) {
-            os = 'macOS';
-          } else if (ua.includes('linux')) {
-            os = 'Linux';
-          } else if (ua.includes('android')) {
-            os = 'Android';
-          } else if (ua.includes('ios') || ua.includes('iphone') || ua.includes('ipad')) {
-            os = 'iOS';
-          }
-        }
-        
-        acc[os] = (acc[os] || 0) + 1;
-        return acc;
-      }, {} as Record<string, number>);
-
-      // Convert to array and calculate percentages for OS data
-      const totalOSUsers = Object.values(osCounts).reduce((sum, count) => sum + count, 0);
-      const osUserData = Object.entries(osCounts)
-        .map(([os, users]) => {
-          let color = '#6B7280'; // Default gray
-          switch (os.toLowerCase()) {
-            case 'windows': color = '#0078D4'; break;
-            case 'macos': color = '#000000'; break;
-            case 'linux': color = '#FCC419'; break;
-            case 'android': color = '#3DDC84'; break;
-            case 'ios': color = '#007AFF'; break;
-            case 'other': color = '#9CA3AF'; break;
-          }
-          
-          return {
-            os,
-            users,
-            color,
-            percentage: formatPercentage(totalOSUsers > 0 ? (users / totalOSUsers) * 100 : 0)
-          };
-        })
-        .sort((a, b) => b.users - a.users);
-
-      // Enhanced country user analytics from real data
-      const countryClickEvents = analytics?.filter(event => event.event_type === 'click') || [];
-      const countryCounts2 = countryClickEvents.reduce((acc, event) => {
-        const country = event.country || 'Unknown';
-        acc[country] = (acc[country] || 0) + 1;
-        return acc;
-      }, {} as Record<string, number>);
-
-      // Convert to array and calculate percentages for country data
-      const totalCountryUsers = Object.values(countryCounts2).reduce((sum, count) => sum + count, 0);
-      const countryUserData = Object.entries(countryCounts2)
-        .map(([country, users]) => ({
-          country,
-          users,
-          percentage: formatPercentage(totalCountryUsers > 0 ? (users / totalCountryUsers) * 100 : 0)
-        }))
-        .sort((a, b) => b.users - a.users);
-
       // Enhanced device and browser analysis from user agents
       // Calculate real device types from analytics data
       const deviceClickEvents = analytics?.filter(event => event.event_type === 'click') || [];
@@ -954,8 +885,6 @@ export const useRealAnalyticsData = () => {
           browserStats,
           clickHeatmap,
           conversionFunnel,
-          osUserData,
-          countryUserData,
         },
         performanceData: {
           successMetrics: {
