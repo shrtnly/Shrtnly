@@ -251,6 +251,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
   </div>
 </div>
 
+        
 {/* Device Type Chart */}
 <div>
   <h3 className="text-lg font-medium text-gray-900 mb-4">Device Type Usage</h3>
