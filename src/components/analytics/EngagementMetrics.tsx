@@ -283,10 +283,8 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
       </ResponsiveContainer>
     )}
   </div>
-</div>
 
-  
-  <div className="mt-4 space-y-2">
+<div className="mt-4 space-y-2">
   <h4 className="text-sm font-medium text-gray-700">Top Operating Systems:</h4>
   {totalClicks === 0 ? (
     <p className="text-gray-500 text-sm">No OS data available.</p>
@@ -311,6 +309,8 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
   )}
 </div>
 
+  
+</div>
 </div>
 
         
