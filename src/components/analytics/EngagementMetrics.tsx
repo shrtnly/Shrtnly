@@ -350,7 +350,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
           </div>
         </div>
 
-        {/* Browser Type Usage */}
+        {/* Browser Type Usage 
         <div>
           <h3 className="text-lg font-medium text-gray-900 mb-4">Browser Type Usage</h3>
           <div className="h-64">
@@ -377,7 +377,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
               </PieChart>
             </ResponsiveContainer>
           </div>
-
+*/}
           <div className="mt-4 space-y-2">
             <h4 className="text-sm font-medium text-gray-700">Top Browsers:</h4>
             {totalBrowserVisits === 0 ? (
