@@ -654,9 +654,6 @@ export const useRealAnalyticsData = () => {
           console.warn('User country detection failed:', error);
         }
       }
-        acc[country] = (acc[country] || 0) + 1;
-        return acc;
-      }, {} as Record<string, number>);
 
       // Convert to array and calculate percentages
       const totalGeoClicks = Object.values(countryCounts).reduce((sum, count) => sum + count, 0);
