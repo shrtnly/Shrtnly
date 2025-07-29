@@ -249,10 +249,7 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
       </ResponsiveContainer>
     )}
   </div>
-</div>
-
-        
-{/* Device Type Chart */}
+  {/* Device Type Chart */}
 <div>
   <h3 className="text-lg font-medium text-gray-900 mb-4">Device Type Usage</h3>
   <div className="h-64">
@@ -283,6 +280,10 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
     )}
   </div>
 </div>
+</div>
+
+        
+
 
 
         {/* Referral Sources Pie Chart */}
