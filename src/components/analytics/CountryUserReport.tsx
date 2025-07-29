@@ -98,7 +98,7 @@ const CountryUserReport: React.FC<CountryUserReportProps> = ({ data }) => {
         <div className="p-2 bg-green-100 rounded-lg">
           <Globe className="w-6 h-6 text-green-600" />
         </div>
-        <h3 className="text-xl font-semibold text-gray-900">Geographic User Distribution</h3>
+        <h3 className="text-xl font-semibold text-gray-900">Geographic Visit Distribution</h3>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
