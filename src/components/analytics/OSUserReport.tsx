@@ -64,12 +64,12 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
                   {getOSIcon(osData.os)}
                   <div>
                     <div className="font-medium text-gray-900">{osData.os}</div>
-                    <div className="text-sm text-gray-600">{osData.percentage}% of total users</div>
+                    <div className="text-sm text-gray-600">{osData.percentage}% of total clicks</div>
                   </div>
                 </div>
                 <div className="text-right">
                   <div className="text-lg font-semibold text-gray-900">{formatNumber(osData.users)}</div>
-                  <div className="text-sm text-gray-500">users</div>
+                  <div className="text-sm text-gray-500">Clicks</div>
                 </div>
               </div>
             ))
@@ -82,7 +82,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
         <div className="grid gap-4 md:grid-cols-3">
           <div className="text-center">
             <div className="text-2xl font-bold text-blue-900">{formatNumber(totalUsers)}</div>
-            <div className="text-sm text-blue-700">Total Users</div>
+            <div className="text-sm text-blue-700">Total Clicks</div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-blue-900">{data.length}</div>
