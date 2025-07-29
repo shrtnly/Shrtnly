@@ -45,7 +45,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
         <div className="p-2 bg-blue-100 rounded-lg">
           <Monitor className="w-6 h-6 text-blue-600" />
         </div>
-        <h3 className="text-xl font-semibold text-gray-900">Operating System Analytics</h3>
+        <h3 className="text-xl font-semibold text-gray-900">Detailed OS Statistics</h3>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -53,9 +53,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
       </div>
       
       {/* OS Statistics List */}
-      <div className="mt-6">
-        <h4 className="text-lg font-medium text-gray-900 mb-4">Detailed OS Statistics</h4>
-        <div className="space-y-3">
+      
           {data.length === 0 ? (
             <p className="text-gray-500 text-center py-4">No operating system data available.</p>
           ) : (
