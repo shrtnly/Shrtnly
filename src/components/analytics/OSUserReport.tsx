@@ -50,6 +50,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
 
       <div className="grid gap-6 lg:grid-cols-2">
 
+      </div>
       
       {/* OS Statistics List */}
       <div className="mt-6">
@@ -96,6 +97,7 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
           </div>
         </div>
       </div>
+    </div>
   );
 };
 
