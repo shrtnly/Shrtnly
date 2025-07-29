@@ -49,67 +49,8 @@ const OSUserReport: React.FC<OSUserReportProps> = ({ data }) => {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* OS Distribution Chart 
-        <div>
-          <h4 className="text-lg font-medium text-gray-900 mb-4">OS Distribution</h4>
-          <div className="h-64">
-            {data.length === 0 ? (
-              <div className="flex items-center justify-center h-full text-gray-500">
-                No OS data available
-              </div>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <PieChart>
-                  <Pie
-                    data={data}
-                    cx="50%"
-                    cy="50%"
-                    outerRadius={80}
-                    innerRadius={40}
-                    dataKey="users"
-                    nameKey="os"
-                    label={({ os, percentage }) => `${os}: ${percentage}%`}
-                  >
-                    {data.map((entry, index) => (
-                      <Cell key={`os-cell-${index}`} fill={entry.color} />
-                    ))}
-                  </Pie>
-                  <Tooltip
-                    formatter={(value: number) => [`${formatNumber(value)} users`, 'Users']}
-                    labelFormatter={(label) => `OS: ${label}`}
-                  />
-                </PieChart>
-              </ResponsiveContainer>
-            )}
-          </div>
-        </div>
 
-        {/* OS Usage Bar Chart 
-        <div>
-          <h4 className="text-lg font-medium text-gray-900 mb-4">User Count by OS</h4>
-          <div className="h-64">
-            {data.length === 0 ? (
-              <div className="flex items-center justify-center h-full text-gray-500">
-                No OS data available
-              </div>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={data} layout="horizontal">
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis type="number" />
-                  <YAxis dataKey="os" type="category" width={80} />
-                  <Tooltip
-                    formatter={(value: number) => [`${formatNumber(value)} users`, 'Users']}
-                    labelFormatter={(label) => `OS: ${label}`}
-                  />
-                  <Bar dataKey="users" fill="#3B82F6" />
-                </BarChart>
-              </ResponsiveContainer>
-            )}
-          </div>
-        </div>
-      </div>
-*/}
+      
       {/* OS Statistics List */}
       <div className="mt-6">
         <h4 className="text-lg font-medium text-gray-900 mb-4">Detailed OS Statistics</h4>
