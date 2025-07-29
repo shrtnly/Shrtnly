@@ -14,6 +14,7 @@ const Navigation: React.FC = () => {
 
   const navItems = [
     { path: '/', label: 'Home', icon: Link2 },
+    { path: '/analytics', label: 'Analytics', icon: BarChart3 },
     { path: '/contact', label: 'Contact', icon: Mail },
   ];
 
@@ -22,7 +23,7 @@ const Navigation: React.FC = () => {
     { path: '/features/monitoring-analysis', label: 'Monitoring & Analysis', icon: TrendingUp, description: 'Real-time analytics and insights' },
     { path: '/features/how-it-works', label: 'How It Works', icon: HelpCircle, description: 'Simple 4-step process' },
     { path: '/features/about', label: 'About Shrtnly', icon: Info, description: 'Our story and mission' },
-    { path: '/privacy', label: 'Privacy', icon: Shield, description: 'Data protection policy' },
+    { path: '/privacy', label: 'Privacy Policy', icon: Shield, description: 'Data protection policy' },
     { path: '/blog', label: 'Blog', icon: FileText, description: 'Tips and insights' },
   ];
   return (
