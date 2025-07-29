@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
         <div className="max-w-6xl mx-auto">
 
     {/* Hero animated paragraphs */}
-      <div className="mb-12">
+      <div className="mb-2">
         <AnimatedParagraphs />
       </div>
           
