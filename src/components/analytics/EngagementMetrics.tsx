@@ -283,39 +283,8 @@ const EngagementMetrics: React.FC<EngagementMetricsProps> = ({ data, onRefresh }
       </ResponsiveContainer>
     )}
   </div>
-
-<div className="mt-4 space-y-2">
-  <h4 className="text-sm font-medium text-gray-700">Top Operating Systems:</h4>
-  {totalClicks === 0 ? (
-    <p className="text-gray-500 text-sm">No OS data available.</p>
-  ) : (
-    <div className="grid gap-2">
-      {osData.slice(0, 3).map((osItem, index) => (
-        <div key={index} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
-          <div className="flex items-center gap-2">
-            <div
-              className="w-3 h-3 rounded-full"
-              style={{ backgroundColor: osItem.color }}
-            />
-            <span className="text-sm font-medium text-gray-700">{osItem.os}</span>
-          </div>
-          <div className="text-right">
-            <span className="text-sm font-semibold text-gray-900">{osItem.visits}</span>
-            <span className="text-xs text-gray-500 ml-1">({osItem.percentage}%)</span>
-          </div>
-        </div>
-      ))}
-    </div>
-  )}
-</div>
-
-  
 </div>
 </div>
-
-        
-
-
 
         {/* Referral Sources Pie Chart */}
         <div>
