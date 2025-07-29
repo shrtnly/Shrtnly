@@ -138,7 +138,7 @@ const CountryUserReport: React.FC<CountryUserReportProps> = ({ data }) => {
           </div>
         </div>
 
-        {/* Country Usage Bar Chart */}
+        {/* Country Usage Bar Chart 
         <div>
           <h4 className="text-lg font-medium text-gray-900 mb-4">User Count by Country</h4>
           <div className="h-64">
@@ -169,6 +169,7 @@ const CountryUserReport: React.FC<CountryUserReportProps> = ({ data }) => {
           </div>
         </div>
       </div>
+      */}
 
       {/* Country Statistics List */}
       <div className="mt-6">
