@@ -43,6 +43,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     }));
     
     // Validate URL in real-time
+    const MAX_ALIAS_LENGTH = 10;
     if (name === 'original_url') {
       const url = value.trim();
       if (url === '') {
