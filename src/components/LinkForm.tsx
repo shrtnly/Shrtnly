@@ -36,19 +36,27 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    const MAX_ALIAS_LENGTH = 10;
+    
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
     
-    // Validate URL in real-time
-    const MAX_ALIAS_LENGTH = 10;
+    // Validate URL and alias in real-time
     if (name === 'original_url') {
       const url = value.trim();
       if (url === '') {
         setUrlValid(null);
       } else {
         setUrlValid(validateUrl(url));
+      }
+    } else if (name === 'short_code') {
+      // Validate custom alias length in real-time
+      if (value.length > MAX_ALIAS_LENGTH) {
+        setError(`Custom alias must be ${MAX_ALIAS_LENGTH} characters or less.`);
+      } else {
+        setError(null);
       }
     }
   };
@@ -78,9 +86,11 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     setError(null);
     setIsLoading(true);
 
-    // Validate custom alias length if provided
-    if (formData.short_code && formData.short_code.length > MAX_ALIAS_LENGTH) {
-      setError(`Custom alias must be less than ${MAX_ALIAS_LENGTH + 1} characters.`);
+    const MAX_ALIAS_LENGTH = 10;
+    
+    // Validate custom alias length if provided (user input)
+    if (formData.short_code && formData.short_code.trim().length > MAX_ALIAS_LENGTH) {
+      setError(`Custom alias must be ${MAX_ALIAS_LENGTH} characters or less.`);
       setIsLoading(false);
       return;
     }
@@ -98,6 +108,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
       return;
     }
 
+    // Generate short code: 5 chars if auto-generated, user input if provided
     const shortCode = formData.short_code || generateShortCode();
 
     try {
@@ -303,9 +314,11 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
               className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               pattern="[a-zA-Z0-9_-]+"
               maxLength={5}
+              maxLength={10}
               title="Only letters, numbers, hyphens, and underscores allowed"
             />
             <p className="mt-1 text-xs sm:text-sm text-gray-500">
+              Max 10 characters
             </p>
           </div>
         </div>
