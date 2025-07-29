@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import { supabase } from '../lib/supabase';
 import { getClientIP } from '../lib/ipUtils';
+import { detectUserCountry, getLocationFromIP, standardizeCountryName } from '../lib/geoUtils';
 
 // Helper function to analyze user agents for device types
 const analyzeUserAgents = (userAgents: string[]): Array<{ device: string; visits: number; percentage: number; color: string }> => {
@@ -611,8 +612,48 @@ export const useRealAnalyticsData = () => {
       // Enhanced geographic data with real IP analysis
       // Calculate real geographic data from analytics
       const geoClickEvents = analytics?.filter(event => event.event_type === 'click') || [];
-      const countryCounts = geoClickEvents.reduce((acc, event) => {
-        const country = event.country || 'Unknown';
+      
+      // Enhanced country detection with multiple data sources
+      const countryCounts = await Promise.all(
+        geoClickEvents.map(async (event) => {
+          let country = 'Unknown';
+          
+          // Priority 1: Use stored country data
+          if (event.country && event.country !== 'Unknown') {
+            country = standardizeCountryName(event.country);
+          }
+          // Priority 2: Try IP-based detection
+          else if (event.ip_address) {
+            try {
+              const location = await getLocationFromIP(event.ip_address);
+              if (location && location.country !== 'Unknown') {
+                country = standardizeCountryName(location.country);
+              }
+            } catch (error) {
+              console.warn('IP geolocation failed:', error);
+            }
+          }
+          
+          return { event, country };
+        })
+      ).then(results => {
+        return results.reduce((acc, { country }) => {
+          acc[country] = (acc[country] || 0) + 1;
+          return acc;
+        }, {} as Record<string, number>);
+      });
+      
+      // If no analytics data, try to detect current user's country
+      if (Object.keys(countryCounts).length === 0) {
+        try {
+          const userCountry = await detectUserCountry();
+          if (userCountry !== 'Unknown') {
+            countryCounts[userCountry] = 1;
+          }
+        } catch (error) {
+          console.warn('User country detection failed:', error);
+        }
+      }
         acc[country] = (acc[country] || 0) + 1;
         return acc;
       }, {} as Record<string, number>);
@@ -677,16 +718,24 @@ export const useRealAnalyticsData = () => {
         .sort((a, b) => b.users - a.users);
 
       // Enhanced country user analytics from real data
-      const countryClickEvents = analytics?.filter(event => event.event_type === 'click') || [];
-      const countryCounts2 = countryClickEvents.reduce((acc, event) => {
-        const country = event.country || 'Unknown';
-        acc[country] = (acc[country] || 0) + 1;
-        return acc;
-      }, {} as Record<string, number>);
+      // Use the same enhanced country detection for user analytics
+      const countryUserCounts = { ...countryCounts };
+      
+      // Add current user's country if not already included
+      if (Object.keys(countryUserCounts).length === 0) {
+        try {
+          const currentUserCountry = await detectUserCountry();
+          if (currentUserCountry !== 'Unknown') {
+            countryUserCounts[currentUserCountry] = 1;
+          }
+        } catch (error) {
+          console.warn('Current user country detection failed:', error);
+        }
+      }
 
       // Convert to array and calculate percentages for country data
-      const totalCountryUsers = Object.values(countryCounts2).reduce((sum, count) => sum + count, 0);
-      const countryUserData = Object.entries(countryCounts2)
+      const totalCountryUsers = Object.values(countryUserCounts).reduce((sum, count) => sum + count, 0);
+      const countryUserData = Object.entries(countryUserCounts)
         .map(([country, users]) => ({
           country,
           users,
