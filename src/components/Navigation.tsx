@@ -14,12 +14,13 @@ const Navigation: React.FC = () => {
   const [authModalOpen, setAuthModalOpen] = React.useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [featuresDropdownOpen, setFeaturesDropdownOpen] = React.useState(false);
-
+  const [mobileFeaturesOpen, setMobileFeaturesOpen] = React.useState(false);
+  
   const navItems = [
     { path: '/', label: 'Home', icon: Link2 },
     { path: '/analytics', label: 'Analytics', icon: BarChart3 },
   ];
-
+  
   const featuresItems = [
     { path: '/features/link-management', label: 'Link Management', icon: Settings, description: 'Advanced URL management tools' },
     { path: '/features/monitoring-analysis', label: 'Monitoring & Analysis', icon: TrendingUp, description: 'Real-time analytics and insights' },
@@ -45,7 +46,7 @@ const Navigation: React.FC = () => {
             </div>
             <span className="hidden sm:block">Shrtnly</span>
           </Link>
-
+          
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => {
@@ -64,7 +65,7 @@ const Navigation: React.FC = () => {
                 </Link>
               );
             })}
-
+            
             {/* Features Dropdown */}
             <div className="relative">
               <button
@@ -75,7 +76,6 @@ const Navigation: React.FC = () => {
                 Features
                 <ChevronDown className={`w-4 h-4 transition-transform ${featuresDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
-
               {featuresDropdownOpen && (
                 <div className="absolute top-full left-0 mt-1 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50 max-h-[80vh] overflow-y-auto">
                   {featuresItems.map((item) => {
@@ -99,7 +99,7 @@ const Navigation: React.FC = () => {
               )}
             </div>
           </div>
-
+          
           {/* Auth + Mobile Toggle */}
           <div className="flex items-center gap-3">
             {user ? (
@@ -112,7 +112,7 @@ const Navigation: React.FC = () => {
                 Sign In
               </button>
             )}
-
+            
             {/* Mobile Hamburger */}
             <div className="md:hidden">
               <button
@@ -127,7 +127,7 @@ const Navigation: React.FC = () => {
             </div>
           </div>
         </div>
-
+        
         {/* Mobile Navigation */}
         <div className={`md:hidden border-t border-gray-200 transition-all duration-300 ease-in-out ${
           mobileMenuOpen ? 'max-h-[500px] opacity-100 py-4' : 'max-h-0 opacity-0 overflow-hidden'
@@ -150,31 +150,43 @@ const Navigation: React.FC = () => {
                 </Link>
               );
             })}
-
-            {/* Mobile Features List */}
+            
+            {/* Mobile Features Dropdown */}
             <div className="border-t border-gray-200 pt-2 mt-2">
-              <div className="px-4 py-2 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                Features
-              </div>
-              {featuresItems.map((item) => {
-                const Icon = item.icon;
-                const isActive = location.pathname === item.path;
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors min-h-[44px] ${
-                      isActive ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
-                    }`}
-                  >
-                    <Icon size={18} />
-                    {item.label}
-                  </Link>
-                );
-              })}
+              <button
+                onClick={() => setMobileFeaturesOpen(!mobileFeaturesOpen)}
+                className="flex items-center justify-between w-full px-4 py-3 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 min-h-[44px]"
+              >
+                <div className="flex items-center gap-3">
+                  <Settings size={18} />
+                  Features
+                </div>
+                <ChevronDown className={`w-4 h-4 transition-transform ${mobileFeaturesOpen ? 'rotate-180' : ''}`} />
+              </button>
+              
+              {mobileFeaturesOpen && (
+                <div className="mt-1 ml-4 border-l border-gray-200 pl-2">
+                  {featuresItems.map((item) => {
+                    const Icon = item.icon;
+                    const isActive = location.pathname === item.path;
+                    return (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className={`flex items-center gap-3 px-4 py-3 rounded-lg font-medium transition-colors min-h-[44px] ${
+                          isActive ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-100'
+                        }`}
+                      >
+                        <Icon size={18} />
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
             </div>
-
+            
             {/* Mobile Sign In */}
             {!user && (
               <button
@@ -193,7 +205,6 @@ const Navigation: React.FC = () => {
           </div>
         </div>
       </div>
-
       <AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} />
     </nav>
   );
