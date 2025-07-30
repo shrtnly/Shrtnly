@@ -243,7 +243,7 @@ const ContactPage: React.FC = () => {
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">Phone Support</p>
-                      <p className="text-sm text-gray-600">+1 (555) 123-LINK</p>
+                      <p className="text-sm text-gray-600">+880 1815 311 232</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
