@@ -32,6 +32,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
+      
+      // Clear stale tokens if no valid session exists
+      if (!session) {
+        supabase.auth.signOut();
+      }
+      
       setLoading(false);
     });
 
