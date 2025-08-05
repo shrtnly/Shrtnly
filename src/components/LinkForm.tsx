@@ -247,12 +247,12 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
   };
 
   return (
-    <div className="bg-surface-primary rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 border border-border-primary w-full max-w-4xl mx-auto transition-colors duration-theme">
+    <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8 border border-gray-100 w-full max-w-4xl mx-auto">
       <div className="flex items-center gap-3 mb-6">
         <div className="p-2 bg-blue-100 rounded-lg">
           <Link2 className="w-6 h-6 text-blue-600" />
         </div>
-        <h2 className="text-xl sm:text-2xl font-bold text-text-primary">Shorten Your URL</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Shorten Your URL</h2>
       </div>
 
       <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" id="link-form">
@@ -261,7 +261,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 
                     {/* Original URL */} 
           <div className="md:col-span-7">
-            <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-text-primary mb-2">
+            <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
               Original URL *
             </label>
             <div className="relative">
@@ -272,12 +272,12 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
                 value={formData.original_url}
                 onChange={handleChange}
                 placeholder="https://example.com/long-url"
-                className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors duration-theme bg-surface-primary text-text-primary ${
+                className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
                   urlValid === null 
-                    ? 'border-border-primary focus:border-blue-500' 
+                    ? 'border-gray-300 focus:border-blue-500' 
                     : urlValid 
-                      ? 'border-green-300 focus:border-green-500 bg-green-50 dark:bg-green-900/20' 
-                      : 'border-red-300 focus:border-red-500 bg-red-50 dark:bg-red-900/20'
+                      ? 'border-green-300 focus:border-green-500 bg-green-50' 
+                      : 'border-red-300 focus:border-red-500 bg-red-50'
                 }`}
                 required
                 aria-describedby={error ? "url-error" : undefined}
@@ -301,7 +301,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 
           {/* Custom Short Code */}
           <div className="md:col-span-3">
-            <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-text-primary mb-2">
+            <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white mb-2">
              B
             </label>
             <input
@@ -311,7 +311,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
               value={formData.short_code}
               onChange={handleChange}
               placeholder="Alias (optional)"
-              className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-border-primary rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-theme bg-surface-primary text-text-primary"
+              className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               pattern="[a-zA-Z0-9_-]+"
               maxLength={5}
               maxLength={10}
@@ -327,7 +327,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 <div className="md:col-span-3">
   <label
     htmlFor="custom_domain"
-    className="block text-sm sm:text-base font-medium text-text-primary mb-2"
+    className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
   >
     Customize your link
   </label>
@@ -345,16 +345,16 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           window.open("https://t.ly/register?via=dawod", "_blank");
         }
       }}
-      className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border border-border-primary rounded-lg pr-10 text-text-primary bg-surface-primary focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-theme"
+      className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg pr-10 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
     >
       <option value="shrtnly.pro"> https://shrtnly.pro</option>
-      <option value="add_domain" className="text-text-tertiary">
+      <option value="add_domain" className="text-gray-500">
         🔒Add Custom Domain
       </option>
     </select>
 
     {/* Dropdown arrow */}
-    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-text-tertiary">
+    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
       <svg
         className="w-4 h-4"
         fill="none"
@@ -377,11 +377,11 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
 
         
         {/* Advanced Options Toggle */}
-        <div className="border-t border-border-primary pt-4">
+        <div className="border-t border-gray-200 pt-4">
           <button
             type="button"
             onClick={() => setShowAdvanced(!showAdvanced)}
-            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors duration-theme focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 min-h-[44px]"
+            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 min-h-[44px]"
             aria-expanded={showAdvanced}
             aria-controls="advanced-options"
           >
@@ -407,7 +407,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           <div className="space-y-4 pt-2">
             {/* Title */}
             <div>
-              <label htmlFor="title" className="block text-sm sm:text-base font-medium text-text-primary mb-2">
+              <label htmlFor="title" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                 Title (optional)
               </label>
               <input
@@ -417,13 +417,13 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
                 value={formData.title}
                 onChange={handleChange}
                 placeholder="Link Title"
-                className="w-full px-4 py-3 text-sm sm:text-base border border-border-primary rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-theme bg-surface-primary text-text-primary"
+                className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
               />
             </div>
 
             {/* Description */}
             <div>
-              <label htmlFor="description" className="block text-sm sm:text-base font-medium text-text-primary mb-2">
+              <label htmlFor="description" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
                 Description (optional)
               </label>
               <textarea
@@ -433,7 +433,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
                 onChange={handleTextareaChange}
                 placeholder="What does this link lead to?"
                 rows={3}
-                className="w-full px-4 py-3 text-sm sm:text-base border border-border-primary rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-theme resize-vertical bg-surface-primary text-text-primary"
+                className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-vertical"
               />
             </div>
           </div>
@@ -443,7 +443,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         {error && (
           <div 
             id="url-error"
-            className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-red-700 dark:text-red-300 transition-colors duration-theme"
+            className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700"
             role="alert"
             aria-live="polite"
           >
@@ -455,7 +455,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full bg-blue-600 text-white py-3 sm:py-4 px-6 rounded-lg font-medium text-sm sm:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors duration-theme min-h-[44px]"
+          className="w-full bg-blue-600 text-white py-3 sm:py-4 px-6 rounded-lg font-medium text-sm sm:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px]"
         >
           {isLoading ? 'Shortening URL...' : 'Shorten URL Now'}
         </button>
@@ -465,29 +465,29 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
       {createdLink && (
         <div 
           ref={resultRef}
-          className="mt-6 sm:mt-8 p-4 sm:p-6 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg transition-colors duration-theme"
+          className="mt-6 sm:mt-8 p-4 sm:p-6 bg-green-50 border border-green-200 rounded-lg"
           tabIndex={-1}
           aria-labelledby="success-title"
         >
-          <h3 id="success-title" className="text-base sm:text-lg font-semibold text-green-800 dark:text-green-300 mb-4 text-center">
+          <h3 id="success-title" className="text-base sm:text-lg font-semibold text-green-800 mb-4 text-center">
             Your Short Link is Ready!
           </h3>
           
           {/* Short Link Display */}
           <div className="mb-6">
-            <label className="block text-sm sm:text-base font-medium text-text-primary mb-2">Your Short Link</label>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-3 sm:p-4 bg-surface-primary rounded-lg border-2 border-green-300 dark:border-green-700 shadow-sm transition-colors duration-theme">
+            <label className="block text-sm sm:text-base font-medium text-gray-700 mb-2">Your Short Link</label>
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 p-3 sm:p-4 bg-white rounded-lg border-2 border-green-300 shadow-sm">
               <input
                 type="text"
                 value={`${window.location.origin}/${createdLink.short_code}`}
                 readOnly
-                className="flex-1 text-sm sm:text-lg font-mono text-blue-600 dark:text-blue-400 bg-transparent focus:outline-none select-all break-all"
+                className="flex-1 text-sm sm:text-lg font-mono text-blue-600 bg-transparent focus:outline-none select-all break-all"
                 aria-label="Generated short URL"
                 onClick={(e) => e.currentTarget.select()}
               />
               <button
                 onClick={copyToClipboard}
-                className={`px-4 py-3 rounded-lg font-medium transition-all duration-theme focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[44px] text-sm sm:text-base ${
+                className={`px-4 py-3 rounded-lg font-medium transition-all focus:outline-none focus:ring-2 focus:ring-blue-500 min-h-[44px] text-sm sm:text-base ${
                   copied 
                     ? 'bg-green-600 text-white' 
                     : 'bg-blue-600 text-white hover:bg-blue-700'
@@ -535,18 +535,18 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           {/* Link Details */}
           <div className="mb-6 space-y-2">
             {createdLink.title && (
-              <p className="text-xs sm:text-sm text-text-secondary break-words">
+              <p className="text-xs sm:text-sm text-gray-600 break-words">
                 <strong>Title:</strong> {createdLink.title}
               </p>
             )}
-            <p className="text-xs sm:text-sm text-text-secondary break-words">
+            <p className="text-xs sm:text-sm text-gray-600 break-words">
               <strong>Original URL:</strong> 
               <span className="break-all ml-1">{createdLink.original_url}</span>
             </p>
           </div>
           
           {/* QR Code Section */}
-          <div className="border-t border-green-200 dark:border-green-800 pt-6">
+          <div className="border-t border-green-200 pt-6">
             <div className="flex justify-center overflow-x-auto">
               <QRCodeGenerator 
                 url={`${window.location.origin}/${createdLink.short_code}`}

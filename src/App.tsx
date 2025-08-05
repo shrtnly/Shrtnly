@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
-import { useDarkMode } from './hooks/useDarkMode';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -20,16 +19,14 @@ import BlogPage from './pages/BlogPage';
 import LinkRedirect from './components/LinkRedirect';
 
 function App() {
-  const { theme, isDark, setTheme } = useDarkMode();
-
   return (
     <AuthProvider>
       <Router>
         <Routes>
           {/* Specific application routes with layout */}
           <Route path="/" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <HomePage />
@@ -40,8 +37,8 @@ function App() {
           } />
           
           <Route path="/analytics" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <AnalyticsPage />
@@ -52,8 +49,8 @@ function App() {
           } />
           
           <Route path="/privacy" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <PrivacyPage />
@@ -64,8 +61,8 @@ function App() {
           } />
           
           <Route path="/contact" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <ContactPage />
@@ -76,8 +73,8 @@ function App() {
           } />
           
           <Route path="/verify-email" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <VerifyEmailPage />
@@ -88,8 +85,8 @@ function App() {
           } />
           
           <Route path="/reset-password" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <ResetPasswordPage />
@@ -100,8 +97,8 @@ function App() {
           } />
           
           <Route path="/forgot-password" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <ForgotPasswordPage />
@@ -112,8 +109,8 @@ function App() {
           } />
           
           <Route path="/auth/callback" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <AuthCallbackPage />
@@ -125,8 +122,8 @@ function App() {
           
           {/* Features Pages */}
           <Route path="/features/link-management" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <LinkManagementPage />
@@ -137,8 +134,8 @@ function App() {
           } />
           
           <Route path="/features/monitoring-analysis" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <MonitoringAnalysisPage />
@@ -149,8 +146,8 @@ function App() {
           } />
           
           <Route path="/features/how-it-works" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <HowItWorksPage />
@@ -161,8 +158,8 @@ function App() {
           } />
           
           <Route path="/features/about" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <AboutPage />
@@ -173,8 +170,8 @@ function App() {
           } />
           
           <Route path="/blog" element={
-            <div className="min-h-screen flex flex-col bg-background-primary text-text-primary transition-colors duration-theme">
-              <Navigation theme={theme} isDark={isDark} onThemeChange={setTheme} />
+            <div className="min-h-screen flex flex-col">
+              <Navigation />
               
               <main className="flex-1">
                 <BlogPage />
