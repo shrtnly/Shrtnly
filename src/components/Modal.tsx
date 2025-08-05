@@ -66,16 +66,16 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children, classNa
       <FocusLock>
         <div
           ref={modalRef}
-          className={`relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-screen overflow-y-auto ${className}`}
+          className={`relative bg-surface-primary rounded-lg shadow-xl max-w-md w-full mx-4 max-h-screen overflow-y-auto transition-colors duration-theme ${className}`}
         >
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <h2 id="modal-title" className="text-xl font-semibold text-gray-900">
+          <div className="flex items-center justify-between p-6 border-b border-border-primary">
+            <h2 id="modal-title" className="text-xl font-semibold text-text-primary">
               {title}
             </h2>
             <button
               onClick={onClose}
-              className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="p-2 text-text-tertiary hover:text-text-secondary hover:bg-surface-secondary rounded-full transition-colors duration-theme focus:outline-none focus:ring-2 focus:ring-blue-500"
               aria-label="Close modal"
             >
               <X size={20} />

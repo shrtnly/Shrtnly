@@ -1,3 +1,78 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* CSS Custom Properties for Theme Management */
+:root {
+  /* Light theme colors */
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f8fafc;
+  --color-background-tertiary: #f1f5f9;
+  
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #6b7280;
+  
+  --color-border-primary: #e5e7eb;
+  --color-border-secondary: #d1d5db;
+  
+  --color-surface-primary: #ffffff;
+  --color-surface-secondary: #f9fafb;
+  --color-surface-elevated: #ffffff;
+  
+  /* Brand colors - adapted for light mode */
+  --color-brand-primary: #2563eb;
+  --color-brand-secondary: #3b82f6;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-error: #dc2626;
+}
+
+/* Dark theme colors */
+.dark {
+  --color-background-primary: #0f172a;
+  --color-background-secondary: #1e293b;
+  --color-background-tertiary: #334155;
+  
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-tertiary: #94a3b8;
+  
+  --color-border-primary: #334155;
+  --color-border-secondary: #475569;
+  
+  --color-surface-primary: #1e293b;
+  --color-surface-secondary: #334155;
+  --color-surface-elevated: #475569;
+  
+  /* Brand colors - adapted for dark mode */
+  --color-brand-primary: #3b82f6;
+  --color-brand-secondary: #60a5fa;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+/* Base styles with theme support */
+html {
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+body {
+  background-color: var(--color-background-primary);
+  color: var(--color-text-primary);
+  transition: background-color 250ms ease-in-out, color 250ms ease-in-out;
+}
+
+/* Ensure proper contrast for accessibility */
+@media (prefers-contrast: high) {
+  :root {
+    --color-text-primary: #000000;
+    --color-background-primary: #ffffff;
+  }
+  
+  .dark {
+    --color-text-primary: #ffffff;
+    --color-background-primary: #000000;
+  }
+}
