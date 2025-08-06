@@ -273,8 +273,6 @@ const MonitoringAnalysisPage: React.FC = () => {
               Get detailed insights into your link performance with our advanced analytics platform. 
               Make data-driven decisions that improve your marketing results.
             </p>
-import { LayoutDashboard } from "lucide-react";
-
 <button
   onClick={() => window.location.href = '/analytics'}
   className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
