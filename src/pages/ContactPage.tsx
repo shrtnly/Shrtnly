@@ -305,14 +305,14 @@ const ContactPage: React.FC = () => {
               </div>
 
 */}
-              {/* Response Time */}
+              {/* Response Time
               <div className="bg-green-50 rounded-xl p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Support Guarantee</h3>
                 <p className="text-gray-600 text-sm">
                   We guarantee a response within 4 hours during business days for all support requests. 
                   Enterprise customers receive priority support with 1-hour response times.
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
