@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
         <span>Download high-quality QR codes for print and digital use</span>
       </div>
       <div className="flex items-start gap-3">
-        <span className="w-2.5 h-2.5 mt-2 bg-green-400 rounded-full flex-shrink-0"></span>
+        <span className="w-2.5 h-2.5 mt-2 bg-white rounded-full flex-shrink-0"></span>
         <span>Monitor performance with real-time click analytics</span>
       </div>
     </div>
