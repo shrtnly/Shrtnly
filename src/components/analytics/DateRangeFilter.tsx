@@ -29,14 +29,14 @@ const DateRangeFilter: React.FC<DateRangeFilterProps> = ({
   const [showDateDropdown, setShowDateDropdown] = useState(false);
 
   const quickFilters = [
+    { value: 'all', label: 'All Time' },
+    { value: 'custom', label: 'Custom Range' },
     { value: 'today', label: 'Today' },
     { value: '7d', label: 'Last 7 Days' },
     { value: '30d', label: 'Last 30 Days' },
     { value: '90d', label: 'Last 3 Months' },
     { value: '6m', label: 'Last 6 Months' },
     { value: '1y', label: 'Last Year' },
-    { value: 'all', label: 'All Time' },
-    { value: 'custom', label: 'Custom Range' },
   ];
 
   const handleQuickFilter = (value: string) => {
