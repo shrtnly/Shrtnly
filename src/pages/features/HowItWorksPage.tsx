@@ -350,7 +350,7 @@ const HowItWorksPage: React.FC = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white text-center">
+          <div className="bg-blue-600 rounded-xl p-8 text-white text-center">
             <h2 className="text-2xl font-semibold mb-4">Ready to Start Shortening URLs?</h2>
             <p className="text-lg mb-6 text-blue-100">
               Join thousands of marketers, businesses, and content creators who trust Shrtnly 
