@@ -267,21 +267,25 @@ const MonitoringAnalysisPage: React.FC = () => {
           </div>
 
           {/* CTA Section */}
-          <div className="bg-white rounded-xl shadow-lg p-8 text-center">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Start Tracking Your Link Performance Today</h2>
-            <p className="text-lg text-gray-600 mb-6">
-              Get detailed insights into your link performance with our advanced analytics platform. 
-              Make data-driven decisions that improve your marketing results.
-            </p>
-<button
-  onClick={() => window.location.href = '/analytics'}
-  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold flex items-center gap-2 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
->
-  <LayoutDashboard className="w-5 h-5" />
-  View Analytics Dashboard
-</button>
+<div className="bg-white rounded-2xl shadow-xl p-10 sm:p-12 md:p-16 text-center space-y-6">
+  <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
+    Start Tracking Your Link Performance Today
+  </h2>
 
-          </div>
+  <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+    Gain access to powerful analytics and insights for every short link you create. Make data-driven decisions that drive results and improve marketing performance.
+  </p>
+
+  <div className="flex justify-center">
+    <button
+      onClick={() => window.location.href = '/analytics'}
+      className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 sm:px-8 py-3 sm:py-3.5 rounded-lg text-base font-medium hover:bg-green-700 transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+    >
+      <LayoutDashboard className="w-5 h-5" />
+      View Analytics Dashboard
+    </button>
+  </div>
+</div>
         </div>
       </main>
     </div>
