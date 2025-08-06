@@ -227,7 +227,7 @@ const ContactPage: React.FC = () => {
  {/* FAQ */}
               
               <div className="bg-white rounded-xl p-9">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Common Questions</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-4">FAQ</h3>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-medium text-gray-900 mb-1">Do shortened links expire?</h4>
