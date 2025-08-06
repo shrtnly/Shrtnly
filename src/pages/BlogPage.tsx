@@ -4,79 +4,106 @@ import { FileText, Calendar, User, ArrowRight, TrendingUp, Target, Share2, BarCh
 const BlogPage: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<number | null>(null);
 
-  const blogPosts = [
-    {
-      id: 1,
-      title: "10 URL Shortening Best Practices for Digital Marketing Success",
-      excerpt: "Discover proven strategies to maximize click-through rates and improve your marketing ROI with professional URL shortening techniques.",
-      author: "Marketing Team",
-      date: "2024-12-15",
-      readTime: "5 min read",
-      category: "Marketing",
-      image: "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800",
-      tags: ["Marketing", "Best Practices", "CTR Optimization"],
-      fullContent: `
-        <h2>Master URL Shortening for Maximum Marketing Impact</h2>
-        
-        <p>In today's digital landscape, <strong>URL shortening</strong> has become an essential tool for marketers seeking to optimize their campaigns and track performance effectively. With over 3.8 billion social media users worldwide, the need for clean, trackable links has never been greater.</p>
+const blogPosts = [
+  {
+    id: 1,
+    title: "10 URL Shortening Best Practices for Digital Marketing Success",
+    excerpt:
+      "Unlock the power of URL shorteners to improve CTR, campaign tracking, and mobile user engagement. Learn how to use services like ShortURL and TinyURL for maximum impact.",
+    author: "Marketing Team",
+    date: "2024-12-15",
+    readTime: "5 min read",
+    category: "Marketing",
+    image:
+      "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tags: [
+      "URL Shortening",
+      "Marketing",
+      "ShortURL",
+      "TinyURL",
+      "Link Tracking",
+      "CTR Optimization",
+    ],
+    fullContent: `
+      <h1>10 URL Shortening Best Practices for Digital Marketing Success</h1>
 
-        <h3>1. Choose Memorable Custom Short Codes</h3>
-        <p>Custom short codes can increase click-through rates by up to 39%. Instead of random characters like "abc123", use branded codes like "summer-sale" or "new-product". This builds trust and makes your links more recognizable.</p>
+      <p>URL shortening is more than just trimming long links. When done right, it becomes a powerful marketing tool that boosts <strong>click-through rates (CTR)</strong>, enhances <strong>brand trust</strong>, and allows in-depth <strong>campaign tracking</strong>. Whether you're using industry leaders like <a href="https://www.shorturl.at" target="_blank" rel="noopener noreferrer">ShortURL</a> or <a href="https://tinyurl.com" target="_blank" rel="noopener noreferrer">TinyURL</a>, applying the following best practices can elevate your marketing strategy.</p>
 
-        <blockquote>
-          <p>"Branded short links receive 34% more clicks than generic ones" - Digital Marketing Institute</p>
-        </blockquote>
+      <h2>1. Use Branded Custom Short Codes</h2>
+      <p>Avoid generic random short codes like <code>abc123</code>. Instead, use descriptive branded codes such as <code>summer-sale</code> or <code>get-free-guide</code>. Branded links have been shown to increase trust and engagement by up to <strong>34%</strong>.</p>
 
-        <h3>2. Implement UTM Parameter Tracking</h3>
-        <p>Always add UTM parameters to track campaign performance:</p>
-        <ul>
-          <li><code>utm_source</code> - Identify the traffic source (facebook, twitter, email)</li>
-          <li><code>utm_medium</code> - Specify the marketing medium (social, email, cpc)</li>
-          <li><code>utm_campaign</code> - Name your specific campaign</li>
-        </ul>
+      <blockquote>
+        <p>"Branded short links receive 34% more clicks than generic ones" – Digital Marketing Institute</p>
+      </blockquote>
 
-        <h3>3. Optimize for Mobile Users</h3>
-        <p>With 54% of web traffic coming from mobile devices, ensure your short links work seamlessly across all platforms. Test your links on various devices and browsers before launching campaigns.</p>
+      <h2>2. Add UTM Parameters for Campaign Tracking</h2>
+      <p>Use UTM tags to track your URLs more effectively through tools like Google Analytics:</p>
+      <ul>
+        <li><code>utm_source</code> – Origin (e.g., Facebook, Instagram)</li>
+        <li><code>utm_medium</code> – Type (e.g., CPC, email)</li>
+        <li><code>utm_campaign</code> – Campaign name</li>
+      </ul>
+      <p>Platforms like <a href="https://www.shorturl.at" target="_blank">ShortURL</a> allow you to shorten URLs with UTM parameters for seamless tracking.</p>
 
-        <h3>4. Use QR Codes for Offline Marketing</h3>
-        <p>Bridge the gap between offline and online marketing with QR codes. Studies show that QR code usage increased by 94% in 2023, making them essential for:</p>
-        <ul>
-          <li>Business cards and networking events</li>
-          <li>Print advertisements and billboards</li>
-          <li>Product packaging and labels</li>
-          <li>Restaurant menus and retail displays</li>
-        </ul>
+      <h2>3. Ensure Mobile Responsiveness</h2>
+      <p>Over <strong>54% of web traffic</strong> comes from mobile devices. Test your links using tools like Google's Mobile-Friendly Test and always preview your landing pages on smartphones and tablets.</p>
 
-        <h3>5. Monitor and Analyze Performance</h3>
-        <p>Regular analysis of your short link performance helps identify trends and optimization opportunities. Key metrics to track include:</p>
-        <ul>
-          <li>Click-through rates by platform</li>
-          <li>Geographic distribution of clicks</li>
-          <li>Peak engagement times</li>
-          <li>Device and browser preferences</li>
-        </ul>
+      <h2>4. Use QR Codes to Connect Offline and Online</h2>
+      <p>Convert your short links into QR codes for use in:</p>
+      <ul>
+        <li>Posters and billboards</li>
+        <li>Product packaging</li>
+        <li>Event invitations</li>
+        <li>Menus and flyers</li>
+      </ul>
+      <p>QR code usage rose by <strong>94%</strong> in 2023—don’t miss this opportunity for multichannel reach.</p>
 
-        <h3>6. A/B Testing for Link Optimization</h3>
-        <p>Test different short codes, landing pages, and call-to-action phrases to find what resonates best with your audience. Even small improvements can lead to significant increases in conversion rates.</p>
+      <h2>5. Analyze and Optimize Performance</h2>
+      <p>Track KPIs like:</p>
+      <ul>
+        <li>CTR per platform</li>
+        <li>Geolocation of users</li>
+        <li>Device/browser preferences</li>
+        <li>Time-of-day engagement peaks</li>
+      </ul>
+      <p>Platforms like <a href="https://tinyurl.com" target="_blank">TinyURL</a> provide click analytics that can help you refine your strategy.</p>
 
-        <h3>7. Maintain Link Hygiene</h3>
-        <p>Regularly audit your short links to ensure they're still active and relevant. Remove or update expired campaigns to maintain a clean link portfolio and avoid user frustration.</p>
+      <h2>6. A/B Test Your Links</h2>
+      <p>Experiment with different short codes, landing pages, and call-to-actions (CTAs). Monitor which variations perform best and replicate success across campaigns.</p>
 
-        <h3>8. Leverage Social Proof</h3>
-        <p>Include social proof elements on your landing pages accessed through short links. This can increase conversion rates by up to 15% and build trust with new visitors.</p>
+      <h2>7. Maintain Link Hygiene</h2>
+      <p>Conduct regular audits to ensure all links are working, updated, and still lead to relevant pages. Broken or outdated links damage credibility and reduce conversions.</p>
 
-        <h3>9. Time Your Link Sharing Strategically</h3>
-        <p>Share your short links when your audience is most active. Use analytics data to identify peak engagement times for each platform and schedule your posts accordingly.</p>
+      <h2>8. Add Social Proof to Landing Pages</h2>
+      <p>When users click your short link, they should land on a page that includes:</p>
+      <ul>
+        <li>Testimonials</li>
+        <li>Case studies</li>
+        <li>Ratings and reviews</li>
+      </ul>
+      <p>This increases trust and can improve conversion rates by up to <strong>15%</strong>.</p>
 
-        <h3>10. Create Link Hierarchies</h3>
-        <p>Organize your short links into logical categories and campaigns. This makes it easier to track performance across different marketing initiatives and identify successful strategies.</p>
+      <h2>9. Share at Peak Engagement Times</h2>
+      <p>Use analytics tools to determine when your audience is most active and schedule your short link posts accordingly. Optimal timing = higher CTR.</p>
 
-        <h3>Conclusion</h3>
-        <p>Implementing these URL shortening best practices will help you create more effective marketing campaigns, improve user experience, and achieve better ROI. Remember to continuously test and optimize your approach based on performance data.</p>
+      <h2>10. Organize Links by Campaign</h2>
+      <p>Structure your shortened URLs by naming convention or tagging system. This helps you track performance easily and enables quick reporting by campaign or channel.</p>
 
-        <p><strong>Ready to implement these strategies?</strong> <a href="/" class="text-blue-600 hover:text-blue-700 font-medium">Start creating optimized short links with Shrtnly</a> and see the difference professional URL shortening can make for your marketing campaigns.</p>
-      `
-    },
+      <h2>Bonus Tip: Use Reliable URL Shorteners</h2>
+      <p>Always choose reputable services that offer analytics, custom links, QR code generation, and HTTPS security like:</p>
+      <ul>
+        <li><a href="https://www.shorturl.at" target="_blank">ShortURL</a></li>
+        <li><a href="https://tinyurl.com" target="_blank">TinyURL</a></li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>URL shortening is more than a cosmetic improvement—it’s a strategic advantage. By following these 10 best practices, marketers can improve CTR, increase ROI, and enhance campaign tracking. Whether you're promoting content, products, or events, short links done right can make all the difference.</p>
+
+      <p><strong>Ready to boost your marketing results?</strong> <a href="/" class="text-blue-600 hover:text-blue-700 font-medium">Start shortening smart with Shrtnly</a> today and make every click count.</p>
+    `,
+  },
+];
+
     {
       id: 2,
       title: "How QR Codes Are Revolutionizing Offline-to-Online Marketing",
