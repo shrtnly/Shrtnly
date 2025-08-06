@@ -254,7 +254,7 @@ const ContactPage: React.FC = () => {
                     </p>
                    <div className="bg-white rounded-xl shadow-lg p-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
-                   </div>d
+                   </div>
                   </div>
                 </div>
                 {/* Contact Information */}
