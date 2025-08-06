@@ -226,7 +226,7 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* Call to Action */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 text-center text-white">
+          <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4">Start Creating Short URLs Today</h2>
             <p className="text-lg sm:text-xl mb-6 opacity-90">
               Join over 10,000 users who trust Shrtnly for fast, reliable URL shortening.
