@@ -43,37 +43,41 @@ const HomePage: React.FC = () => {
             <RecentLinks newLink={newLink} />
           </div>
           
-          {/* Analytics Dashboard Card 
-          <div className="mb-16">
-            <AnalyticsDashboardCard onSignInClick={handleSignInClick} />
+          {/* Hero Section - Optimized for Readability */}
+          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-4">
+              Free URL Shortener – Create Short Links in Seconds
+            </h1>
+
+            <p className="text-lg sm:text-xl mb-6 text-purple-100 leading-relaxed">
+              Turn long URLs into clean, professional short links. Get instant QR codes and track every click.
+            </p>
+
+            <div className="text-left max-w-2xl mx-auto">
+              <div className="space-y-3 text-base sm:text-lg">
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-3"></span>
+                  <span>Create short, shareable links in under 5 seconds</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-3"></span>
+                  <span>Download high-quality QR codes for print and digital use</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-3"></span>
+                  <span>Monitor performance with real-time click analytics</span>
+                </div>
+              </div>
+            </div>
           </div>
-*/}
-
-{/* Hero Section */}
-          
-<div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
-  <h1 className="text-2xl sm:text-3xl font-bold mb-4">
-    Free URL Shortener – Create Short Links Instantly
-  </h1>
-
-  <p className="text-lg sm:text-xl mb-6 text-purple-100">
-    Shorten URLs instantly with automatic QR codes and real-time analytics.
-  </p>
-
-  <ul className="text-base sm:text-lg text-left list-disc ">
-    <li>Transform long URLs into short, shareable links in seconds</li>
-    <li>Get automatic QR codes for every link you create</li>
-    <li>Track clicks and boost social media engagement with detailed analytics</li>
-  </ul>
-</div>
 
 
           {/* Features Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Why Choose Shrtnly for URL Shortening?</h2>
-              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
-                Access powerful features that help you create, track, and optimize your short links.
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Why Shrtnly is the Best URL Shortener</h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4 leading-relaxed">
+                Get powerful tools to create, track, and improve your short links. Perfect for businesses and marketers.
               </p>
             </div>
             
@@ -83,10 +87,10 @@ const HomePage: React.FC = () => {
                   <div className="p-3 bg-blue-100 rounded-lg">
                     <Zap className="w-6 h-6 text-blue-600" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Create Custom Short Links</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Custom Short Links</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Build brand recognition with personalized short codes. Create memorable, professional links that reflect your brand.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Build your brand with custom short codes. Make memorable links that people trust and remember.
                 </p>
               </div>
 
@@ -95,10 +99,10 @@ const HomePage: React.FC = () => {
                   <div className="p-3 bg-green-100 rounded-lg">
                     <QrCode className="w-6 h-6 text-green-600" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Instant QR Code Generator</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Free QR Code Generator</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Generate QR codes instantly for mobile sharing. Perfect for print materials, business cards, and offline marketing campaigns.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Get instant QR codes for mobile sharing. Perfect for business cards, flyers, and print ads.
                 </p>
               </div>
 
@@ -107,10 +111,10 @@ const HomePage: React.FC = () => {
                   <div className="p-3 bg-purple-100 rounded-lg">
                     <BarChart3 className="w-6 h-6 text-purple-600" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Advanced Click Analytics</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Click Analytics</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Monitor every click with detailed analytics. Discover which links perform best and optimize your marketing strategy.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Track every click with detailed reports. See which links work best and improve your results.
                 </p>
               </div>
 
@@ -119,10 +123,10 @@ const HomePage: React.FC = () => {
                   <div className="p-3 bg-orange-100 rounded-lg">
                     <Shield className="w-6 h-6 text-orange-600" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Safe Link Previews</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Safe & Secure Links</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Browse safely with built-in link previews. See exactly where links lead before you click them.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Stay safe with secure link previews. See where links go before you click them.
                 </p>
               </div>
 
@@ -131,10 +135,10 @@ const HomePage: React.FC = () => {
                   <div className="p-3 bg-red-100 rounded-lg">
                     <Globe className="w-6 h-6 text-red-600" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Start Without Registration</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">No Registration Required</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Begin shortening URLs immediately. No signup required. Simply paste your link and start sharing.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Start shortening URLs right away. No signup needed. Just paste your link and share.
                 </p>
               </div>
 
@@ -143,10 +147,10 @@ const HomePage: React.FC = () => {
                   <div className="p-3 bg-indigo-100 rounded-lg">
                     <CheckCircle className="w-6 h-6 text-indigo-600" />
                   </div>
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Fully Accessible Design</h3>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900">Easy to Use</h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Designed for everyone to use. Includes complete screen reader support and full keyboard navigation.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Simple design that works for everyone. Full keyboard support and screen reader friendly.
                 </p>
               </div>
             </div>
@@ -155,9 +159,9 @@ const HomePage: React.FC = () => {
           {/* How it Works Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">How to Create Short URLs in 4 Simple Steps</h2>
-              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
-                Transform any long URL into a short link in less than 5 seconds.
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Create Short URLs in 4 Easy Steps</h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4 leading-relaxed">
+                Turn any long URL into a short link in under 5 seconds. It's that simple.
               </p>
             </div>
             
@@ -170,8 +174,8 @@ const HomePage: React.FC = () => {
                   <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-blue-200 -translate-y-1/2"></div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Enter Your Long URL</h3>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Copy your long URL and paste it into our URL shortener tool.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Copy your long URL. Paste it into our shortener tool.
                 </p>
               </div>
 
@@ -183,8 +187,8 @@ const HomePage: React.FC = () => {
                   <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-green-200 -translate-y-1/2"></div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Customize Your Link</h3>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Add custom codes, titles, or descriptions to organize your links effectively.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Add custom codes and titles. Organize your links the way you want.
                 </p>
               </div>
 
@@ -196,8 +200,8 @@ const HomePage: React.FC = () => {
                   <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-purple-200 -translate-y-1/2"></div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Generate Short Link</h3>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Receive your shortened URL and QR code instantly, ready to share anywhere.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Get your short URL and QR code instantly. Ready to share anywhere.
                 </p>
               </div>
 
@@ -208,8 +212,8 @@ const HomePage: React.FC = () => {
                   </div>
                 </div>
                 <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Share and Monitor</h3>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Share your short link and monitor real-time analytics for every click.
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+                  Share your link anywhere. Watch real-time stats for every click.
                 </p>
               </div>
             </div>
@@ -217,15 +221,15 @@ const HomePage: React.FC = () => {
 
           {/* Call to Action */}
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-6 sm:p-8 text-center text-white">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Start Creating Short URLs Today</h2>
-            <p className="text-lg sm:text-xl mb-6 opacity-90">
-              Join over 10,000 users who trust Shrtnly for fast, reliable URL shortening.
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Start Creating Short URLs Now</h2>
+            <p className="text-lg sm:text-xl mb-6 opacity-90 leading-relaxed">
+              Join 10,000+ users who trust Shrtnly. Fast, reliable URL shortening made simple.
             </p>
             <button
               onClick={() => document.getElementById('link-form')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-lg font-semibold text-sm sm:text-base hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600 transition-colors min-h-[44px]"
             >
-              Create Your First Short URL Free
+              Create Your First Short URL
             </button>
           </div>
         </div>

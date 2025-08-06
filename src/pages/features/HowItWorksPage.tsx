@@ -30,13 +30,15 @@ const HowItWorksPage: React.FC = () => {
 
           {/* Hero Section */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">The Fastest Way to Create Professional Short URLs</h2>
-            <p className="text-lg text-gray-600 mb-6">
-              Shrtnly revolutionizes URL shortening with a streamlined process that takes less than 30 seconds 
-              from start to finish. Whether you're a social media manager, email marketer, content creator, or 
-              business owner, our intuitive platform provides professional-grade tools without complexity. 
-              Create branded short links, generate QR codes automatically, and start tracking performance 
-              immediately - no registration or technical expertise required.
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Create Professional Short URLs Fast</h2>
+            <p className="text-lg text-gray-600 mb-4 leading-relaxed">
+              Shrtnly makes URL shortening simple. Create professional short links in under 30 seconds.
+            </p>
+            <p className="text-lg text-gray-600 mb-4 leading-relaxed">
+              Perfect for social media managers, marketers, and business owners. Get professional tools without the complexity.
+            </p>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              Create branded links, get QR codes, and track performance. No registration needed.
             </p>
             
             <div className="bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg p-6">

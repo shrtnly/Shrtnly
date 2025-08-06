@@ -30,13 +30,15 @@ const AboutPage: React.FC = () => {
 
           {/* Hero Section */}
           <div className="bg-white rounded-xl shadow-lg p-8 mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">The Story Behind the World's Most Trusted URL Shortener</h2>
-            <p className="text-lg text-gray-600 mb-6">
-              Founded in 2024 by a team of digital marketing experts and software engineers, Shrtnly emerged from 
-              a simple observation: existing URL shortening services lacked the professional features and reliability 
-              that modern businesses demand. We set out to create the most powerful, secure, and user-friendly 
-              URL shortening platform that scales from individual creators to enterprise marketing teams managing 
-              millions of links across global campaigns.
+            <h2 className="text-2xl font-semibold text-gray-900 mb-4">The Story Behind Shrtnly</h2>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              We started Shrtnly in 2024. Our team saw a problem: URL shorteners were too basic for modern businesses.
+            </p>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              We built something better. A platform that works for everyone - from solo creators to large marketing teams.
+            </p>
+            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              Today, we help businesses manage millions of links worldwide. Fast, secure, and easy to use.
             </p>
             
             <div className="grid gap-6 md:grid-cols-4">

@@ -4,12 +4,12 @@ import SlideUpFadeIn from './SlideUpFadeIn';
 
 const AnimatedParagraphs: React.FC = () => {
   const paragraphs = [
-    "Free permanent links with unlimited lifetime access",
-    "Create shareable links instantly – No signup needed",
-    "Shorten URLs with powerful analytics tracking",
-    "Monitor link clicks and user engagement easily",
-    "Boost traffic with smart branded link management",
-    "Reliable URL shortener for business and personal use"
+    "Create permanent short links. No expiration dates. Ever.",
+    "Start shortening URLs instantly. No signup required.",
+    "Track every click with detailed analytics reports.",
+    "Monitor user engagement. See what works best.",
+    "Boost your traffic with branded short links.",
+    "Trusted by businesses worldwide. Fast and reliable."
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
