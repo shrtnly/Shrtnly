@@ -275,7 +275,7 @@ const MonitoringAnalysisPage: React.FC = () => {
             </p>
             <button
               onClick={() => window.location.href = '/analytics'}
-              className="bg-green-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-colors"
             >
               View Analytics Dashboard
             </button>
