@@ -221,7 +221,10 @@ const ContactPage: React.FC = () => {
                 </form>
               )}
               
-              {/* FAQ */}
+             
+            </div>
+
+ {/* FAQ */}
               
               <div className="bg-white rounded-xl p-9">
                 <h3 className="text-lg font-bold text-gray-900 mb-4">Common Questions</h3>
@@ -252,8 +255,7 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
               </div>
-            </div>
-
+            
             {/* Contact Information */}
             <div className="space-y-6 lg:col-span-1">
               {/* Quick Contact */}
