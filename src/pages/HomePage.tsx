@@ -50,8 +50,7 @@ const HomePage: React.FC = () => {
 */}
 
 {/* Hero Section */}
-
-          <div className="bg-white -800 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
+<div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
   <h1 className="text-2xl sm:text-3xl font-bold mb-4">
     Free URL Shortener – Create Short Links in Seconds
   </h1>
@@ -61,17 +60,17 @@ const HomePage: React.FC = () => {
   </p>
 
   <div className="text-left max-w-2xl mx-auto">
-    <div className="space-y-3 text-base sm:text-lg">
+    <div className="space-y-4 text-base sm:text-lg">
       <div className="flex items-start gap-3">
-        <span className="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-3"></span>
+        <span className="w-2.5 h-2.5 mt-2 bg-green-400 rounded-full flex-shrink-0"></span>
         <span>Create short, shareable links in under 5 seconds</span>
       </div>
       <div className="flex items-start gap-3">
-        <span className="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-3"></span>
+        <span className="w-2.5 h-2.5 mt-2 bg-green-400 rounded-full flex-shrink-0"></span>
         <span>Download high-quality QR codes for print and digital use</span>
       </div>
       <div className="flex items-start gap-3">
-        <span className="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-3"></span>
+        <span className="w-2.5 h-2.5 mt-2 bg-green-400 rounded-full flex-shrink-0"></span>
         <span>Monitor performance with real-time click analytics</span>
       </div>
     </div>
