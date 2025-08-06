@@ -44,33 +44,42 @@ const HomePage: React.FC = () => {
           </div>
           
           {/* Hero Section - Optimized for Readability */}
-<div className="bg-blue-800 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
-  <h1 className="text-2xl sm:text-3xl font-bold mb-4">
-    Free URL Shortener – Create Short Links in Seconds
-  </h1>
+          {/* Hero Section - Redesigned */}
+<div className="bg-gradient-to-r from-teal-500 to-blue-600 text-white py-16 px-6 sm:px-12 lg:px-24 rounded-3xl shadow-xl mb-12">
+  <div className="max-w-4xl mx-auto text-center">
+    <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+      Instantly Shorten URLs & Track Every Click
+    </h1>
 
-  <p className="text-lg sm:text-xl mb-6 text-blue-100 leading-relaxed">
-    Turn long URLs into clean, professional short links. Get instant QR codes and track every click.
-  </p>
+    <p className="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-10 leading-relaxed">
+      Transform long links into smart, shareable short URLs. Includes real-time analytics and downloadable QR codes – all for free.
+    </p>
 
-  <div className="text-left max-w-2xl mx-auto">
-    <div className="space-y-3 text-base sm:text-lg">
-      <div className="flex items-start gap-3">
-        <span className="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-3"></span>
-        <span>Create short, shareable links in under 5 seconds</span>
+    <div className="text-left max-w-2xl mx-auto space-y-5 mb-10">
+      <div className="flex items-start gap-4">
+        <span className="w-3 h-3 mt-2 bg-green-300 rounded-full flex-shrink-0"></span>
+        <p>Create short links in seconds – no sign-up needed</p>
       </div>
-      <div className="flex items-start gap-3">
-        <span className="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-3"></span>
-        <span>Download high-quality QR codes for print and digital use</span>
+      <div className="flex items-start gap-4">
+        <span className="w-3 h-3 mt-2 bg-green-300 rounded-full flex-shrink-0"></span>
+        <p>Instantly download custom QR codes for any link</p>
       </div>
-      <div className="flex items-start gap-3">
-        <span className="flex-shrink-0 w-2 h-2 bg-green-400 rounded-full mt-3"></span>
-        <span>Monitor performance with real-time click analytics</span>
+      <div className="flex items-start gap-4">
+        <span className="w-3 h-3 mt-2 bg-green-300 rounded-full flex-shrink-0"></span>
+        <p>Track clicks, devices, countries, and more in real time</p>
       </div>
+    </div>
+
+    <div>
+      <a
+        href="/"
+        className="inline-block bg-white text-teal-600 hover:bg-gray-100 font-semibold px-8 py-3 rounded-full shadow-md transition duration-200"
+      >
+        Get Started for Free
+      </a>
     </div>
   </div>
 </div>
-
 
 
           {/* Features Section */}
