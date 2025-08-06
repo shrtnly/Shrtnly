@@ -290,7 +290,7 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
 
-              {/* Enterprise Support */}
+              {/* Enterprise Support 
               <div className="bg-blue-600 rounded-xl p-6 text-white">
                 <h3 className="text-lg font-semibold mb-2">Enterprise Support</h3>
                 <p className="text-blue-100 text-sm mb-4">
@@ -302,7 +302,7 @@ const ContactPage: React.FC = () => {
                 </button>
               </div>
 
-
+*/}
               {/* Response Time */}
               <div className="bg-green-50 rounded-xl p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">Support Guarantee</h3>
