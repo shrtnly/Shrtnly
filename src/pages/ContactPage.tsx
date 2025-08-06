@@ -252,8 +252,9 @@ const ContactPage: React.FC = () => {
                     <p className="text-sm text-gray-600">
                       Yes, we offer RESTful API access for developers and enterprise integrations.
                     </p>
-                    <p></p>
+                   <div className="bg-white rounded-xl shadow-lg p-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
+                   </div>d
                   </div>
                 </div>
                 {/* Contact Information */}
