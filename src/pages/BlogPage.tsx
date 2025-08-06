@@ -1254,24 +1254,6 @@ const BlogPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Newsletter Signup 
-          <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white text-center">
-            <h2 className="text-2xl font-semibold mb-4">Stay Updated with URL Shortening Insights</h2>
-            <p className="text-lg mb-6 text-blue-100">
-              Get the latest tips, strategies, and industry insights delivered to your inbox weekly
-            </p>
-            <div className="max-w-md mx-auto flex gap-3">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-blue-600"
-              />
-              <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Subscribe
-              </button>
-            </div>
-          </div>
-          */}
 
           {/* SEO Content Section */}
           <div className="mt-12 bg-white rounded-xl shadow-lg p-8">
