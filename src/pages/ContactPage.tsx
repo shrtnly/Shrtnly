@@ -220,6 +220,36 @@ const ContactPage: React.FC = () => {
                   </button>
                 </form>
               )}
+                            {/* FAQ */}
+              <div className="bg-white rounded-xl shadow-lg p-6">
+                <h3 className="text-lg font-semibold text-gray-900 mb-4">Common Questions</h3>
+                <div className="space-y-4">
+                  <div>
+                    <h4 className="font-medium text-gray-900 mb-1">Do shortened links expire?</h4>
+                    <p className="text-sm text-gray-600">
+                      No, shortened links are permanent and will continue working indefinitely unless manually deactivated.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-900 mb-1">Can I use custom domains?</h4>
+                    <p className="text-sm text-gray-600">
+                      Yes, enterprise customers can use their own custom domains for branded short links.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-900 mb-1">What analytics are included?</h4>
+                    <p className="text-sm text-gray-600">
+                      Comprehensive analytics including clicks, geographic data, device types, and referral sources.
+                    </p>
+                  </div>
+                  <div>
+                    <h4 className="font-medium text-gray-900 mb-1">Is API access available?</h4>
+                    <p className="text-sm text-gray-600">
+                      Yes, we offer RESTful API access for developers and enterprise integrations.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Contact Information */}
@@ -269,36 +299,7 @@ const ContactPage: React.FC = () => {
                   Contact Enterprise Team
                 </button>
               </div>
-              {/* FAQ */}
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <h3 className="text-lg font-semibold text-gray-900 mb-4">Common Questions</h3>
-                <div className="space-y-4">
-                  <div>
-                    <h4 className="font-medium text-gray-900 mb-1">Do shortened links expire?</h4>
-                    <p className="text-sm text-gray-600">
-                      No, shortened links are permanent and will continue working indefinitely unless manually deactivated.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 mb-1">Can I use custom domains?</h4>
-                    <p className="text-sm text-gray-600">
-                      Yes, enterprise customers can use their own custom domains for branded short links.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 mb-1">What analytics are included?</h4>
-                    <p className="text-sm text-gray-600">
-                      Comprehensive analytics including clicks, geographic data, device types, and referral sources.
-                    </p>
-                  </div>
-                  <div>
-                    <h4 className="font-medium text-gray-900 mb-1">Is API access available?</h4>
-                    <p className="text-sm text-gray-600">
-                      Yes, we offer RESTful API access for developers and enterprise integrations.
-                    </p>
-                  </div>
-                </div>
-              </div>
+
 
               {/* Response Time */}
               <div className="bg-green-50 rounded-xl p-6">
