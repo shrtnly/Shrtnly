@@ -220,7 +220,7 @@ const ContactPage: React.FC = () => {
                   </button>
                 </form>
               )}
-                            {/* FAQ */}
+              {/* FAQ */}
               <div className="bg-white rounded-xl shadow-lg p-6">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Common Questions</h3>
                 <div className="space-y-4">
