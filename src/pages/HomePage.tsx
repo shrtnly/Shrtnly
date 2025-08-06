@@ -163,67 +163,63 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* How it Works Section */}
-          <div className="mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">How to Create Short URLs in 4 Simple Steps</h2>
-              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4">
-                Transform any long URL into a short link in less than 5 seconds.
-              </p>
-            </div>
-            
-            <div className="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="text-center">
-                <div className="relative mb-6">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 shadow-lg">
-                    1
-                  </div>
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-blue-200 -translate-y-1/2"></div>
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Enter Your Long URL</h3>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Copy your long URL and paste it into our URL shortener tool.
-                </p>
-              </div>
+<div className="mb-20">
+  <div className="text-center mb-14">
+    <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+      How to Create Short URLs in 4 Easy Steps
+    </h2>
+    <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+      Shorten your long URLs in seconds with QR codes and link tracking.
+    </p>
+  </div>
 
-              <div className="text-center">
-                <div className="relative mb-6">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 shadow-lg">
-                    2
-                  </div>
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-green-200 -translate-y-1/2"></div>
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Customize Your Link</h3>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Add custom codes, titles, or descriptions to organize your links effectively.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="relative mb-6">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-purple-600 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 shadow-lg">
-                    3
-                  </div>
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-0.5 bg-purple-200 -translate-y-1/2"></div>
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Generate Short Link</h3>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Receive your shortened URL and QR code instantly, ready to share anywhere.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="relative mb-6">
-                  <div className="w-12 h-12 sm:w-16 sm:h-16 bg-orange-600 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold mx-auto mb-4 shadow-lg">
-                    4
-                  </div>
-                </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Share and Monitor</h3>
-                <p className="text-sm sm:text-base text-gray-600">
-                  Share your short link and monitor real-time analytics for every click.
-                </p>
-              </div>
-            </div>
+  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 sm:px-0 relative">
+    {[
+      {
+        title: "Enter Your Long URL",
+        desc: "Paste your original long link into the shortener field.",
+        color: "bg-blue-600",
+        lineColor: "bg-blue-200",
+        icon: "1"
+      },
+      {
+        title: "Customize Your Link",
+        desc: "Personalize with custom alias, title, or tags.",
+        color: "bg-green-600",
+        lineColor: "bg-green-200",
+        icon: "2"
+      },
+      {
+        title: "Generate Short Link",
+        desc: "Click 'Shorten' to get your short link & QR code.",
+        color: "bg-purple-600",
+        lineColor: "bg-purple-200",
+        icon: "3"
+      },
+      {
+        title: "Share and Track",
+        desc: "Monitor performance with real-time analytics.",
+        color: "bg-orange-600",
+        lineColor: "bg-orange-200",
+        icon: "4"
+      }
+    ].map((step, index) => (
+      <div key={index} className="text-center relative group">
+        <div className="flex items-center justify-center mb-5">
+          <div className={`w-14 h-14 sm:w-16 sm:h-16 ${step.color} text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold shadow-lg transition-transform duration-300 group-hover:scale-110`}>
+            {step.icon}
           </div>
+          {index !== 3 && (
+            <div className={`hidden lg:block absolute top-7 left-full w-12 h-1 ${step.lineColor}`}></div>
+          )}
+        </div>
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
+        <p className="text-sm sm:text-base text-gray-600">{step.desc}</p>
+      </div>
+    ))}
+  </div>
+</div>
+
 
           {/* Call to Action */}
           <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
