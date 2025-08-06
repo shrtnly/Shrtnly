@@ -203,7 +203,7 @@ const LinkManagementPage: React.FC = () => {
           </div>
 
           {/* Benefits Section */}
-          <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white mb-8">
+          <div className="bg-blue-600 rounded-xl p-8 text-white mb-8">
             <h2 className="text-2xl font-semibold mb-4">Why Choose Shrtnly for Link Management?</h2>
             <div className="grid gap-6 md:grid-cols-2">
               <div>
