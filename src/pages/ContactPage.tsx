@@ -226,7 +226,7 @@ const ContactPage: React.FC = () => {
 
  {/* FAQ */}
               
-              <div className="bg-white rounded-xl p-9">
+              <div className="bg-white rounded-xl p-6">
                 <h3 className="text-lg font-bold text-gray-900 mb-4">FAQ</h3>
                 <div className="space-y-4">
                   <div>
