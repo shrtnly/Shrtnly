@@ -266,7 +266,7 @@ const ContactPage: React.FC = () => {
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">Support Email</p>
-                      <p className="text-sm text-gray-600">support@shrtnly.com</p>
+                      <p className="text-sm text-gray-600">shrtnly@gmail.com</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
