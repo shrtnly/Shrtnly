@@ -254,9 +254,7 @@ const ContactPage: React.FC = () => {
                     </p>
                   </div>
                 </div>
-              </div>
-            
-            {/* Contact Information */}
+                {/* Contact Information */}
             <div className="space-y-6 lg:col-span-1">
               {/* Quick Contact */}
               <div className="bg-white rounded-xl shadow-lg p-6">
@@ -291,6 +289,9 @@ const ContactPage: React.FC = () => {
                   </div>
                 </div>
               </div>
+              </div>
+            
+            
 
               {/* Enterprise Support 
               <div className="bg-blue-600 rounded-xl p-6 text-white">
