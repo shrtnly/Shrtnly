@@ -1,6 +1,6 @@
 import React from 'react';
 import { TrendingUp, BarChart3, Globe, Users, MousePointer, Clock, Target, Eye, Activity, Zap } from 'lucide-react';
-
+import { LayoutDashboard } from "lucide-react";
 const MonitoringAnalysisPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
