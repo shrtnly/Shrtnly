@@ -1254,7 +1254,7 @@ const BlogPage: React.FC = () => {
             ))}
           </div>
 
-          {/* Newsletter Signup */}
+          {/* Newsletter Signup 
           <div className="mt-12 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white text-center">
             <h2 className="text-2xl font-semibold mb-4">Stay Updated with URL Shortening Insights</h2>
             <p className="text-lg mb-6 text-blue-100">
@@ -1271,6 +1271,7 @@ const BlogPage: React.FC = () => {
               </button>
             </div>
           </div>
+          */}
 
           {/* SEO Content Section */}
           <div className="mt-12 bg-white rounded-xl shadow-lg p-8">
