@@ -50,43 +50,7 @@ const HomePage: React.FC = () => {
 */}
 
 {/* Hero Section */}
-{/* Hero Section - Redesigned */}
-<div className="bg-gradient-to-r from-teal-500 to-blue-600 text-white py-16 px-6 sm:px-12 lg:px-24 rounded-3xl shadow-xl mb-12">
-  <div className="max-w-4xl mx-auto text-center">
-    <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-      Instantly Shorten URLs & Track Every Click
-    </h1>
-
-    <p className="text-lg sm:text-xl text-blue-100 max-w-2xl mx-auto mb-10 leading-relaxed">
-      Transform long links into smart, shareable short URLs. Includes real-time analytics and downloadable QR codes – all for free.
-    </p>
-
-    <div className="text-left max-w-2xl mx-auto space-y-5 mb-10">
-      <div className="flex items-start gap-4">
-        <span className="w-3 h-3 mt-2 bg-green-300 rounded-full flex-shrink-0"></span>
-        <p>Create short links in seconds – no sign-up needed</p>
-      </div>
-      <div className="flex items-start gap-4">
-        <span className="w-3 h-3 mt-2 bg-green-300 rounded-full flex-shrink-0"></span>
-        <p>Instantly download custom QR codes for any link</p>
-      </div>
-      <div className="flex items-start gap-4">
-        <span className="w-3 h-3 mt-2 bg-green-300 rounded-full flex-shrink-0"></span>
-        <p>Track clicks, devices, countries, and more in real time</p>
-      </div>
-    </div>
-
-    <div>
-      <a
-        href="/"
-        className="inline-block bg-white text-teal-600 hover:bg-gray-100 font-semibold px-8 py-3 rounded-full shadow-md transition duration-200"
-      >
-        Get Started for Free
-      </a>
-    </div>
-  </div>
-</div>
-
+          
 
           {/* Features Section */}
           <div className="mb-16">
