@@ -259,7 +259,7 @@ const ContactPage: React.FC = () => {
               </div>
 
               {/* Enterprise Support */}
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-6 text-white">
+              <div className="bg-blue-600 rounded-xl p-6 text-white">
                 <h3 className="text-lg font-semibold mb-2">Enterprise Support</h3>
                 <p className="text-blue-100 text-sm mb-4">
                   Need dedicated support for your business? Our enterprise team provides priority assistance, 
