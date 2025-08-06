@@ -28,7 +28,7 @@ const ContactPage: React.FC = () => {
           company: formData.company,
           subject: formData.subject,
           message: formData.message,
-          to: 'support@shrtnly.com'
+          to: 'shrtnly@gmail.com'
         }
       });
 
@@ -227,7 +227,7 @@ const ContactPage: React.FC = () => {
  {/* FAQ */}
               
               <div className="bg-white rounded-xl p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">FAQ</h3>
+                <h3 className="text-lg font-bold text-gray-900 mb-4"></h3>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-medium text-gray-900 mb-1">Do shortened links expire?</h4>
