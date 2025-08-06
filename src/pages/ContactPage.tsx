@@ -258,6 +258,7 @@ const ContactPage: React.FC = () => {
             <div className="space-y-6 lg:col-span-1"> 
               {/* Quick Contact */}
                
+               
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Information</h3>
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
