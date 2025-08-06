@@ -62,7 +62,7 @@ const HomePage: React.FC = () => {
   <div className="text-left max-w-2xl mx-auto">
     <div className="space-y-4 text-base sm:text-lg">
       <div className="flex items-start gap-3">
-        <span className="w-2.5 h-2.5 mt-2 bg-white-400 rounded-full flex-shrink-0"></span>
+        <span className="w-2.5 h-2.5 mt-2 bg-white rounded-full flex-shrink-0"></span>
         <span>Create short, shareable links in under 5 seconds</span>
       </div>
       <div className="flex items-start gap-3">
