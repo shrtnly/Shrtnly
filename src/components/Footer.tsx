@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
                 <Twitter size={16} />
               </a>
               <a 
-                href="#" 
+                href="https://web.facebook.com/shrtnly" 
                 className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-label="View our GitHub repository"
               >
