@@ -17,17 +17,17 @@ const Footer: React.FC = () => {
               Fast, secure, and accessible URL shortening service with QR code generation.
             </p>
             <div className="flex gap-3">
-              <a 
+              {/*<a 
                 href="#" 
                 className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-label="Follow us on Twitter"
               >
                 <Twitter size={16} />
-              </a>
+              </a> */}
               <a 
                 href="https://web.facebook.com/shrtnly" 
                 className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
-                aria-label="View our GitHub repository"
+                aria-label="Follow us on Facebook"
               >
                 <Facebook size={16} />
               </a>
