@@ -76,8 +76,6 @@ const HomePage: React.FC = () => {
     </div>
   </div>
 </div>
-
-
           {/* Features Section */}
           <div className="mb-16">
             <div className="text-center mb-12">
