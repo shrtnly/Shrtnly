@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Link2, Github, Twitter, Mail } from 'lucide-react';
+import { Link2, Facebook, Twitter, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -29,7 +29,7 @@ const Footer: React.FC = () => {
                 className="p-2 bg-gray-800 rounded-lg hover:bg-gray-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500"
                 aria-label="View our GitHub repository"
               >
-                <Github size={16} />
+                <Facebook size={16} />
               </a>
               <a 
                 href="mailto:support@shrtnly.com" 
