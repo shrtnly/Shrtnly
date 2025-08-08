@@ -194,7 +194,7 @@ function App() {
       <h1>Free URL Shortener - Shrtnly</h1>
       <p>Create short links instantly with QR codes. Track and customize your URLs.</p>
       {/* Rest of your content */}
-    </div>
+   
 
 <h1>Shrtnly - Shorten Your URLs</h1>
 <h2>Why Use Shrtnly?</h2>
@@ -206,7 +206,7 @@ function App() {
 <h2>How It Works</h2>
 <p>Paste your URL above and click "Shorten".</p>
 
-
+ </div>
 
 
 
