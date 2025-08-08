@@ -48,43 +48,7 @@ const HomePage: React.FC = () => {
             <AnalyticsDashboardCard onSignInClick={handleSignInClick} />
           </div>
 */}
-
-{/* SEO Section */}
-
-  <header>
-        <h1>Free URL Shortener with QR Codes & Lifetime Links</h1>
-        <p>Create trackable short links with QR codes—100% free and never expire.</p>
-      </header>
-
-      <nav>
-        <ul>
-          <li><a href="/features">Features</a></li>
-          <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
-
-      <main>
-        <section>
-          <h2>Shorten Your Link</h2>
-          <p>Paste your long URL to generate a lifetime short link with built-in QR code and analytics.</p>
-          {/* Later: Add form and Supabase logic here */}
-        </section>
-
-        <section>
-          <h2>Why Use Shrtnly?</h2>
-          <ul>
-            <li>Free forever – no signup needed</li>
-            <li>QR code generated instantly</li>
-            <li>Track clicks and engagement in real time</li>
-            <li>Lifetime validity – no link expiration</li>
-          </ul>
-        </section>
-      </main>
-
-          
+        
 {/* Hero Section */}
 <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
   <h1 className="text-2xl sm:text-3xl font-bold mb-4">
