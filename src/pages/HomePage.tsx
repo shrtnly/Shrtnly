@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
 */}
 
 {/* Hero Section */}
-  <header>
+
 <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
   <h1 className="text-2xl sm:text-3xl font-bold mb-4">
     Free URL Shortener – Create Short Links in Seconds
