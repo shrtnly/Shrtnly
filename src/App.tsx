@@ -196,6 +196,17 @@ function App() {
       {/* Rest of your content */}
     </div>
 
+<h1>Shrtnly - Shorten Your URLs</h1>
+<h2>Why Use Shrtnly?</h2>
+<ul>
+  <li>Generate QR codes</li>
+  <li>Track link performance</li>
+</ul>
+
+<h2>How It Works</h2>
+<p>Paste your URL above and click "Shorten".</p>
+
+
 
 
 
