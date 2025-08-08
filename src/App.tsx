@@ -193,8 +193,6 @@ function App() {
       <p>Create short links instantly with QR codes. Track and customize your URLs.</p>
       {/* Rest of your content */}
     </div>
-  );
-
 
 
 
