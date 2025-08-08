@@ -77,7 +77,7 @@ const HomePage: React.FC = () => {
   </div>
 </div>
       
-         <header>
+         <header> 
         <h1>Free URL Shortener with QR Codes & Lifetime Links</h1>
         <p>Create trackable short links with QR codes—100% free and never expire.</p>
       </header>
