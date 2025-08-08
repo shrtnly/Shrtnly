@@ -189,4 +189,17 @@ function App() {
   );
 }
 
+function HomePage() {
+  return (
+    <div>
+      <h1>Free URL Shortener - Shrtnly</h1>
+      <p>Create short links instantly with QR codes. Track and customize your URLs.</p>
+      {/* Rest of your content */}
+    </div>
+  );
+}
+
+
+
+
 export default App;
