@@ -4,7 +4,7 @@ import { Link2, Facebook, Twitter, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white py-12 mt-16">
+    <footer className="bg-gray-900 text-white py-12 mt-0">
       <div className="container mx-auto px-4">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
