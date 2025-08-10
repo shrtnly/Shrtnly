@@ -124,7 +124,7 @@ const Footer: React.FC = () => {
             <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
               Terms
             </Link>
-            <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
+            <Link to="/features/about" className="text-gray-400 hover:text-white transition-colors">
               Support
             </Link>
           </div>
