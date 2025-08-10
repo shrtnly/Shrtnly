@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
             <AnalyticsDashboardCard onSignInClick={handleSignInClick} />
           </div>
 */}
-        
+
 {/* Hero Section */}
 <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
   <h1 className="text-2xl sm:text-3xl font-bold mb-4">
@@ -76,7 +76,6 @@ const HomePage: React.FC = () => {
     </div>
   </div>
 </div>
-          
           {/* Features Section */}
           <div className="mb-16">
             <div className="text-center mb-12">

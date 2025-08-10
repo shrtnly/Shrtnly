@@ -17,7 +17,6 @@ import HowItWorksPage from './pages/features/HowItWorksPage';
 import AboutPage from './pages/features/AboutPage';
 import BlogPage from './pages/BlogPage';
 import LinkRedirect from './components/LinkRedirect';
-import { Helmet } from "react-helmet";
 
 function App() {
   return (
@@ -189,27 +188,5 @@ function App() {
     </AuthProvider>
   );
 }
-
-{/* for SEO 
-    <div>
-      <h1>Free URL Shortener - Shrtnly</h1>
-      <p>Create short links instantly with QR codes. Track and customize your URLs.</p>
-      {/* Rest of your content 
-   
-
-<h1>Shrtnly - Shorten Your URLs</h1>
-<h2>Why Use Shrtnly?</h2>
-<ul>
-  <li>Generate QR codes</li>
-  <li>Track link performance</li>
-</ul>
-
-<h2>How It Works</h2>
-<p>Paste your URL above and click "Shorten".</p>
-
- </div>
-*/}
-
-
 
 export default App;

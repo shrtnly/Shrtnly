@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { FileText, Calendar, User, ArrowRight, TrendingUp, Target, Share2, BarChart3, ArrowLeft, ExternalLink, Link2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const BlogPage: React.FC = () => {
   const [selectedPost, setSelectedPost] = useState<number | null>(null);
