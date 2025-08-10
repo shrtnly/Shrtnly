@@ -218,6 +218,12 @@ const HomePage: React.FC = () => {
     ))}
   </div>
 </div>
+
+          {/*H1*/}
+
+          <div>
+          <h1> this is H1</h1>
+          </div>
          
           {/* Call to Action */}
           <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
