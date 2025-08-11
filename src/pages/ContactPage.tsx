@@ -3,7 +3,7 @@ import { Mail, MessageSquare, Send, CheckCircle, Phone, MapPin, Clock } from 'lu
 import { supabase } from '../lib/supabase';
 import { Helmet } from "react-helmet-async";
 
-export default function HomePage() {
+
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -318,3 +318,27 @@ const ContactPage: React.FC = () => {
 };
 
 export default ContactPage;
+
+
+export default function HomePage() {
+  return (
+    <>
+      <Helmet>
+        <title>Free URL Shortener & QR Codes | Shrtnly</title>
+        <meta
+          name="description"
+          content="Shorten URLs, create QR codes, and track clicks instantly with Shrtnly. No signup required — create lifetime links now."
+        />
+      </Helmet>
+
+      <h1>Free URL Shortener with QR Codes & Analytics</h1>
+      <p>Create short links, track clicks, and customize URLs instantly.</p>
+
+      <nav>
+        <a href="/features/link-management">Link Management</a> |{" "}
+        <a href="/analytics">Analytics</a> |{" "}
+        <a href="/features/how-it-works">How It Works</a>
+      </nav>
+    </>
+  );
+}
