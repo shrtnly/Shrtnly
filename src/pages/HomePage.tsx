@@ -30,12 +30,7 @@ const HomePage: React.FC = () => {
 
       <main id="main-content" className="container mx-auto px-4 py-8">
         <div className="max-w-6xl mx-auto">
-
-      <h1>Free URL Shortener with QR Codes & Analytics</h1>
-      <p>Create short links, track clicks, and customize URLs instantly — no signup required.</p>
-      {/* rest of your UI */}
-   
-          
+     
     {/* Hero animated paragraphs */}
       <div className="mb-6">
         <AnimatedParagraphs />
