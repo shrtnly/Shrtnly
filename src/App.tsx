@@ -17,8 +17,6 @@ import HowItWorksPage from './pages/features/HowItWorksPage';
 import AboutPage from './pages/features/AboutPage';
 import BlogPage from './pages/BlogPage';
 import LinkRedirect from './components/LinkRedirect';
-import { Helmet } from "react-helmet-async"; 
-export default function App() 
 
 function App() {
   return (
@@ -121,17 +119,7 @@ function App() {
               <Footer />
             </div>
           } />
-
-
- {/* Main Heading (H1) */}
-      <header>
-        <h1>Free URL Shortener with QR Codes & Analytics</h1>
-        <p>
-          Create short links, track clicks, and customize your URLs instantly —
-          no signup required.
-        </p>
-      </header>
-          
+           
           {/* Features Pages */}
           <Route path="/features/link-management" element={
             <div className="min-h-screen flex flex-col">
