@@ -256,47 +256,44 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
       </div>
 
 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" id="link-form">
-  {/* URL and Short Code Row */}
-  <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
-    {/* Original URL */} 
-    <div className="md:col-span-7">
-      <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-        Original URL *
-      </label>
-      <div className="relative">
-        <input
-          type="url"
-          id="original_url"
-          name="original_url"
-          value={formData.original_url}
-          onChange={handleChange}
-          placeholder="https://example.com/long-url"
-          className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
-            urlValid === null 
-              ? 'border-gray-300 focus:border-blue-500' 
-              : urlValid 
-                ? 'border-green-300 focus:border-green-500 bg-green-50' 
-                : 'border-red-300 focus:border-red-500 bg-red-50'
-          }`}
-          required
-          aria-describedby={error ? "url-error" : undefined}
-        />
-        {urlValid !== null && (
-          <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-            {urlValid ? (
-              <Check className="w-5 h-5 text-green-600" />
-            ) : (
-              <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
-                <span className="text-white text-xs">!</span>
-              </div>
-            )}
-          </div>
-        )}
-      </div>
-      {urlValid === false && formData.original_url.trim() !== '' && (
-        <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
+  {/* Original URL Input - Full Width */}
+  <div>
+    <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+      Original URL *
+    </label>
+    <div className="relative">
+      <input
+        type="url"
+        id="original_url"
+        name="original_url"
+        value={formData.original_url}
+        onChange={handleChange}
+        placeholder="https://example.com/long-url"
+        className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
+          urlValid === null 
+            ? 'border-gray-300 focus:border-blue-500' 
+            : urlValid 
+              ? 'border-green-300 focus:border-green-500 bg-green-50' 
+              : 'border-red-300 focus:border-red-500 bg-red-50'
+        }`}
+        required
+        aria-describedby={error ? "url-error" : undefined}
+      />
+      {urlValid !== null && (
+        <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+          {urlValid ? (
+            <Check className="w-5 h-5 text-green-600" />
+          ) : (
+            <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
+              <span className="text-white text-xs">!</span>
+            </div>
+          )}
+        </div>
       )}
     </div>
+    {urlValid === false && formData.original_url.trim() !== '' && (
+      <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
+    )}
   </div>
   
   {/* Advanced Options Toggle */}
@@ -329,9 +326,9 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
   >
     <div className="space-y-4 pt-2">
       {/* Custom Short Code */}
-      <div className="md:col-span-3">
-        <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white mb-2">
-          B
+      <div>
+        <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+          Custom Short Code
         </label>
         <input
           type="text"
@@ -346,16 +343,17 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
           title="Only letters, numbers, hyphens, and underscores allowed"
         />
         <p className="mt-1 text-xs sm:text-sm text-gray-500">
+          Create a custom alias for your shortened URL
         </p>
       </div>
       
       {/* Custom Domain */}
-      <div className="md:col-span-3">
+      <div>
         <label
           htmlFor="custom_domain"
           className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
         >
-          Customize your link
+          Custom Domain
         </label>
         <div className="relative">
           <select
@@ -371,9 +369,9 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
             }}
             className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg pr-10 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
           >
-            <option value="shrtnly.pro"> https://shrtnly.pro</option>
+            <option value="shrtnly.pro">https://shrtnly.pro</option>
             <option value="add_domain" className="text-gray-500">
-              🔒Add Custom Domain
+              🔒 Add Custom Domain
             </option>
           </select>
           {/* Dropdown arrow */}
@@ -442,16 +440,16 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
       {error}
     </div>
   )}
-
-        {/* Submit Button */}
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="w-full bg-blue-600 text-white py-3 sm:py-4 px-6 rounded-lg font-medium text-sm sm:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px]"
-        >
-          {isLoading ? 'Shortening URL...' : 'Shorten URL Now'}
-        </button>
-      </form>
+  
+  {/* Submit Button */}
+  <button
+    type="submit"
+    disabled={isLoading}
+    className="w-full bg-blue-600 text-white py-3 sm:py-4 px-6 rounded-lg font-medium text-sm sm:text-base hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px]"
+  >
+    {isLoading ? 'Shortening URL...' : 'Shorten URL Now'}
+  </button>
+</form>
 
       {/* Success Result */}
       {createdLink && (
