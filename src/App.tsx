@@ -119,6 +119,16 @@ function App() {
               <Footer />
             </div>
           } />
+
+
+ {/* Main Heading (H1) */}
+      <header>
+        <h1>Free URL Shortener with QR Codes & Analytics</h1>
+        <p>
+          Create short links, track clicks, and customize your URLs instantly —
+          no signup required.
+        </p>
+      </header>
           
           {/* Features Pages */}
           <Route path="/features/link-management" element={
