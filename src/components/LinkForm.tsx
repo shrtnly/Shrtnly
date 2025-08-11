@@ -255,204 +255,194 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Shorten Your URL</h2>
       </div>
 
-      <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" id="link-form">
-        {/* URL and Short Code Row */}
-        <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
-
-                    {/* Original URL */} 
-          <div className="md:col-span-7">
-            <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-              Original URL *
-            </label>
-            <div className="relative">
-              <input
-                type="url"
-                id="original_url"
-                name="original_url"
-                value={formData.original_url}
-                onChange={handleChange}
-                placeholder="https://example.com/long-url"
-                className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
-                  urlValid === null 
-                    ? 'border-gray-300 focus:border-blue-500' 
-                    : urlValid 
-                      ? 'border-green-300 focus:border-green-500 bg-green-50' 
-                      : 'border-red-300 focus:border-red-500 bg-red-50'
-                }`}
-                required
-                aria-describedby={error ? "url-error" : undefined}
-              />
-              {urlValid !== null && (
-                <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                  {urlValid ? (
-                    <Check className="w-5 h-5 text-green-600" />
-                  ) : (
-                    <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
-                      <span className="text-white text-xs">!</span>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
-            {urlValid === false && formData.original_url.trim() !== '' && (
-              <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
-            )}
-          </div>
-
-         
-        
-        {/* Advanced Options Toggle */}
-        <div className="border-t border-gray-200 pt-4">
-          <button
-            type="button"
-            onClick={() => setShowAdvanced(!showAdvanced)}
-            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 min-h-[44px]"
-            aria-expanded={showAdvanced}
-            aria-controls="advanced-options"
-          >
-            <Settings className="w-4 h-4" />
-            <span className="text-sm sm:text-base">
-              {showAdvanced ? 'Hide Advanced Options' : 'Show Advanced Options'}
-            </span>
-            {showAdvanced ? (
-              <ChevronUp className="w-4 h-4" />
-            ) : (
-              <ChevronDown className="w-4 h-4" />
-            )}
-          </button>
-        </div>
-
-        {/* Advanced Options */}
-        <div 
-          id="advanced-options"
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${
-            showAdvanced ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+<form ref={formRef} onSubmit={handleSubmit} className="space-y-6" id="link-form">
+  {/* URL and Short Code Row */}
+  <div className="grid grid-cols-1 md:grid-cols-10 gap-4">
+    {/* Original URL */} 
+    <div className="md:col-span-7">
+      <label htmlFor="original_url" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+        Original URL *
+      </label>
+      <div className="relative">
+        <input
+          type="url"
+          id="original_url"
+          name="original_url"
+          value={formData.original_url}
+          onChange={handleChange}
+          placeholder="https://example.com/long-url"
+          className={`w-full px-4 py-3 sm:py-4 text-sm sm:text-base border rounded-lg focus:ring-2 focus:ring-blue-500 transition-colors ${
+            urlValid === null 
+              ? 'border-gray-300 focus:border-blue-500' 
+              : urlValid 
+                ? 'border-green-300 focus:border-green-500 bg-green-50' 
+                : 'border-red-300 focus:border-red-500 bg-red-50'
           }`}
-        >
-          <div className="space-y-4 pt-2">
-           
-            
-            {/* Custom Short Code */}
-          <div className="md:col-span-3">
-            <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white mb-2">
-             B
-            </label>
-            <input
-              type="text"
-              id="short_code"
-              name="short_code"
-              value={formData.short_code}
-              onChange={handleChange}
-              placeholder="Alias (optional)"
-              className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              pattern="[a-zA-Z0-9_-]+"
-              maxLength={5}
-              maxLength={10}
-              title="Only letters, numbers, hyphens, and underscores allowed"
-            />
-            <p className="mt-1 text-xs sm:text-sm text-gray-500">
-             
-            </p>
-          </div>
-        </div>
-
-{/* Custom Domain */}
-<div className="md:col-span-3">
-  <label
-    htmlFor="custom_domain"
-    className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
-  >
-    Customize your link
-  </label>
-
-  <div className="relative">
-    <select
-      id="custom_domain"
-      name="custom_domain"
-      value={formData.custom_domain}
-      onChange={(e) => {
-        const value = e.target.value;
-        setFormData((prev) => ({ ...prev, custom_domain: value }));
-
-        if (value === "add_domain") {
-          window.open("https://t.ly/register?via=dawod", "_blank");
-        }
-      }}
-      className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg pr-10 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-    >
-      <option value="shrtnly.pro"> https://shrtnly.pro</option>
-      <option value="add_domain" className="text-gray-500">
-        🔒Add Custom Domain
-      </option>
-    </select>
-
-    {/* Dropdown arrow */}
-    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
-      <svg
-        className="w-4 h-4"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        viewBox="0 0 24 24"
-      >
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-      </svg>
-    </div>
-  </div>
-
-  {/* Show message only when "Add Custom Domain" is selected */}
-  {formData.custom_domain === "add_domain" && (
-    <p className="mt-1 text-sm text-red-600">
-      This option opens an external domain registration page.
-    </p>
-  )}
-</div>
-
-            {/* Title */}
-            <div>
-              <label htmlFor="title" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-                Title (optional)
-              </label>
-              <input
-                type="text"
-                id="title"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-                placeholder="Link Title"
-                className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-              />
-            </div>
-
-            {/* Description */}
-            <div>
-              <label htmlFor="description" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-                Description (optional)
-              </label>
-              <textarea
-                id="description"
-                name="description"
-                value={formData.description}
-                onChange={handleTextareaChange}
-                placeholder="What does this link lead to?"
-                rows={3}
-                className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-vertical"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Error Message */}
-        {error && (
-          <div 
-            id="url-error"
-            className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700"
-            role="alert"
-            aria-live="polite"
-          >
-            {error}
+          required
+          aria-describedby={error ? "url-error" : undefined}
+        />
+        {urlValid !== null && (
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+            {urlValid ? (
+              <Check className="w-5 h-5 text-green-600" />
+            ) : (
+              <div className="w-5 h-5 rounded-full bg-red-500 flex items-center justify-center">
+                <span className="text-white text-xs">!</span>
+              </div>
+            )}
           </div>
         )}
+      </div>
+      {urlValid === false && formData.original_url.trim() !== '' && (
+        <p className="mt-1 text-sm text-red-600">Enter a valid URL starting with http:// or https://</p>
+      )}
+    </div>
+  </div>
+  
+  {/* Advanced Options Toggle */}
+  <div className="border-t border-gray-200 pt-4">
+    <button
+      type="button"
+      onClick={() => setShowAdvanced(!showAdvanced)}
+      className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 min-h-[44px]"
+      aria-expanded={showAdvanced}
+      aria-controls="advanced-options"
+    >
+      <Settings className="w-4 h-4" />
+      <span className="text-sm sm:text-base">
+        {showAdvanced ? 'Hide Advanced Options' : 'Show Advanced Options'}
+      </span>
+      {showAdvanced ? (
+        <ChevronUp className="w-4 h-4" />
+      ) : (
+        <ChevronDown className="w-4 h-4" />
+      )}
+    </button>
+  </div>
+  
+  {/* Advanced Options */}
+  <div 
+    id="advanced-options"
+    className={`overflow-hidden transition-all duration-300 ease-in-out ${
+      showAdvanced ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+    }`}
+  >
+    <div className="space-y-4 pt-2">
+      {/* Custom Short Code */}
+      <div className="md:col-span-3">
+        <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white mb-2">
+          B
+        </label>
+        <input
+          type="text"
+          id="short_code"
+          name="short_code"
+          value={formData.short_code}
+          onChange={handleChange}
+          placeholder="Alias (optional)"
+          className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+          pattern="[a-zA-Z0-9_-]+"
+          maxLength={10}
+          title="Only letters, numbers, hyphens, and underscores allowed"
+        />
+        <p className="mt-1 text-xs sm:text-sm text-gray-500">
+        </p>
+      </div>
+      
+      {/* Custom Domain */}
+      <div className="md:col-span-3">
+        <label
+          htmlFor="custom_domain"
+          className="block text-sm sm:text-base font-medium text-gray-700 mb-2"
+        >
+          Customize your link
+        </label>
+        <div className="relative">
+          <select
+            id="custom_domain"
+            name="custom_domain"
+            value={formData.custom_domain}
+            onChange={(e) => {
+              const value = e.target.value;
+              setFormData((prev) => ({ ...prev, custom_domain: value }));
+              if (value === "add_domain") {
+                window.open("https://t.ly/register?via=dawod", "_blank");
+              }
+            }}
+            className="w-full appearance-none px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg pr-10 text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+          >
+            <option value="shrtnly.pro"> https://shrtnly.pro</option>
+            <option value="add_domain" className="text-gray-500">
+              🔒Add Custom Domain
+            </option>
+          </select>
+          {/* Dropdown arrow */}
+          <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        {/* Show message only when "Add Custom Domain" is selected */}
+        {formData.custom_domain === "add_domain" && (
+          <p className="mt-1 text-sm text-red-600">
+            This option opens an external domain registration page.
+          </p>
+        )}
+      </div>
+      
+      {/* Title */}
+      <div>
+        <label htmlFor="title" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+          Title (optional)
+        </label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          value={formData.title}
+          onChange={handleChange}
+          placeholder="Link Title"
+          className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+        />
+      </div>
+      
+      {/* Description */}
+      <div>
+        <label htmlFor="description" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+          Description (optional)
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          value={formData.description}
+          onChange={handleTextareaChange}
+          placeholder="What does this link lead to?"
+          rows={3}
+          className="w-full px-4 py-3 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-vertical"
+        />
+      </div>
+    </div>
+  </div>
+  
+  {/* Error Message */}
+  {error && (
+    <div 
+      id="url-error"
+      className="p-3 bg-red-50 border border-red-200 rounded-lg text-red-700"
+      role="alert"
+      aria-live="polite"
+    >
+      {error}
+    </div>
+  )}
+</form>
 
         {/* Submit Button */}
         <button
