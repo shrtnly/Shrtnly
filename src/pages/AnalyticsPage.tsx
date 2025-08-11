@@ -10,9 +10,7 @@ import { useRealAnalyticsData } from '../hooks/useRealAnalyticsData';
 import AuthModal from '../components/auth/AuthModal';
 import { Helmet } from "react-helmet-async";
 
-export default function AnalyticsPage() {
-  return (
-    <>
+
       <Helmet>
         <title>Link Analytics & Click Tracking | Shrtnly</title>
         <meta
@@ -23,9 +21,6 @@ export default function AnalyticsPage() {
 
       <h1>Analytics & Click Tracking</h1>
       <p>Measure your link performance with real-time data.</p>
-    </>
-  );
-}
 
 
 
