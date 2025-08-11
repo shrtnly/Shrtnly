@@ -10,6 +10,25 @@ import { useRealAnalyticsData } from '../hooks/useRealAnalyticsData';
 import AuthModal from '../components/auth/AuthModal';
 import { Helmet } from "react-helmet-async";
 
+export default function AnalyticsPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Link Analytics & Click Tracking | Shrtnly</title>
+        <meta
+          name="description"
+          content="Track clicks, monitor engagement, and analyze short link performance with Shrtnly's analytics dashboard."
+        />
+      </Helmet>
+
+      <h1>Analytics & Click Tracking</h1>
+      <p>Measure your link performance with real-time data.</p>
+    </>
+  );
+}
+
+
+
 const AnalyticsPage: React.FC = () => {
   const { user } = useAuth();
   const { data, loading, updateDateRange, updateSelectedLinks, exportToCSV, exportToPDF } = useRealAnalyticsData();
