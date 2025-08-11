@@ -22,6 +22,7 @@ const HomePage: React.FC = () => {
   const handleSignInClick = () => {
     setAuthModalOpen(true);
   };
+  function HomePage()
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <SkipLinks /> 
@@ -218,7 +219,9 @@ const HomePage: React.FC = () => {
     ))}
   </div>
 </div>
-        
+
+
+          
           {/* Call to Action */}
           <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold mb-4">Start Creating Short URLs Today</h2>
