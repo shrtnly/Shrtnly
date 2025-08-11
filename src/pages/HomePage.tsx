@@ -51,14 +51,7 @@ const HomePage: React.FC = () => {
 */}
 
 
-<Helmet>
-        <title>Link Analytics & Click Tracking | Shrtnly</title>
-        <meta
-          name="description"
-          content="Track clicks, monitor engagement, and analyze short link performance with Shrtnly's analytics dashboard."
-        />
-      </Helmet>
-          
+         
 {/* Hero Section */}
 <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
   <h1 className="text-2xl sm:text-3xl font-bold mb-4">
