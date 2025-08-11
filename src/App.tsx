@@ -18,6 +18,7 @@ import AboutPage from './pages/features/AboutPage';
 import BlogPage from './pages/BlogPage';
 import LinkRedirect from './components/LinkRedirect';
 import { Helmet } from "react-helmet-async"; 
+export default function App()
 
 function App() {
   return (
