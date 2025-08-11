@@ -301,7 +301,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     <button
       type="button"
       onClick={() => setShowAdvanced(!showAdvanced)}
-      className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 min-h-[22px]"
+      className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 min-h-[0px]"
       aria-expanded={showAdvanced}
       aria-controls="advanced-options"
     >
