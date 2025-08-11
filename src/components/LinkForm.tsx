@@ -299,7 +299,40 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
             )}
           </div>
 
-          {/* Custom Short Code */}
+         
+        
+        {/* Advanced Options Toggle */}
+        <div className="border-t border-gray-200 pt-4">
+          <button
+            type="button"
+            onClick={() => setShowAdvanced(!showAdvanced)}
+            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 min-h-[44px]"
+            aria-expanded={showAdvanced}
+            aria-controls="advanced-options"
+          >
+            <Settings className="w-4 h-4" />
+            <span className="text-sm sm:text-base">
+              {showAdvanced ? 'Hide Advanced Options' : 'Show Advanced Options'}
+            </span>
+            {showAdvanced ? (
+              <ChevronUp className="w-4 h-4" />
+            ) : (
+              <ChevronDown className="w-4 h-4" />
+            )}
+          </button>
+        </div>
+
+        {/* Advanced Options */}
+        <div 
+          id="advanced-options"
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${
+            showAdvanced ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="space-y-4 pt-2">
+           
+            
+            {/* Custom Short Code */}
           <div className="md:col-span-3">
             <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-white mb-2">
              B
@@ -375,36 +408,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
   )}
 </div>
 
-        
-        {/* Advanced Options Toggle */}
-        <div className="border-t border-gray-200 pt-4">
-          <button
-            type="button"
-            onClick={() => setShowAdvanced(!showAdvanced)}
-            className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 min-h-[44px]"
-            aria-expanded={showAdvanced}
-            aria-controls="advanced-options"
-          >
-            <Settings className="w-4 h-4" />
-            <span className="text-sm sm:text-base">
-              {showAdvanced ? 'Hide Advanced Options' : 'Show Advanced Options'}
-            </span>
-            {showAdvanced ? (
-              <ChevronUp className="w-4 h-4" />
-            ) : (
-              <ChevronDown className="w-4 h-4" />
-            )}
-          </button>
-        </div>
-
-        {/* Advanced Options */}
-        <div 
-          id="advanced-options"
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${
-            showAdvanced ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <div className="space-y-4 pt-2">
             {/* Title */}
             <div>
               <label htmlFor="title" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
