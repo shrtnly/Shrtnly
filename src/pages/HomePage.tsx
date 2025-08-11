@@ -26,10 +26,6 @@ const HomePage: React.FC = () => {
   return (
 
 
-      <h1>Free URL Shortener with QR Codes & Analytics</h1>
-      <p>Create short links, track clicks, and customize URLs instantly — no signup required.</p>
-      {/* rest of your UI */}
-   
     
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <SkipLinks /> 
