@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, MessageSquare, Send, CheckCircle, Phone, MapPin, Clock } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { Helmet } from "react-helmet-async";
 
 const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -62,7 +63,8 @@ const ContactPage: React.FC = () => {
       [e.target.name]: e.target.value
     }));
   };
-
+export default function HomePage() {
+  return (
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <main className="container mx-auto px-4 py-8">
