@@ -442,7 +442,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
       {error}
     </div>
   )}
-</form>
 
         {/* Submit Button */}
         <button
