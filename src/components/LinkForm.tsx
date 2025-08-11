@@ -324,7 +324,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
       showAdvanced ? 'max-h-[1500px] opacity-100' : 'max-h-0 opacity-0'
     }`}
   >
-    <div className="space-y-4 pt-2 pb-6">
+    <div className="space-y-2 pt-2 pb-6">
  {/* Custom Domain */}
       <div>
         <label
