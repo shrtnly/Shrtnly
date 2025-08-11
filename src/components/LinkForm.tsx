@@ -251,7 +251,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         <div className="p-2 bg-blue-100 rounded-lg">
           <Link2 className="w-6 h-6 text-blue-600" />
         </div>
-        <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Shorten Your URL</h1>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-900">Shorten Your URL</h2>
       </div>
 
 <form ref={formRef} onSubmit={handleSubmit} className="space-y-6" id="link-form">
