@@ -8,6 +8,7 @@ import HistoricalData from '../components/analytics/HistoricalData';
 import DateRangeFilter from '../components/analytics/DateRangeFilter';
 import { useRealAnalyticsData } from '../hooks/useRealAnalyticsData';
 import AuthModal from '../components/auth/AuthModal';
+import { Helmet } from "react-helmet-async";
 
 const AnalyticsPage: React.FC = () => {
   const { user } = useAuth();
