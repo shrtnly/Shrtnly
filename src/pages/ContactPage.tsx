@@ -68,7 +68,7 @@ export default function HomePage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
+          {/* Header */} 
           <div className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="p-3 bg-blue-600 rounded-xl">
