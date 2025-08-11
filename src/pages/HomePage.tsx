@@ -9,6 +9,7 @@ import { Link } from '../types';
 import { motion } from "framer-motion";
 import AnimatedParagraphs from '../components/AnimatedParagraphs';
 import { Helmet } from "react-helmet-async";
+
 const HomePage: React.FC = () => {
   const [newLink, setNewLink] = useState<Link | null>(null);
   const [authModalOpen, setAuthModalOpen] = useState(false);
