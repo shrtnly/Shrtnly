@@ -325,29 +325,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     }`}
   >
     <div className="space-y-4 pt-2 pb-6">
-      {/* Custom Short Code */}
-      <div>
-        <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
-          Custom Short Code
-        </label>
-        <input
-          type="text"
-          id="short_code"
-          name="short_code"
-          value={formData.short_code}
-          onChange={handleChange}
-          placeholder="Alias (optional)"
-          className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-          pattern="[a-zA-Z0-9_-]+"
-          maxLength={10}
-          title="Only letters, numbers, hyphens, and underscores allowed"
-        />
-        <p className="mt-1 text-xs sm:text-sm text-gray-500">
-          Create a custom alias for your shortened URL
-        </p>
-      </div>
-      
-      {/* Custom Domain */}
+ {/* Custom Domain */}
       <div>
         <label
           htmlFor="custom_domain"
@@ -395,6 +373,28 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
         )}
       </div>
       
+      {/* Custom Short Code */}
+      <div>
+        <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
+          Custom Short Code
+        </label>
+        <input
+          type="text"
+          id="short_code"
+          name="short_code"
+          value={formData.short_code}
+          onChange={handleChange}
+          placeholder="Alias (optional)"
+          className="w-full px-4 py-3 sm:py-4 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+          pattern="[a-zA-Z0-9_-]+"
+          maxLength={10}
+          title="Only letters, numbers, hyphens, and underscores allowed"
+        />
+        <p className="mt-1 text-xs sm:text-sm text-gray-500">
+          Create a custom alias for your shortened URL
+        </p>
+      </div>
+            
       {/* Title */}
       <div>
         <label htmlFor="title" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
