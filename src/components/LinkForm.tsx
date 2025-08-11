@@ -321,10 +321,10 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
   <div 
     id="advanced-options"
     className={`overflow-hidden transition-all duration-300 ease-in-out ${
-      showAdvanced ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+      showAdvanced ? 'max-h-[1500px] opacity-100' : 'max-h-0 opacity-0'
     }`}
   >
-    <div className="space-y-4 pt-2">
+    <div className="space-y-4 pt-2 pb-6">
       {/* Custom Short Code */}
       <div>
         <label htmlFor="short_code" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
@@ -412,7 +412,7 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
       </div>
       
       {/* Description */}
-      <div>
+      <div className="mb-6">
         <label htmlFor="description" className="block text-sm sm:text-base font-medium text-gray-700 mb-2">
           Description (optional)
         </label>
@@ -450,7 +450,6 @@ const LinkForm: React.FC<LinkFormProps> = ({ onLinkCreated }) => {
     {isLoading ? 'Shortening URL...' : 'Shorten URL Now'}
   </button>
 </form>
-
       {/* Success Result */}
       {createdLink && (
         <div 
