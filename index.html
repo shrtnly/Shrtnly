@@ -40,9 +40,48 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/shrtnly.com.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/shrtnly.com.png" />
+  
+  <!-- SEO Enhancement: Preload critical content -->
+  <script>
+    // Ensure headings are immediately available for crawlers
+    window.addEventListener('DOMContentLoaded', function() {
+      // Add structured data for better SEO
+      const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Shrtnly",
+        "description": "Free URL shortener for creating short links, QR codes, and analytics",
+        "url": "https://shrtnly.pro",
+        "applicationCategory": "UtilityApplication",
+        "operatingSystem": "Web Browser",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      };
+      
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.textContent = JSON.stringify(structuredData);
+      document.head.appendChild(script);
+    });
+  </script>
 </head>
   
   <body>
+    <!-- Fallback content for crawlers that don't execute JavaScript -->
+    <noscript>
+      <div style="padding: 20px; text-align: center; font-family: Arial, sans-serif;">
+        <h1>Free URL Shortener - Create Short Links & QR Codes | Shrtnly</h1>
+        <h2>Why Choose Shrtnly for URL Shortening?</h2>
+        <h3>Create Custom Short Links</h3>
+        <h3>Instant QR Code Generator</h3>
+        <h3>Advanced Click Analytics</h3>
+        <p>Please enable JavaScript to use the full functionality of Shrtnly.</p>
+      </div>
+    </noscript>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

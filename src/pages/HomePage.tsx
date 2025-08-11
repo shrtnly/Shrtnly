@@ -39,46 +39,39 @@ const HomePage: React.FC = () => {
           <div className="mb-16">
             <LinkForm onLinkCreated={handleLinkCreated} />
           </div>
+          
           {/* Recent Links Section */}
           <div className="mb-16">
             <RecentLinks newLink={newLink} />
           </div>
           
-          {/* Analytics Dashboard Card 
-          <div className="mb-16">
-            <AnalyticsDashboardCard onSignInClick={handleSignInClick} />
+          {/* Hero Section */}
+          <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
+            <h1 className="text-2xl sm:text-3xl font-bold mb-4">
+              Free URL Shortener – Create Short Links in Seconds
+            </h1>
+
+            <p className="text-lg sm:text-xl mb-6 text-blue-100 leading-relaxed">
+              Turn long URLs into clean, professional short links. Get instant QR codes and track every click.
+            </p>
+
+            <div className="text-left max-w-2xl mx-auto">
+              <div className="space-y-4 text-base sm:text-lg">
+                <div className="flex items-start gap-3">
+                  <span className="w-2.5 h-2.5 mt-2 bg-white rounded-full flex-shrink-0"></span>
+                  <span>Create short, shareable links in under 5 seconds</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="w-2.5 h-2.5 mt-2 bg-white rounded-full flex-shrink-0"></span>
+                  <span>Download high-quality QR codes for print and digital use</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="w-2.5 h-2.5 mt-2 bg-white rounded-full flex-shrink-0"></span>
+                  <span>Monitor performance with real-time click analytics</span>
+                </div>
+              </div>
+            </div>
           </div>
-*/}
-
-
-         
-{/* Hero Section */}
-<div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
-  <h1 className="text-2xl sm:text-3xl font-bold mb-4">
-    Free URL Shortener – Create Short Links in Seconds
-  </h1>
-
-  <p className="text-lg sm:text-xl mb-6 text-blue-100 leading-relaxed">
-    Turn long URLs into clean, professional short links. Get instant QR codes and track every click.
-  </p>
-
-  <div className="text-left max-w-2xl mx-auto">
-    <div className="space-y-4 text-base sm:text-lg">
-      <div className="flex items-start gap-3">
-        <span className="w-2.5 h-2.5 mt-2 bg-white rounded-full flex-shrink-0"></span>
-        <span>Create short, shareable links in under 5 seconds</span>
-      </div>
-      <div className="flex items-start gap-3">
-        <span className="w-2.5 h-2.5 mt-2 bg-white rounded-full flex-shrink-0"></span>
-        <span>Download high-quality QR codes for print and digital use</span>
-      </div>
-      <div className="flex items-start gap-3">
-        <span className="w-2.5 h-2.5 mt-2 bg-white rounded-full flex-shrink-0"></span>
-        <span>Monitor performance with real-time click analytics</span>
-      </div>
-    </div>
-  </div>
-</div>
           
           {/* Features Section */}
           <div className="mb-16">
@@ -165,68 +158,68 @@ const HomePage: React.FC = () => {
           </div>
 
           {/* How it Works Section */}
-<div className="mb-20">
-  <div className="text-center mb-14">
-    <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
-      How to Create Short URLs in 4 Easy Steps
-    </h2>
-    <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-      Shorten your long URLs in seconds with QR codes and link tracking.
-    </p>
-  </div>
+          <div className="mb-20">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4">
+                How to Create Short URLs in 4 Easy Steps
+              </h2>
+              <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+                Shorten your long URLs in seconds with QR codes and link tracking.
+              </p>
+            </div>
 
-  <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 sm:px-0 relative">
-    {[
-      {
-        title: "Enter Your Long URL",
-        desc: "Paste your original long link into the shortener field.",
-        color: "bg-blue-600",
-        lineColor: "bg-blue-200",
-        icon: "1"
-      },
-      {
-        title: "Customize Your Link",
-        desc: "Personalize with custom alias, title, or tags.",
-        color: "bg-green-600",
-        lineColor: "bg-green-200",
-        icon: "2"
-      },
-      {
-        title: "Generate Short Link",
-        desc: "Click 'Shorten' to get your short link & QR code.",
-        color: "bg-purple-600",
-        lineColor: "bg-purple-200",
-        icon: "3"
-      },
-      {
-        title: "Share and Track",
-        desc: "Monitor performance with real-time analytics.",
-        color: "bg-orange-600",
-        lineColor: "bg-orange-200",
-        icon: "4"
-      }
-    ].map((step, index) => (
-      <div key={index} className="text-center relative group">
-        <div className="flex items-center justify-center mb-5">
-          <div className={`w-14 h-14 sm:w-16 sm:h-16 ${step.color} text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold shadow-lg transition-transform duration-300 group-hover:scale-110`}>
-            {step.icon}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 sm:px-0 relative">
+              {[
+                {
+                  title: "Enter Your Long URL",
+                  desc: "Paste your original long link into the shortener field.",
+                  color: "bg-blue-600",
+                  lineColor: "bg-blue-200",
+                  icon: "1"
+                },
+                {
+                  title: "Customize Your Link",
+                  desc: "Personalize with custom alias, title, or tags.",
+                  color: "bg-green-600",
+                  lineColor: "bg-green-200",
+                  icon: "2"
+                },
+                {
+                  title: "Generate Short Link",
+                  desc: "Click 'Shorten' to get your short link & QR code.",
+                  color: "bg-purple-600",
+                  lineColor: "bg-purple-200",
+                  icon: "3"
+                },
+                {
+                  title: "Share and Track",
+                  desc: "Monitor performance with real-time analytics.",
+                  color: "bg-orange-600",
+                  lineColor: "bg-orange-200",
+                  icon: "4"
+                }
+              ].map((step, index) => (
+                <div key={index} className="text-center relative group">
+                  <div className="flex items-center justify-center mb-5">
+                    <div className={`w-14 h-14 sm:w-16 sm:h-16 ${step.color} text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold shadow-lg transition-transform duration-300 group-hover:scale-110`}>
+                      {step.icon}
+                    </div>
+                    {index !== 3 && (
+                      <div className={`hidden lg:block absolute top-7 left-full w-12 h-1 ${step.lineColor}`}></div>
+                    )}
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
+                  <p className="text-sm sm:text-base text-gray-600">{step.desc}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          {index !== 3 && (
-            <div className={`hidden lg:block absolute top-7 left-full w-12 h-1 ${step.lineColor}`}></div>
-          )}
-        </div>
-        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-2">{step.title}</h3>
-        <p className="text-sm sm:text-base text-gray-600">{step.desc}</p>
-      </div>
-    ))}
-  </div>
-</div>
 
 
           
           {/* Call to Action */}
           <div className="bg-blue-600 rounded-2xl p-6 sm:p-8 text-white text-center shadow-lg mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Start Creating Short URLs Today</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4">Ready to Start Creating Short URLs?</h2>
             <p className="text-lg sm:text-xl mb-6 opacity-90">
               Join over 10,000 users who trust Shrtnly for fast, reliable URL shortening.
             </p>
@@ -247,4 +240,5 @@ const HomePage: React.FC = () => {
     </div>
   );
 };
+
 export default HomePage;

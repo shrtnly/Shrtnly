@@ -166,9 +166,9 @@ const RecentLinks: React.FC<RecentLinksProps> = ({ newLink }) => {
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-3">
           <User className="w-6 h-6 text-blue-600" />
-          <h3 className="text-2xl font-bold text-gray-900">
+          <h2 className="text-2xl font-bold text-gray-900">
             {user ? 'Links' : 'Recent Links'}
-          </h3>
+          </h2>
         </div>
         {user && (
           <div className="text-xs text-gray-400">
@@ -198,7 +198,7 @@ const RecentLinks: React.FC<RecentLinksProps> = ({ newLink }) => {
             >
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-medium text-gray-900 truncate">
+                  <h3 className="font-medium text-gray-900 truncate" role="heading" aria-level="3">
                     {link.title || 'Untitled Link'}
                   </h3>
 
