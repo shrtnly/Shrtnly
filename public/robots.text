@@ -1,24 +1,16 @@
 User-agent: *
+# Allow everything by default
 Allow: /
 
-# Sitemap
-Sitemap: https://shrtnly.pro/sitemap.xml
-
-# Crawl-delay for better server performance
-Crawl-delay: 1
-
-# Disallow admin and private areas
-Disallow: /admin/
-Disallow: /api/
-Disallow: /auth/callback
+# Block non-SEO/system pages
 Disallow: /verify-email
 Disallow: /reset-password
 Disallow: /forgot-password
+Disallow: /auth/
+Disallow: /dashboard
+Disallow: /account
+Disallow: /settings
+Disallow: /api/
 
-# Allow important pages
-Allow: /
-Allow: /analytics
-Allow: /features/
-Allow: /blog
-Allow: /contact
-Allow: /privacy
+# Sitemap location
+Sitemap: https://shrtnly.pro/sitemap.xml
