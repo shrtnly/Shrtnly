@@ -7,7 +7,21 @@ const BlogPage: React.FC = () => {
   const blogPosts = [
   {
     id: 1,
-   
+    title: "10 URL Shortening Best Practices for Digital Marketing Success",
+    excerpt:
+      "Discover proven strategies to maximize click-through rates and improve your marketing ROI with professional URL shortening techniques.",
+    author: "Marketing Team",
+    date: "2024-12-15",
+    readTime: "5 min read",
+    category: "Marketing",
+    image:
+      "https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800",
+    tags: [
+      "Marketing",
+      "Best Practices",
+      "CTR Optimization",
+      "Short URL Tools",
+      "Link Management",
     ],
     fullContent:   `
     
@@ -69,7 +83,7 @@ const BlogPage: React.FC = () => {
             width: 100%;
             height: auto;
             border-radius: 5px;
-            margin-bottom: 20px;
+             margin-bottom: 20px;
         }
         .excerpt {
             font-style: italic;
