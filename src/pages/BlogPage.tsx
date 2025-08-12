@@ -138,24 +138,7 @@ const BlogPage: React.FC = () => {
     </style>
 <body>
     <article>
-        <header>
-            <h1>10 URL Shortening Best Practices for Digital Marketing Success</h1>
-            <div class="meta">
-                <span class="category">Marketing</span>
-                <span>By Marketing Team</span> | 
-                <span>December 15, 2024</span> | 
-                <span>5 min read</span>
-            </div>
-            <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Digital marketing concept" class="featured-image">
-            <div class="tags">
-                <span class="tag">Marketing</span>
-                <span class="tag">Best Practices</span>
-                <span class="tag">CTR Optimization</span>
-                <span class="tag">Short URL Tools</span>
-                <span class="tag">Link Management</span>
-            </div>
-        </header>
-        
+              
         <section class="content">
             <div class="excerpt">
                 Discover proven strategies to maximize click-through rates and improve your marketing ROI with professional URL shortening techniques.
