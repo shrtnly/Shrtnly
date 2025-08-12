@@ -23,7 +23,8 @@ const BlogPage: React.FC = () => {
       "Short URL Tools",
       "Link Management",
     ],
-    fullContent:
+    fullContent:   `
+    
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -135,7 +136,6 @@ const BlogPage: React.FC = () => {
             font-weight: bold;
         }
     </style>
-</head>
 <body>
     <article>
         <header>
@@ -299,6 +299,7 @@ const BlogPage: React.FC = () => {
             <p>Mastering these ten best practices transforms simple link management into a sophisticated tool that boosts visibility, credibility, tracking precision—and ultimately contributes significantly to achieving marketing goals. By leveraging branded domains, customizing slugs thoughtfully, monitoring performance diligently—and adhering strictly to security standards—you set yourself apart in an increasingly competitive landscape. Remember that automation streamlines processes while ongoing reviews ensure relevance; combined with respect for legal boundaries this creates a resilient foundation for long-term success in digital marketing endeavors involving URL shortening techniques.</p>
         </section>
     </article>
+  `
   },
     {
       id: 2,
