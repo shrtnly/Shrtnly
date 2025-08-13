@@ -16,9 +16,6 @@ const HomePage: React.FC = () => {
   const handleLinkCreated = (link: Link) => {
     setNewLink(link);
   };
-
-
-  
   const handleSignInClick = () => {
     setAuthModalOpen(true);
   };
