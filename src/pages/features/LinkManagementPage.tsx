@@ -4,7 +4,7 @@ import { Settings, Link2, Edit3, Trash2, Eye, BarChart3, Calendar, Shield, Folde
 const LinkManagementPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-0 py-0">
         <div className="max-w-4xl mx-auto">
           {/* SEO Header */}
           <div className="mb-8">
